@@ -7,6 +7,7 @@ class MovableObject {
     curentImage = 0;
     imageCache = {};
     speed = 0.15;
+    otherDirection = false;
 
 
     /**
