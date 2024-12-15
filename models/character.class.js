@@ -2,6 +2,7 @@ class Character extends MovableObject {
     height = 280;
     width = 100;
     y = 155
+    world;
 
     IMAGES_IDLE = [
         'img/2_character_pepe/1_idle/idle/I-1.png',
@@ -28,11 +29,15 @@ class Character extends MovableObject {
      */
     animate(imgStack) {
         setInterval(() => {
-            let i = this.curentImage % imgStack.length; // test
-            let path = imgStack[i];
-            this.img = this.imageCache[path];
-            // this.curentImage == imgStack.length -1 ? this.curentImage = 0 : this.curentImage++;
-            this.curentImage++; // test
+
+            if (this.world.keyboard.RIGHT) {
+                   
+                let i = this.curentImage % imgStack.length; // test
+                let path = imgStack[i];
+                this.img = this.imageCache[path];
+                // this.curentImage == imgStack.length -1 ? this.curentImage = 0 : this.curentImage++;
+                this.curentImage++; // test
+            }
         }, 500);
     }
 
