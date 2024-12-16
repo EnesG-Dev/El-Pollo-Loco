@@ -2,6 +2,7 @@ class World {
     ctx;
     canvas;
     keyboard;
+    camera_x = 0;
     clouds = [
         new Cloud(),
     ];
@@ -36,11 +37,15 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
+        this.ctx.translate(this.camera_x, 0);
+        
         this.addObjectsToMap(this.backgroundObjects);
         this.addToMap(this.character);
         this.addObjectsToMap(this.enemies);
         this.addObjectsToMap(this.clouds);
-
+        
+        this.ctx.translate(-this.camera_x, 0);
+        
         // draw wird immer wierder aufgerufen!
         let self = this;
         requestAnimationFrame(function() {
