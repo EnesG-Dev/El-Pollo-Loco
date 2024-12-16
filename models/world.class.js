@@ -12,22 +12,43 @@ class World {
         new Chicken(),
         new Chicken(),
     ];
-    backgroundObjects = [
-        new BackgroundObject('img/5_background/layers/air.png'),
-        new BackgroundObject('img/5_background/layers/3_third_layer/1.png'),
-        new BackgroundObject('img/5_background/layers/2_second_layer/1.png'),
-        new BackgroundObject('img/5_background/layers/1_first_layer/1.png'),
+
+    testLoop = [-1, 0, 1, 2, 3]
+    testtt = 0
+    testt = 719 * this.testLoop[0]
+    backgroundPaths1 = [
+        'img/5_background/layers/air.png',
+        'img/5_background/layers/3_third_layer/1.png',
+        'img/5_background/layers/2_second_layer/1.png',
+        'img/5_background/layers/1_first_layer/1.png',
     ];
-
-
-
+    backgroundPaths2 = [
+        'img/5_background/layers/air.png',
+        'img/5_background/layers/3_third_layer/2.png',
+        'img/5_background/layers/2_second_layer/2.png',
+        'img/5_background/layers/1_first_layer/2.png'
+    ];
+    backgroundObjects = [];
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.keyboard = keyboard;
+        this.backgroundLoop();
         this.draw();
         this.setWorld();
+    }
+    
+    backgroundLoop() {
+        for (let loopIndex = -1; loopIndex < 8; loopIndex++) {
+            this.backgroundPaths1.forEach(path => {
+                this.backgroundObjects.push(new BackgroundObject(path, 719*loopIndex));
+            });
+            loopIndex++;
+            this.backgroundPaths2.forEach(path => {
+                this.backgroundObjects.push(new BackgroundObject(path, 719*loopIndex));
+            });
+        }
     }
 
     setWorld() {
