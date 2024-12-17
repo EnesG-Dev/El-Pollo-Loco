@@ -4,6 +4,7 @@ class Character extends MovableObject {
     y = 155
     world;
     speed = 3;
+    walking_sound = new Audio('/audio/walk.mp3');
 
     IMAGES_IDLE = [
         'img/2_character_pepe/1_idle/idle/I-1.png',
@@ -51,14 +52,17 @@ class Character extends MovableObject {
 
         // WALK
         setInterval(() => {
+            this.walking_sound.pause();
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.x += this.speed;
                 this.otherDirection = false;
+                this.walking_sound.play();
             }
             
             if (this.world.keyboard.LEFT && this.x > -100) {
                 this.x -= this.speed;
                 this.otherDirection = true;
+                this.walking_sound.play();
             }
             this.world.camera_x = -this.x + 100;
         }, 100 / 60);
