@@ -56,7 +56,7 @@ class Endboss extends MovableObject {
     // animate alert
     animate() {
         setInterval(() => {
-            this.animate(this.IMAGES_ALERT)
-        }, 400);
+            this.playAnimation(this.IMAGES_ALERT);
+        }, 500);
     }
 }
