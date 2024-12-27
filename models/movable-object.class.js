@@ -1,7 +1,6 @@
 class MovableObject {
     x = 120;
     y = 60;
-    // y = 155
     height = 150;
     width = 100;
     img;
@@ -12,6 +11,8 @@ class MovableObject {
 
     speedY = 0;
     acceleration = 2.5;
+
+    energy = 100;
 
     applyGravity() {
         setInterval(() => {
@@ -80,5 +81,14 @@ class MovableObject {
     moveLeft(mirror = false) {
         this.x -= this.speed;
         this.otherDirection = mirror;
+    }
+
+    // Bessere Formel zur Kollisionsberechnung (Genauer)
+    offsetY = this.offsetY || 0;
+    isColliding(obj) {
+        return  (this.x + this.width) >= obj.x && this.x <= (obj.x + obj.width) && 
+                (this.y + this.offsetY + this.height) >= obj.y &&
+                (this.y + this.offsetY) <= (obj.y + obj.height);
+                // && obj.onCollisionCourse; // Optional: hiermit könnten wir schauen, ob ein Objekt sich in die richtige Richtung bewegt. Nur dann kollidieren wir. Nützlich bei Gegenständen, auf denen man stehen kann.
     }
 }
