@@ -15,10 +15,13 @@ class MovableObject {
 
     applyGravity() {
         setInterval(() => {
-            if (this.isAboveGround())
-                this.y -= this.speedY;
-                this.speedY -= this.acceleration;
-        }, 1000 / 25)
+            if (this.isAboveGround() || this.speedY > 0){
+
+                    this.y -= this.speedY;
+                    this.speedY -= this.acceleration;
+
+            }
+        }, 1000 / 50)
     }
 
     isAboveGround() {
@@ -56,12 +59,12 @@ class MovableObject {
     }
 
     moveRight() {
-        console.log('Moving right');
+        this.x += this.speed;
+        this.otherDirection = false;
     }
 
-    moveLeft() {
-        setInterval( () => {
-            this.x -= this.speed;
-        }, 1000 / 60);
+    moveLeft(mirror = false) {
+        this.x -= this.speed;
+        this.otherDirection = mirror;
     }
 }

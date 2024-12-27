@@ -26,7 +26,9 @@ class Chicken extends MovableObject {
      * @param {[string]} imgStack - Stack of image paths that are animated
      */
     animate() {
-        this.moveLeft();
+        setInterval(() => {
+            this.moveLeft();
+        }, 1000 / 60);
 
         setInterval(() => {
             this.playAnimation(this.IMAGES_WALK)
