@@ -13,23 +13,28 @@ class MovableObject extends DrawableObject {
         setInterval(() => {
             if (this.isAboveGround() || this.speedY > 0){
 
-                    this.y -= this.speedY;
-                    this.speedY -= this.acceleration;
+                this.y -= this.speedY;
+                this.speedY -= this.acceleration;
 
             }
         }, 1000 / 50)
     }
 
     isAboveGround() {
+        if (this instanceof ThrowableObject) {
+            return true;
+        }
         return this.y < 150;
     }
 
     hit() {
-        this.energy -= 5;
-        if (this.energy < 0) {
-            this.energy = 0;
-        } else {
-            this.lastHit = new Date().getTime();
+        if (!this.isHurt() || this.lastHit == 0) {   
+            this.energy -= 10;
+            if (this.energy < 0) {
+                this.energy = 0;
+            } else {
+                this.lastHit = new Date().getTime();
+            }
         }
     }
 
