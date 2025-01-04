@@ -7,12 +7,4 @@ class Keyboard {
     C = false;
     V = false;
     B = false;
-
-    currentKlick;
-
-    moveCaracter() {
-        
-    }
-
-
 }

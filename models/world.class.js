@@ -5,6 +5,8 @@ class World {
     camera_x = 0;
     character = new Character();
     level = LEVEL_1;
+    gameMap = new BackgroundObject("img/05_background/TileSet Wasteland/gameMap.png", -150, 2155, 480);
+    gameMap2 = new BackgroundObject("img/05_background/TileSet Wasteland/gameMap2.png", 2005, 2155, 480)
     healthBar = new StatusBar();
     thowableObjects = [];
     lastShot = 0;
@@ -28,10 +30,24 @@ class World {
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
-                this.character.hit();
+                this.character.hit(10);
                 this.healthBar.setPrecentage(this.character.energy);
             }
         });
+        this.thowableObjects.forEach((projectile) => {
+            if (this.character.isColliding(projectile)) {
+                projectile.playSpriteOnce();
+                this.character.hit(20);
+                this.healthBar.setPrecentage(this.character.energy);
+                setTimeout(() => {
+                    this.deleteProjectile(projectile);
+                }, 500);
+            }
+        });
+    }
+    
+    deleteProjectile(projectile) {
+        this.thowableObjects.splice(projectile, 1); // Entfernt das Projektil an Index `i`
     }
 
     checkThowableObjects() {
@@ -51,34 +67,39 @@ class World {
 
     setWorld() {
         this.character.world = this;
+        this.level.enemies[0].world = this;
     }
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
+    
+        // Verschieben für die Kamera
         this.ctx.translate(this.camera_x, 0);
+    
         
+        // Hintergrund und Objekte hinzufügen
         this.addObjectsToMap(this.level.backgroundObjects);
+        this.addToMap(this.gameMap);
+        this.addToMap(this.gameMap2);
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.thowableObjects);
-        // this.addToMap(new ThrowableObject);
         this.addToMap(this.character);
-        
+
+        // Kamera zurücksetzen
         this.ctx.translate(-this.camera_x, 0);
-        // ----- space for fixed objects ----
+    
+        // UI-Elemente oder feste Objekte hinzufügen
         this.addToMap(this.healthBar);
+    
         this.ctx.translate(this.camera_x, 0);
-
-
-
         this.ctx.translate(-this.camera_x, 0);
-        
-        // draw wird immer wierder aufgerufen!
+    
+        // draw wird immer wieder aufgerufen!
         let self = this;
-        requestAnimationFrame(function() {
+        requestAnimationFrame(function () {
             self.draw();
-        })
+        });
     }
 
     addObjectsToMap(objects) {
@@ -94,6 +115,7 @@ class World {
 
         mo.draw(this.ctx);
         mo.drawFrame(this.ctx);
+        mo.drawOffset(this.ctx);        
 
         if (mo.otherDirection) {
             this.mirrorOff(mo);

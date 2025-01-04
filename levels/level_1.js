@@ -1,23 +1,24 @@
 const LEVEL_1 = new Level(
     [
-        new Chicken(),
-        new Chicken(),
-        new Chicken(),
+        new Witch(),
+        // new Chicken(),
+        // new Chicken(),
+        // new Chicken(),
         new Endboss(),
     ],
     [
         new Cloud(),
     ],
     [
-        'img/5_background/layers/air.png',
-        'img/5_background/layers/3_third_layer/1.png',
-        'img/5_background/layers/2_second_layer/1.png',
-        'img/5_background/layers/1_first_layer/1.png',
+        "img/05_background/TileSet Wasteland/Layers/Background.png",
+        "img/05_background/TileSet Wasteland/Layers/Clouds.png",
+        "img/05_background/TileSet Wasteland/Layers/Far-Mountains.png",
+        "img/05_background/TileSet Wasteland/Layers/Mountains.png",
     ],
     [
-        'img/5_background/layers/air.png',
-        'img/5_background/layers/3_third_layer/2.png',
-        'img/5_background/layers/2_second_layer/2.png',
-        'img/5_background/layers/1_first_layer/2.png'
+        "img/05_background/TileSet Wasteland/Layers/Background.png",
+        "img/05_background/TileSet Wasteland/Layers/Clouds.png",
+        "img/05_background/TileSet Wasteland/Layers/Far-Mountains.png",
+        "img/05_background/TileSet Wasteland/Layers/Mountains.png",
     ],
 );

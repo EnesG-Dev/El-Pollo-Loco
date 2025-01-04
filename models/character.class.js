@@ -1,54 +1,93 @@
 class Character extends MovableObject {
-    height = 280;
-    width = 100;
+    height = 150;
+    width = 150;
+    offsetY = (this.height - 50) / 2;
+    offsetX = (this.width - 5) / 2;
     world;
-    speed = 3;
+    speed = 2;
     walking_sound = new Audio('/audio/walk.mp3');
 
     IMAGES_IDLE = [
-        'img/2_character_pepe/1_idle/idle/I-1.png',
-        'img/2_character_pepe/1_idle/idle/I-2.png',
-        'img/2_character_pepe/1_idle/idle/I-3.png',
-        'img/2_character_pepe/1_idle/idle/I-4.png',
-        'img/2_character_pepe/1_idle/idle/I-5.png',
-        'img/2_character_pepe/1_idle/idle/I-6.png',
-        'img/2_character_pepe/1_idle/idle/I-7.png',
-        'img/2_character_pepe/1_idle/idle/I-8.png',
-        'img/2_character_pepe/1_idle/idle/I-9.png',
-        'img/2_character_pepe/1_idle/idle/I-10.png',
+        "img/00_JoannaD'ArcIII_v1/Sprites/Idle/Idle1.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Idle/Idle2.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Idle/Idle3.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Idle/Idle4.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Idle/Idle5.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Idle/Idle6.png",
     ];
     IMAGES_WALK = [
-        'img/2_character_pepe/2_walk/W-21.png',
-        'img/2_character_pepe/2_walk/W-22.png',
-        'img/2_character_pepe/2_walk/W-23.png',
-        'img/2_character_pepe/2_walk/W-24.png',
-        'img/2_character_pepe/2_walk/W-25.png',
-        'img/2_character_pepe/2_walk/W-26.png',
+        "img/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking1.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking2.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking3.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking4.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking5.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking6.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking7.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking8.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking9.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking10.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking11.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking12.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking13.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking14.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking15.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking16.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking17.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking18.png",
     ];
     IMAGES_JUMP = [
-        'img/2_character_pepe/3_jump/J-31.png',
-        'img/2_character_pepe/3_jump/J-32.png',
-        'img/2_character_pepe/3_jump/J-33.png',
-        'img/2_character_pepe/3_jump/J-34.png',
-        'img/2_character_pepe/3_jump/J-35.png',
-        'img/2_character_pepe/3_jump/J-36.png',
-        'img/2_character_pepe/3_jump/J-37.png',
-        'img/2_character_pepe/3_jump/J-38.png',
-        'img/2_character_pepe/3_jump/J-39.png',
+        "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)1.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)2.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)3.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)4.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)5.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)6.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)7.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)8.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)9.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)10.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)11.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)12.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)13.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)14.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)15.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)16.png",
     ];
     IMAGES_HURT = [
-        'img/2_character_pepe/4_hurt/H-41.png',
-        'img/2_character_pepe/4_hurt/H-42.png',
-        'img/2_character_pepe/4_hurt/H-43.png',
+        "img/00_JoannaD'ArcIII_v1/Sprites/Hurt/FX/Hurt1.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Hurt/FX/Hurt2.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Hurt/FX/Hurt3.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Hurt/FX/Hurt4.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Hurt/FX/Hurt5.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Hurt/FX/Hurt6.png",
     ];
     IMAGES_DEAD = [
-        'img/2_character_pepe/5_dead/D-51.png',
-        'img/2_character_pepe/5_dead/D-52.png',
-        'img/2_character_pepe/5_dead/D-53.png',
-        'img/2_character_pepe/5_dead/D-54.png',
-        'img/2_character_pepe/5_dead/D-55.png',
-        'img/2_character_pepe/5_dead/D-56.png',
-        'img/2_character_pepe/5_dead/D-57.png',
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death1.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death2.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death3.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death4.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death5.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death6.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death7.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death8.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death9.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death10.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death11.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death12.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death13.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death14.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death15.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death16.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death17.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death18.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death19.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death20.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death21.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death22.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death23.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death24.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death25.png",
+        "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death26.png"
     ];
 
     constructor() {
@@ -97,11 +136,12 @@ class Character extends MovableObject {
             this.world.camera_x = -this.x + 100;
         }, 100 / 60);
 
+// mehrmaliges auslösen fixen
         setInterval(() => {
             if (this.isDead()) {
-                this.playAnimation(this.IMAGES_DEAD);
+                this.playSpriteOnce(this.IMAGES_DEAD, 200);
             } else if (this.isHurt()) {
-                this.playAnimation(this.IMAGES_HURT);
+                this.playSpriteOnce(this.IMAGES_HURT, 200);
             } else if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMP);
             } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
@@ -112,6 +152,22 @@ class Character extends MovableObject {
     }
 
     jump() {
-        this.speedY = 30;
+        this.speedY = 35;
+    }
+
+    playSpriteOnce(images, animationS, onComplete) {
+        let index = 0;
+        let path;
+
+        clearInterval(this.animationInterval); // Vorherige Animation stoppen
+        this.animationInterval = setInterval(() => {
+            path = images[index];
+            this.img = this.imageCache[path]; // Animation immer von vorne beginnen
+            index++;
+            if (index == images.length) {
+                clearInterval(this.animationInterval); // Animation beenden
+                onComplete && onComplete(); // Callback aufrufen
+            }
+        }, animationS);
     }
 }

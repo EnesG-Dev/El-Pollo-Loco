@@ -7,6 +7,12 @@ class DrawableObject {
     curentImage = 0;
     imageCache = {};
 
+    offsetY = this.offsetY || 0;
+    offsetX = this.offsetX || 0;
+    // Zusätzliche Positionsoffsets für Verschiebung
+    positionOffsetX = 0; // Beispiel: verschiebt den Bereich 30px nach rechts
+    positionOffsetY = 0; // Beispiel: verschiebt den Bereich 20px nach unten
+
     /**
      * 
      * @param {string} path - is the localpath of img to load
@@ -34,11 +40,40 @@ class DrawableObject {
     }
 
     drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Chicken || this instanceof Endboss) {   
+        if (this instanceof Character || this instanceof Witch || this instanceof Endboss || this instanceof Projectile) {   
             ctx.beginPath();
             ctx.lineWidth = '5';
             ctx.strokeStyle = 'blue';
             ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+        }
+    }
+    
+    TTdrawOffset(ctx) {
+        if (this instanceof Character || this instanceof Witch || this instanceof Endboss) {   
+            ctx.beginPath();
+            ctx.lineWidth = '2';
+            ctx.strokeStyle = 'red';
+            ctx.rect(
+                this.x + this.offsetX / 2,
+                this.y + this.offsetY / 2,
+                this.width - this.offsetX,
+                this.height - this.offsetY
+            );
+            ctx.stroke();
+        }
+    }
+    drawOffset(ctx) {
+        if (this instanceof Character || this instanceof Witch || this instanceof Endboss || this instanceof Projectile) {
+            ctx.beginPath();
+            ctx.lineWidth = '2';
+            ctx.strokeStyle = 'red';
+            ctx.rect(
+                this.x + this.offsetX / 2 + this.positionOffsetX,
+                this.y + this.offsetY / 2 + this.positionOffsetY,
+                this.width - this.offsetX,
+                this.height - this.offsetY
+            );
             ctx.stroke();
         }
     }

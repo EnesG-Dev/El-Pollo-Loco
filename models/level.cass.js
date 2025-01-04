@@ -4,7 +4,7 @@ class Level {
     backgroundPaths1;
     backgroundPaths2;
     backgroundObjects = [];
-    level_end_x = 5706;
+    level_end_x = 3880;
 
     constructor(enemies, clouds, backgroundPaths1, backgroundPaths2,) {
         this.enemies = enemies;
@@ -15,7 +15,7 @@ class Level {
     }
 
     backgroundLoop() {
-        for (let loopIndex = -1; loopIndex < 8; loopIndex++) {
+        for (let loopIndex = -1; loopIndex < 6; loopIndex++) {
             this.backgroundPaths1.forEach(path => {
                 this.backgroundObjects.push(new BackgroundObject(path, 719*loopIndex));
             });
