@@ -1,12 +1,50 @@
 let canvas;
 let world;
-let keyboard = new Keyboard();
+let keyboard;
+let imgPaths;
+let LEVEL_1 = null;
+keyboard = new Keyboard();
 
-function init() {
+async function init() {
+    const response = await fetch('./assets/paths/img_paths.json');
+    imgPaths = await response.json();
+    const levelData = await loadLevelData(); // Lade die JSON-Daten
+    LEVEL_1 = await createLevelFromData(levelData); // Erstelle das Level
+    
+
+    console.log(imgPaths);
+    
+
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
+}
 
-    console.log('My Character is', world.character);
+async function loadLevelData() {
+    const response = await fetch('./assets/levels/level_1.json');
+    return response.json(); // Liefert die JSON-Daten als Objekt
+}
+
+async function createLevelFromData(levelData) {
+    const enemies = levelData.enemies.map(enemyData => {
+        if (enemyData.type === 'Witch') {
+            return new Witch(enemyData.x, enemyData.y);
+        } else if (enemyData.type === 'Endboss') {
+            return new Endboss(enemyData.x, enemyData.y);
+        }
+        throw new Error(`Unbekannter Gegner-Typ: ${enemyData.type}`);
+    });
+
+    const clouds = levelData.clouds.map(cloudData => {
+        if (cloudData.type === 'Cloud') {
+            return new Cloud(cloudData.x, cloudData.y);
+        }
+        throw new Error(`Unbekannter Wolken-Typ: ${cloudData.type}`);
+    });
+
+    const backgroundLayers = levelData.backgroundLayers;
+
+    // Erstelle das Level-Objekt
+    return new Level(enemies, clouds, backgroundLayers, backgroundLayers);
 }
 
 document.addEventListener('keydown', (event) => {

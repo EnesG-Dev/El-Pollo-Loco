@@ -34,20 +34,14 @@ class World {
                 this.healthBar.setPrecentage(this.character.energy);
             }
         });
-        this.thowableObjects.forEach((projectile) => {
-            if (this.character.isColliding(projectile)) {
-                projectile.playSpriteOnce();
-                this.character.hit(20);
-                this.healthBar.setPrecentage(this.character.energy);
-                setTimeout(() => {
-                    this.deleteProjectile(projectile);
-                }, 500);
+        world.thowableObjects.forEach((projectile) => {
+            if (this.character.isColliding(projectile) && !projectile.isCollided) {                
+                projectile.playSpriteOnce();                // play animation
+                this.character.hit(20);                     // character hit
+                this.healthBar.setPrecentage(this.character.energy); // lifePoints
+                projectile.deleteThis();
             }
         });
-    }
-    
-    deleteProjectile(projectile) {
-        this.thowableObjects.splice(projectile, 1); // Entfernt das Projektil an Index `i`
     }
 
     checkThowableObjects() {
@@ -67,7 +61,9 @@ class World {
 
     setWorld() {
         this.character.world = this;
+// nix gut!!! =>    Enemies.world
         this.level.enemies[0].world = this;
+        this.level.enemies[1].world = this;
     }
 
     draw() {

@@ -4,6 +4,7 @@ class DrawableObject {
     height = 150;
     width = 100;
     img;
+    imgSprites = [];
     curentImage = 0;
     imageCache = {};
 
@@ -33,6 +34,21 @@ class DrawableObject {
             img.src = path;
             this.imageCache[path] = img;
         });
+    }
+
+    /**
+     * Dynamisch Bildpfade zuweisen und Sprites in den imageCache laden
+     * @param {Object} objectPath - Objekt mit Bildpfaden (z. B. imgPaths.character)
+     */
+    loadImageSprites(objectPath) {
+        // Dynamisch Eigenschaften wie IMAGES_IDLE, IMAGES_WALK etc. erstellen
+        Object.entries(objectPath).forEach(([key, paths]) => {
+            this[`IMAGES_${key.toUpperCase()}`] = paths; // Dynamische Zuweisung
+            this.imgSprites.push(paths); // Zur Liste der Sprites hinzufügen
+        });
+
+        // Bilder aus allen Sprites vorladen
+        this.imgSprites.forEach(sprite => this.loadImages(sprite));
     }
 
     draw(ctx) {

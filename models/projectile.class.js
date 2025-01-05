@@ -5,10 +5,10 @@ class Projectile extends MovableObject {
     offsetY = (this.height + 50) / 2;
     offsetX = (this.width - 20) / 2;
 
-    world;
     speed = 5;
     moveInterval;
     animationInterval;
+    isCollided = false;
 
     IMAGES_BOTTLE = [
         "img/03_enemies/witch/PROJECTILE/frame_000.png",
@@ -31,11 +31,7 @@ class Projectile extends MovableObject {
         this.loadImages(this.IMAGES_HIT);
         this.x = x;
         this.y = y;
-
-        this.action();
-    }
-
-    action() {
+        
         this.playSprite(this.IMAGES_BOTTLE, 150);
         this.moveAction();
     }
@@ -44,6 +40,7 @@ class Projectile extends MovableObject {
         clearInterval(this.moveInterval);    // Vorheriges Intervall entfernen
         this.moveInterval = setInterval(() => {
             this.moveLeft();
+            this.outOfMap();
         }, 1000 / 60);
     }
 
@@ -69,5 +66,25 @@ class Projectile extends MovableObject {
                 onComplete && onComplete(); // Callback aufrufen
             }
         }, animationS);
+    }
+
+    outOfMap() {
+        if (this.x < -200) {
+            this.deleteThis()
+        }
+    }
+
+    deleteThis() {
+        let index = world.thowableObjects.indexOf(this);
+        if (index > -1 && this.isCollided == false) {
+            this.isCollided = true;
+            setTimeout(() => {
+                index = world.thowableObjects.indexOf(this);
+
+                world.thowableObjects.splice(index, 1); // Entferne das Projektil aus der Liste
+                clearInterval(this.moveInterval); // Bewegung stoppen
+                clearInterval(this.animationInterval); // Animation stoppen
+            }, 500);
+        }
     }
 }

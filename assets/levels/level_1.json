@@ -1,0 +1,16 @@
+{
+    "enemies": [
+        { "type": "Witch", "x": 1250, "y": 40 },
+        { "type": "Witch", "x": 2550, "y": 40 },
+        { "type": "Endboss", "x": 5000, "y": 0 }
+    ],
+    "clouds": [
+        { "type": "Cloud", "x": 0, "y": 50 }
+    ],
+    "backgroundLayers": [
+        "img/05_background/TileSet Wasteland/Layers/Background.png",
+        "img/05_background/TileSet Wasteland/Layers/Clouds.png",
+        "img/05_background/TileSet Wasteland/Layers/Far-Mountains.png",
+        "img/05_background/TileSet Wasteland/Layers/Mountains.png"
+    ]
+}
