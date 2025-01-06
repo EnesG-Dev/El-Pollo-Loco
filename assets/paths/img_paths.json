@@ -82,6 +82,21 @@
             "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death24.png",
             "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death25.png",
             "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death26.png"
+        ],
+        "attack1": [
+            "img/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk1.png",
+            "img/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk2.png",
+            "img/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk3.png",
+            "img/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk4.png",
+            "img/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk5.png",
+            "img/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk6.png",
+            "img/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk7.png",
+            "img/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk8.png",
+            "img/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk9.png",
+            "img/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk10.png",
+            "img/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk11.png",
+            "img/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk12.png",
+            "img/00_JoannaD'ArcIII_v1/Sprites/Idle/Idle6.png"
         ]
     },
     "witch": {

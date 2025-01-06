@@ -11,9 +11,7 @@ async function init() {
     const levelData = await loadLevelData(); // Lade die JSON-Daten
     LEVEL_1 = await createLevelFromData(levelData); // Erstelle das Level
     
-
     console.log(imgPaths);
-    
 
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);

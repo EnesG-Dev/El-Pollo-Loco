@@ -2,7 +2,7 @@ class Character extends MovableObject {
     height = 150;
     width = 150;
     offsetY = (this.height - 50) / 2;
-    offsetX = (this.width - 5) / 2;
+    offsetX = (this.width + 50) / 2;
     speed = 5;
     walking_sound = new Audio('/audio/walk.mp3')
 
@@ -20,6 +20,10 @@ class Character extends MovableObject {
         this.moveInterval = setInterval(() => {
             if (!this.isDead()) {
                 
+                if (world.keyboard.C) {
+                    this.attack1();
+                }
+
                 if (world.keyboard.RIGHT && this.x < world.level.level_end_x) {
                     this.moveRight();
                     this.walking_sound.play();
@@ -59,7 +63,12 @@ class Character extends MovableObject {
 
             // JUMP    
             } else if (this.isAboveGround()) {
-                this.playAnimation(this.IMAGES_JUMP);
+                if (this.status !== 'jump') {
+                    this.status = 'jump';
+                    this.playSpriteOnce(this.IMAGES_JUMP, 70, () => this.status = '');
+
+                    // this.playAnimation(this.IMAGES_JUMP);
+                }
 
             // WALK
             } else if ((world.keyboard.RIGHT || world.keyboard.LEFT) && this.isAboveGround) {
@@ -79,6 +88,9 @@ class Character extends MovableObject {
         }, 1000 / 60);
     }
 
+    attack1() {
+        this.playSpriteOnce(this.IMAGES_ATTACK1, 60, () => this.status = '');
+    }
 
     clearAll() {
         clearInterval(this.mainInterval);
