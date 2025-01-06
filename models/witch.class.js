@@ -10,12 +10,11 @@ class Witch extends MovableObject {
     
     energy = 100;
     speed = 0.4;
-    status = '';
-    animationInterval;    // currunt temporare intervalID for clearInterval
+  
     attackReady = true; // Kontrolliert, ob der Gegner angreifen darf
 
     constructor(x, y) {
-        super().loadImage("img/03_enemies/witch/IDLE/frame_000.png");
+        super().loadImage(imgPaths.witch.idle[0]);
         this.loadImageSprites(imgPaths.witch);
 
         this.x = x;
@@ -25,11 +24,11 @@ class Witch extends MovableObject {
     }
     
     checkStatus() {
-        setInterval(() => {
+        this.mainInterval = setInterval(() => {
 
             // DEAD
-            if (this.status == 'dead' || this.status == 'die') {
-                if (this.status == 'dead') {
+            if (this.isDead()) {
+                if (this.status !== 'die') {
                     this.statusDead();
                 }
 
@@ -56,7 +55,7 @@ class Witch extends MovableObject {
         }, 1000 / 30);
     }
 
-    statusDead() {
+    statusDead() {      // doppel
         this.status = 'die';
         this.playSpriteOnce(this.IMAGES_DEATH, 150);
     }
@@ -102,13 +101,6 @@ class Witch extends MovableObject {
                 clearInterval(this.animationInterval); // Animation beenden
                 onComplete && onComplete(); // Callback aufrufen
             }
-        }, animationS);
-    }
-
-    playSprite(images, animationS) {
-        clearInterval(this.animationInterval);    // Vorheriges Intervall entfernen
-        this.animationInterval = setInterval(() => {
-            this.playAnimation(images);
         }, animationS);
     }
 

@@ -52,7 +52,8 @@
             "img/00_JoannaD'ArcIII_v1/Sprites/Hurt/FX/Hurt3.png",
             "img/00_JoannaD'ArcIII_v1/Sprites/Hurt/FX/Hurt4.png",
             "img/00_JoannaD'ArcIII_v1/Sprites/Hurt/FX/Hurt5.png",
-            "img/00_JoannaD'ArcIII_v1/Sprites/Hurt/FX/Hurt6.png"
+            "img/00_JoannaD'ArcIII_v1/Sprites/Hurt/FX/Hurt6.png",
+            "img/00_JoannaD'ArcIII_v1/Sprites/Idle/Idle6.png"
         ],
         "dead": [
             "img/00_JoannaD'ArcIII_v1/Sprites/Death/Death1.png",
@@ -121,6 +122,22 @@
             "img/03_enemies/witch/DEATH/frame_004.png",
             "img/03_enemies/witch/DEATH/frame_005.png",
             "img/03_enemies/witch/DEATH/frame_006.png"
+        ]
+    },
+    "bullet": {
+        "bullet": [
+            "img/03_enemies/witch/PROJECTILE/frame_000.png",
+            "img/03_enemies/witch/PROJECTILE/frame_001.png",
+            "img/03_enemies/witch/PROJECTILE/frame_002.png",
+            "img/03_enemies/witch/PROJECTILE/frame_003.png",
+            "img/03_enemies/witch/PROJECTILE/frame_004.png",
+            "img/03_enemies/witch/PROJECTILE/frame_005.png"
+        ],
+        "hit": [
+            "img/03_enemies/witch/Hit/Hit1.png",
+            "img/03_enemies/witch/Hit/Hit2.png",
+            "img/03_enemies/witch/Hit/Hit3.png",
+            "img/03_enemies/witch/Hit/Hit4.png"
         ]
     }
 }

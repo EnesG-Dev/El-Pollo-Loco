@@ -5,14 +5,37 @@ class DrawableObject {
     width = 100;
     img;
     imgSprites = [];
-    curentImage = 0;
     imageCache = {};
+    curentImage = 0;
+
+    status = '';
+    mainInterval;
+    moveInterval;
+    animationInterval;    // currunt temporare intervalID for clearInterval
 
     offsetY = this.offsetY || 0;
     offsetX = this.offsetX || 0;
     // Zusätzliche Positionsoffsets für Verschiebung
     positionOffsetX = 0; // Beispiel: verschiebt den Bereich 30px nach rechts
     positionOffsetY = 0; // Beispiel: verschiebt den Bereich 20px nach unten
+
+
+
+        
+    playAnimation(images) {
+        let i = this.curentImage % images.length;
+        let path = images[i];
+        this.img = this.imageCache[path];
+        this.curentImage++;
+    }
+
+    playSprite(images, animationS) {
+        clearInterval(this.animationInterval);    // Vorheriges Intervall entfernen
+        this.animationInterval = setInterval(() => {
+            this.playAnimation(images);
+        }, animationS);
+    }
+
 
     /**
      * 
@@ -65,20 +88,6 @@ class DrawableObject {
         }
     }
     
-    TTdrawOffset(ctx) {
-        if (this instanceof Character || this instanceof Witch || this instanceof Endboss) {   
-            ctx.beginPath();
-            ctx.lineWidth = '2';
-            ctx.strokeStyle = 'red';
-            ctx.rect(
-                this.x + this.offsetX / 2,
-                this.y + this.offsetY / 2,
-                this.width - this.offsetX,
-                this.height - this.offsetY
-            );
-            ctx.stroke();
-        }
-    }
     drawOffset(ctx) {
         if (this instanceof Character || this instanceof Witch || this instanceof Endboss || this instanceof Projectile) {
             ctx.beginPath();
@@ -93,5 +102,23 @@ class DrawableObject {
             ctx.stroke();
         }
     }
-
+    
 }
+
+
+
+
+// TTdrawOffset(ctx) {
+//     if (this instanceof Character || this instanceof Witch || this instanceof Endboss) {   
+//         ctx.beginPath();
+//         ctx.lineWidth = '2';
+//         ctx.strokeStyle = 'red';
+//         ctx.rect(
+//             this.x + this.offsetX / 2,
+//             this.y + this.offsetY / 2,
+//             this.width - this.offsetX,
+//             this.height - this.offsetY
+//         );
+//         ctx.stroke();
+//     }
+// }

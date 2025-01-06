@@ -6,33 +6,15 @@ class Projectile extends MovableObject {
     offsetX = (this.width - 20) / 2;
 
     speed = 5;
-    moveInterval;
-    animationInterval;
     isCollided = false;
 
-    IMAGES_BOTTLE = [
-        "img/03_enemies/witch/PROJECTILE/frame_000.png",
-        "img/03_enemies/witch/PROJECTILE/frame_001.png",
-        "img/03_enemies/witch/PROJECTILE/frame_002.png",
-        "img/03_enemies/witch/PROJECTILE/frame_003.png",
-        "img/03_enemies/witch/PROJECTILE/frame_004.png",
-        "img/03_enemies/witch/PROJECTILE/frame_005.png",
-    ];
-    IMAGES_HIT = [
-        "img/03_enemies/witch/Hit/Hit1.png",
-        "img/03_enemies/witch/Hit/Hit2.png",
-        "img/03_enemies/witch/Hit/Hit3.png",
-        "img/03_enemies/witch/Hit/Hit4.png",
-    ];
-
     constructor(x = 100, y = 100) {
-        super().loadImage(this.IMAGES_BOTTLE[0]);
-        this.loadImages(this.IMAGES_BOTTLE);
-        this.loadImages(this.IMAGES_HIT);
+        super().loadImage(imgPaths.bullet.bullet[0]);
+        this.loadImageSprites(imgPaths.bullet);
         this.x = x;
         this.y = y;
         
-        this.playSprite(this.IMAGES_BOTTLE, 150);
+        this.playSprite(this.IMAGES_BULLET, 150);
         this.moveAction();
     }
 

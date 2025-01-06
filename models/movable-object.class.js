@@ -1,13 +1,15 @@
 class MovableObject extends DrawableObject {
-
+    
     speed = 0.15;
     otherDirection = false;
-
+    
     speedY = 0;
-    acceleration = 2.5;
-
+    // acceleration = 2.5;
+    acceleration = 0.5;
+    
     energy = 100;
     lastHit = 0;
+
 
     applyGravity() {
         setInterval(() => {
@@ -108,16 +110,15 @@ class MovableObject extends DrawableObject {
         return timePassed < 0.4;
     }
 
+    /**
+     * Checks if the energy level is zero.
+     *
+     * @returns {boolean} - Returns `true` if the energy is zero, otherwise `false`.
+     */
     isDead() {
-        return this.energy == 0;
+        return this.energy === 0;
     }
 
-    playAnimation(images) {
-        let i = this.curentImage % images.length;
-        let path = images[i];
-        this.img = this.imageCache[path];
-        this.curentImage++;
-    }
 
     moveRight() {
         this.x += this.speed;
@@ -129,53 +130,18 @@ class MovableObject extends DrawableObject {
         this.otherDirection = mirror;
     }
 
-    // Bessere Formel zur Kollisionsberechnung (Genauer)
-    altisColliding(obj) {
-        return  (this.x + this.width) >= obj.x && this.x <= (obj.x + obj.width) && 
-                (this.y + this.offsetY + this.height) >= obj.y &&
-                (this.y + this.offsetY) <= (obj.y + obj.height);
-                // && obj.onCollisionCourse; // Optional: hiermit könnten wir schauen, ob ein Objekt sich in die richtige Richtung bewegt. Nur dann kollidieren wir. Nützlich bei Gegenständen, auf denen man stehen kann.
-    }
-
-    alt2isColliding(obj) {
-        return (
-            this.x + this.offsetX + this.width >= obj.x + obj.offsetX &&
-            this.x + this.offsetX <= obj.x + obj.offsetX + obj.width &&
-            this.y + this.offsetY + this.height >= obj.y + obj.offsetY &&
-            this.y + this.offsetY <= obj.y + obj.offsetY + obj.height
-        );
-    }
-
-    TTisColliding(obj) {
-        const thisAdjustedX = this.x + this.offsetX / 2;
-        const thisAdjustedY = this.y + this.offsetY / 2;
-        const thisAdjustedWidth = this.width - this.offsetX;
-        const thisAdjustedHeight = this.height - this.offsetY;
     
-        const objAdjustedX = obj.x + obj.offsetX / 2;
-        const objAdjustedY = obj.y + obj.offsetY / 2;
-        const objAdjustedWidth = obj.width - obj.offsetX;
-        const objAdjustedHeight = obj.height - obj.offsetY;
-    
-        return (
-            thisAdjustedX + thisAdjustedWidth >= objAdjustedX &&
-            thisAdjustedX <= objAdjustedX + objAdjustedWidth &&
-            thisAdjustedY + thisAdjustedHeight >= objAdjustedY &&
-            thisAdjustedY <= objAdjustedY + objAdjustedHeight
-        );
-    }
-
     isColliding(obj) {
         const thisAdjustedX = this.x + this.offsetX / 2 + this.positionOffsetX;
         const thisAdjustedY = this.y + this.offsetY / 2 + this.positionOffsetY;
         const thisAdjustedWidth = this.width - this.offsetX;
         const thisAdjustedHeight = this.height - this.offsetY;
-    
+        
         const objAdjustedX = obj.x + obj.offsetX / 2 + obj.positionOffsetX || 0;
         const objAdjustedY = obj.y + obj.offsetY / 2 + obj.positionOffsetY || 0;
         const objAdjustedWidth = obj.width - obj.offsetX;
         const objAdjustedHeight = obj.height - obj.offsetY;
-    
+        
         return (
             thisAdjustedX + thisAdjustedWidth >= objAdjustedX &&
             thisAdjustedX <= objAdjustedX + objAdjustedWidth &&
@@ -184,3 +150,39 @@ class MovableObject extends DrawableObject {
         );
     }
 }
+
+// Bessere Formel zur Kollisionsberechnung (Genauer)
+// altisColliding(obj) {
+//     return  (this.x + this.width) >= obj.x && this.x <= (obj.x + obj.width) && 
+//             (this.y + this.offsetY + this.height) >= obj.y &&
+//             (this.y + this.offsetY) <= (obj.y + obj.height);
+//             // && obj.onCollisionCourse; // Optional: hiermit könnten wir schauen, ob ein Objekt sich in die richtige Richtung bewegt. Nur dann kollidieren wir. Nützlich bei Gegenständen, auf denen man stehen kann.
+// }
+
+// alt2isColliding(obj) {
+//     return (
+//         this.x + this.offsetX + this.width >= obj.x + obj.offsetX &&
+//         this.x + this.offsetX <= obj.x + obj.offsetX + obj.width &&
+//         this.y + this.offsetY + this.height >= obj.y + obj.offsetY &&
+//         this.y + this.offsetY <= obj.y + obj.offsetY + obj.height
+//     );
+// }
+
+// TTisColliding(obj) {
+//     const thisAdjustedX = this.x + this.offsetX / 2;
+//     const thisAdjustedY = this.y + this.offsetY / 2;
+//     const thisAdjustedWidth = this.width - this.offsetX;
+//     const thisAdjustedHeight = this.height - this.offsetY;
+
+//     const objAdjustedX = obj.x + obj.offsetX / 2;
+//     const objAdjustedY = obj.y + obj.offsetY / 2;
+//     const objAdjustedWidth = obj.width - obj.offsetX;
+//     const objAdjustedHeight = obj.height - obj.offsetY;
+
+//     return (
+//         thisAdjustedX + thisAdjustedWidth >= objAdjustedX &&
+//         thisAdjustedX <= objAdjustedX + objAdjustedWidth &&
+//         thisAdjustedY + thisAdjustedHeight >= objAdjustedY &&
+//         thisAdjustedY <= objAdjustedY + objAdjustedHeight
+//     );
+// }
