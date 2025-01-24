@@ -1,9 +1,10 @@
 let canvas;
 let world;
-let keyboard;
+let keyboard = new Keyboard();;
 let imgPaths;
 let LEVEL_1 = null;
-keyboard = new Keyboard();
+const COLLISION_MANAGER = new CollisionManager();
+
 
 async function init() {
     const response = await fetch('./assets/paths/img_paths.json');
@@ -11,8 +12,6 @@ async function init() {
     const levelData = await loadLevelData(); // Lade die JSON-Daten
     LEVEL_1 = await createLevelFromData(levelData); // Erstelle das Level
     
-    console.log(imgPaths);
-
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
 }

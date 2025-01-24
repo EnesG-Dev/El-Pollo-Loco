@@ -128,61 +128,6 @@ class MovableObject extends DrawableObject {
     moveLeft(mirror = false) {
         this.x -= this.speed;
         this.otherDirection = mirror;
-    }
-
-    
-    isColliding(obj) {
-        const thisAdjustedX = this.x + this.offsetX / 2 + this.positionOffsetX;
-        const thisAdjustedY = this.y + this.offsetY / 2 + this.positionOffsetY;
-        const thisAdjustedWidth = this.width - this.offsetX;
-        const thisAdjustedHeight = this.height - this.offsetY;
-        
-        const objAdjustedX = obj.x + obj.offsetX / 2 + obj.positionOffsetX || 0;
-        const objAdjustedY = obj.y + obj.offsetY / 2 + obj.positionOffsetY || 0;
-        const objAdjustedWidth = obj.width - obj.offsetX;
-        const objAdjustedHeight = obj.height - obj.offsetY;
-        
-        return (
-            thisAdjustedX + thisAdjustedWidth >= objAdjustedX &&
-            thisAdjustedX <= objAdjustedX + objAdjustedWidth &&
-            thisAdjustedY + thisAdjustedHeight >= objAdjustedY &&
-            thisAdjustedY <= objAdjustedY + objAdjustedHeight
-        );
-    }
+    } 
 }
 
-// Bessere Formel zur Kollisionsberechnung (Genauer)
-// altisColliding(obj) {
-//     return  (this.x + this.width) >= obj.x && this.x <= (obj.x + obj.width) && 
-//             (this.y + this.offsetY + this.height) >= obj.y &&
-//             (this.y + this.offsetY) <= (obj.y + obj.height);
-//             // && obj.onCollisionCourse; // Optional: hiermit könnten wir schauen, ob ein Objekt sich in die richtige Richtung bewegt. Nur dann kollidieren wir. Nützlich bei Gegenständen, auf denen man stehen kann.
-// }
-
-// alt2isColliding(obj) {
-//     return (
-//         this.x + this.offsetX + this.width >= obj.x + obj.offsetX &&
-//         this.x + this.offsetX <= obj.x + obj.offsetX + obj.width &&
-//         this.y + this.offsetY + this.height >= obj.y + obj.offsetY &&
-//         this.y + this.offsetY <= obj.y + obj.offsetY + obj.height
-//     );
-// }
-
-// TTisColliding(obj) {
-//     const thisAdjustedX = this.x + this.offsetX / 2;
-//     const thisAdjustedY = this.y + this.offsetY / 2;
-//     const thisAdjustedWidth = this.width - this.offsetX;
-//     const thisAdjustedHeight = this.height - this.offsetY;
-
-//     const objAdjustedX = obj.x + obj.offsetX / 2;
-//     const objAdjustedY = obj.y + obj.offsetY / 2;
-//     const objAdjustedWidth = obj.width - obj.offsetX;
-//     const objAdjustedHeight = obj.height - obj.offsetY;
-
-//     return (
-//         thisAdjustedX + thisAdjustedWidth >= objAdjustedX &&
-//         thisAdjustedX <= objAdjustedX + objAdjustedWidth &&
-//         thisAdjustedY + thisAdjustedHeight >= objAdjustedY &&
-//         thisAdjustedY <= objAdjustedY + objAdjustedHeight
-//     );
-// }

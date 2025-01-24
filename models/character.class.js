@@ -10,6 +10,9 @@ class Character extends MovableObject {
         super().loadImage(imgPaths.character.idle[0]);
         this.loadImageSprites(imgPaths.character);
 
+        // Charakter-HitBox
+        this.hitBoxCharacter = new CharacterHitBox(50, 25, 50, 100, this);
+
         this.applyGravity();
         this.setMoveInterval();
         this.setAnimationInterval();
@@ -19,8 +22,9 @@ class Character extends MovableObject {
         // moveInterval
         this.moveInterval = setInterval(() => {
             if (!this.isDead()) {
-                
-                if (world.keyboard.C) {
+
+                if (world.keyboard.C && this.status !== 'attack') {
+                    this.status = 'attack';
                     this.attack1();
                 }
 
@@ -28,60 +32,60 @@ class Character extends MovableObject {
                     this.moveRight();
                     this.walking_sound.play();
                 }
-                
+
                 if (world.keyboard.LEFT && this.x > -100) {
                     this.moveLeft(true);
                     this.walking_sound.play();
                 }
-                
+
                 if (world.keyboard.UP && !this.isAboveGround()) {
                     this.jump();
                 }
-                
+
             }
 
             world.camera_x = -this.x + 100;
         }, 1000 / 60);
     }
-    
+
     setAnimationInterval() {
         setInterval(() => {
 
             // DEAD
-            if (this.isDead()) {
+            if (this.isDead() && !this.isAboveGround()) {
                 if (this.status !== 'die') {
                     this.status = 'die';
-                    this.playSpriteOnce(this.IMAGES_DEAD, 100);
+                    this.playSpriteOnce(this.IMAGES_DEAD, 100, () => this.status = 'die');
                 }
 
-            // HURT
+                // HURT
             } else if (this.isHurt()) {
                 if (this.status !== 'hurt') {
                     this.status = 'hurt';
-                    this.playSpriteOnce(this.IMAGES_HURT, 80, () => this.status = '');
+                    this.playSpriteOnce(this.IMAGES_HURT, 80);
                 }
 
-            // JUMP    
-            } else if (this.isAboveGround()) {
+                // JUMP    
+            } else if (this.isAboveGround() && this.status !== 'attack') {
                 if (this.status !== 'jump') {
                     this.status = 'jump';
-                    this.playSpriteOnce(this.IMAGES_JUMP, 70, () => this.status = '');
+                    this.playSpriteOnce(this.IMAGES_JUMP, 70);
 
                     // this.playAnimation(this.IMAGES_JUMP);
                 }
 
-            // WALK
+                // WALK
             } else if ((world.keyboard.RIGHT || world.keyboard.LEFT) && this.isAboveGround) {
                 if (this.status !== 'walk') {
                     this.status = 'walk';
-                    this.playSprite(this.IMAGES_WALK, 50);                    
+                    this.playSprite(this.IMAGES_WALK, 50);
                 }
 
-            // IDLE
+                // IDLE
             } else if (this.status === '' || this.status === 'walk') {
                 this.status = 'idle';
                 console.log('Status:', this.status);
-                
+
                 this.playSprite(this.IMAGES_IDLE, 250);
             }
 
@@ -89,7 +93,7 @@ class Character extends MovableObject {
     }
 
     attack1() {
-        this.playSpriteOnce(this.IMAGES_ATTACK1, 60, () => this.status = '');
+        this.playSpriteOnce(this.IMAGES_ATTACK1, 60, () => this.spawnAttackArea(), 5);
     }
 
     clearAll() {
@@ -102,38 +106,9 @@ class Character extends MovableObject {
 
     jump() {
         this.speedY = 15;
-    }    
-    
-    playSpriteOnce(images, animationS, onComplete) {
-        let index = 0;
-        let path;
-        
-        clearInterval(this.animationInterval); // Vorherige Animation stoppen
-        this.animationInterval = setInterval(() => {
-            if (index == images.length) {
-                clearInterval(this.animationInterval); // Animation beenden
-                onComplete && onComplete(); // Callback aufrufen
-                return console.log('animation beendet!');   
-            }            
-            path = images[index];
-            this.img = this.imageCache[path]; // Animation immer von vorne beginnen
-            index++;
-        }, animationS);
+    }
+
+    spawnAttackArea() {
+        this.sword = new SwordHitBox(105, 25, 35, 90, this);
     }
 }
-
-// XplaySpriteOnce(images, animationS, onComplete) {
-//     let index = 0;
-//     let path;
-
-//     clearInterval(this.animationInterval); // Vorherige Animation stoppen
-//     this.animationInterval = setInterval(() => {
-//         path = images[index];
-//         this.img = this.imageCache[path]; // Animation immer von vorne beginnen
-//         index++;
-//         if (index == images.length) {
-//             clearInterval(this.animationInterval); // Animation beenden
-//             onComplete && onComplete(); // Callback aufrufen
-//         }
-//     }, animationS);
-// }

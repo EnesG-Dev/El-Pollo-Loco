@@ -7,6 +7,7 @@ class DrawableObject {
     imgSprites = [];
     imageCache = {};
     curentImage = 0;
+    imageIndex = -1;
 
     status = '';
     mainInterval;
@@ -20,8 +21,32 @@ class DrawableObject {
     positionOffsetY = 0; // Beispiel: verschiebt den Bereich 20px nach unten
 
 
+    playSpriteOnce(images, animationSpeed, onComplete, actionI = -1) {
+        clearInterval(this.animationInterval);
+        this.imageIndex = -1;
 
-        
+        this.animationInterval = setInterval(() => {
+            this.playIndexAnimation(images);
+
+            if (this.imageIndex == actionI) {
+                onComplete && onComplete();
+            }
+
+        }, animationSpeed);
+    }
+
+    playIndexAnimation(images) {
+        this.imageIndex++
+        let path = images[this.imageIndex];
+        this.img = this.imageCache[path];
+
+        if (this.imageIndex == images.length - 1) {
+            clearInterval(this.animationInterval);
+            this.imageIndex = -1;
+            this.status = '';
+        }
+    }
+
     playAnimation(images) {
         let i = this.curentImage % images.length;
         let path = images[i];
@@ -75,11 +100,24 @@ class DrawableObject {
     }
 
     draw(ctx) {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+        try {
+            ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+        } catch (error) {
+            console.error("Fehler beim Zeichnen des Objekts:", {
+                img: this.img,
+                imgSprites: this.imgSprites,
+                imageCache: this.imageCache,
+                curentImage: this.curentImage,
+                imageIndex: this.imageIndex,
+                status: this.status,
+                error: error.message
+            });
+            debugger;
+        }
     }
 
     drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Witch || this instanceof Endboss || this instanceof Projectile) {   
+        if (this instanceof Character || this instanceof Witch || this instanceof Endboss || this instanceof Projectile) {
             ctx.beginPath();
             ctx.lineWidth = '5';
             ctx.strokeStyle = 'blue';
@@ -87,7 +125,7 @@ class DrawableObject {
             ctx.stroke();
         }
     }
-    
+
     drawOffset(ctx) {
         if (this instanceof Character || this instanceof Witch || this instanceof Endboss || this instanceof Projectile) {
             ctx.beginPath();
@@ -102,23 +140,5 @@ class DrawableObject {
             ctx.stroke();
         }
     }
-    
+
 }
-
-
-
-
-// TTdrawOffset(ctx) {
-//     if (this instanceof Character || this instanceof Witch || this instanceof Endboss) {   
-//         ctx.beginPath();
-//         ctx.lineWidth = '2';
-//         ctx.strokeStyle = 'red';
-//         ctx.rect(
-//             this.x + this.offsetX / 2,
-//             this.y + this.offsetY / 2,
-//             this.width - this.offsetX,
-//             this.height - this.offsetY
-//         );
-//         ctx.stroke();
-//     }
-// }
