@@ -2,16 +2,11 @@ class Witch extends MovableObject {
 
     height = 220;
     width = 220;
-    offsetY = (this.height - 5) / 2;
-    offsetX = (this.width + 90) / 2;
-    // Zusätzliche Positionsoffsets für Verschiebung
-    positionOffsetX = 10; // Beispiel: verschiebt den Bereich 30px nach rechts
-    positionOffsetY = 30; // Beispiel: verschiebt den Bereich 20px nach unten
 
     energy = 100;
     speed = 0.4;
 
-    attackReady = true; // Kontrolliert, ob der Gegner angreifen darf
+    attackReady = true;
 
     constructor(x, y) {
         super().loadImage(imgPaths.witch.idle[0]);
@@ -30,15 +25,16 @@ class Witch extends MovableObject {
         this.mainInterval = setInterval(() => {
 
             // DEAD
-            if (this.isDead()) {
+            if (this.isDead() && !this.isHurt()) {
                 if (this.status !== 'die') {
                     this.statusDead();
                 }
 
                 // HURT
-            } else if (this.status == 'hurt' || this.status == 'hurting') {
-                if (this.status == 'hurt') {
-                    this.statusHurt();
+            } else if (this.isHurt()) {
+                if (this.status !== 'hurt') {
+                    this.status = 'hurt';
+                    this.playSpriteOnce(this.IMAGES_HURT, 150);
                 }
 
                 // ATTACK
@@ -56,17 +52,6 @@ class Witch extends MovableObject {
             }
 
         }, 1000 / 30);
-    }
-
-    statusDead() {      // doppel
-        this.status = 'die';
-        this.playSpriteOnce(this.IMAGES_DEATH, 150, () => this.status = 'die');
-    }
-
-    statusHurt() {
-        this.status = 'hurting'
-        this.energy -= 50;
-        this.playSpriteOnce(this.IMAGES_HURT, 150);
     }
 
     isCharacterNearby() {
@@ -90,5 +75,22 @@ class Witch extends MovableObject {
 
     spawnProjectile() {
         world.thowableObjects.push(new Projectile(this.x + 70, this.y + 95));
+    }
+
+    statusDead() {      // doppel
+        this.status = 'die';
+
+        this.hitBox.removeFromCollisionList();
+        this.playSpriteOnce(this.IMAGES_DEATH, 150, () => {
+            this.status = 'die';
+            this.deleteThis();
+        });
+    }
+
+    // TODO: spawn Coin
+    deleteThis() {
+        world.level.enemies = world.level.enemies.filter(enemy => enemy !== this);
+        clearInterval(this.moveInterval);
+        clearInterval(this.animationInterval);
     }
 }

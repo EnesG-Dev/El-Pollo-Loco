@@ -1,8 +1,6 @@
 class Character extends MovableObject {
     height = 150;
     width = 150;
-    offsetY = (this.height - 50) / 2;
-    offsetX = (this.width + 50) / 2;
     speed = 5;
     walking_sound = new Audio('/audio/walk.mp3')
 
@@ -12,6 +10,7 @@ class Character extends MovableObject {
 
         // Charakter-HitBox
         this.hitBoxCharacter = new CharacterHitBox(50, 25, 50, 100, this);
+        this.swordHitBox = new SwordHitBox(105, 25, 35, 90, this);
 
         this.applyGravity();
         this.setMoveInterval();
@@ -30,11 +29,13 @@ class Character extends MovableObject {
 
                 if (world.keyboard.RIGHT && this.x < world.level.level_end_x) {
                     this.moveRight();
+                    this.swordHitBox.alignHitBox();
                     this.walking_sound.play();
                 }
 
                 if (world.keyboard.LEFT && this.x > -100) {
                     this.moveLeft(true);
+                    this.swordHitBox.alignHitBox();
                     this.walking_sound.play();
                 }
 
@@ -70,8 +71,6 @@ class Character extends MovableObject {
                 if (this.status !== 'jump') {
                     this.status = 'jump';
                     this.playSpriteOnce(this.IMAGES_JUMP, 70);
-
-                    // this.playAnimation(this.IMAGES_JUMP);
                 }
 
                 // WALK
@@ -93,7 +92,7 @@ class Character extends MovableObject {
     }
 
     attack1() {
-        this.playSpriteOnce(this.IMAGES_ATTACK1, 60, () => this.spawnAttackArea(), 5);
+        this.playSpriteOnce(this.IMAGES_ATTACK1, 60, () => this.addAttackArea(), 5);
     }
 
     clearAll() {
@@ -108,7 +107,8 @@ class Character extends MovableObject {
         this.speedY = 15;
     }
 
-    spawnAttackArea() {
-        this.sword = new SwordHitBox(105, 25, 35, 90, this);
+    addAttackArea() {
+        this.swordHitBox.addToCollisionList();
+        this.swordHitBox.removeFromCollisionList(300);
     }
 }

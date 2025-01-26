@@ -26,7 +26,7 @@ class CollisionManager {
             for (let j = i + 1; j < this.objects.length; j++) {
                 const objA = this.objects[i];
                 const objB = this.objects[j];
-                
+
                 if (this.isColliding(objA, objB)) {
                     objA.onCollision(objB);
                     objB.onCollision(objA);
@@ -52,7 +52,14 @@ class CollisionManager {
 
 
 class OldCode {
-    
+
+    offsetY = this.offsetY || 0;
+    offsetX = this.offsetX || 0;
+    // Zusätzliche Positionsoffsets für Verschiebung
+    positionOffsetX = 0; // Beispiel: verschiebt den Bereich 30px nach rechts
+    positionOffsetY = 0; // Beispiel: verschiebt den Bereich 20px nach unten
+
+
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
@@ -61,7 +68,7 @@ class OldCode {
             }
         });
         world.thowableObjects.forEach((projectile) => {
-            if (this.character.isColliding(projectile) && !projectile.isCollided) {                
+            if (this.character.isColliding(projectile) && !projectile.isCollided) {
                 projectile.playSpriteOnce();                // play animation
                 this.character.hit(20);                     // character hit
                 this.healthBar.setPrecentage(this.character.energy); // lifePoints
@@ -90,19 +97,19 @@ class OldCode {
 
 
     // wenn eine hitbox erstellt wird: CollisionManager.addObject(this);
-    
+
     // class Character {
     //     constructor {
-    
+
     //         this.hitBoxCharacter = new HitBox(this.x + 30, this.y - 30, w = 50, h = 50);
     //         // shword wird nur beim angriff erstellt!
     //         this.hitBoxSword = new HitBoxSword(this.x + 30, this.y - 30, w = 50, h = 50);
     //     }
     // }
-        
+
     // class HitBox {
     // constructor(x, y, w, h) {
-    
+
     //     collisionManager.addObject(this);
     //     }
     // }
@@ -112,12 +119,12 @@ class OldCode {
         const thisAdjustedY = this.y + this.offsetY / 2 + this.positionOffsetY;
         const thisAdjustedWidth = this.width - this.offsetX;
         const thisAdjustedHeight = this.height - this.offsetY;
-        
+
         const objAdjustedX = obj.x + obj.offsetX / 2 + obj.positionOffsetX || 0;
         const objAdjustedY = obj.y + obj.offsetY / 2 + obj.positionOffsetY || 0;
         const objAdjustedWidth = obj.width - obj.offsetX;
         const objAdjustedHeight = obj.height - obj.offsetY;
-        
+
         return (
             thisAdjustedX + thisAdjustedWidth >= objAdjustedX &&
             thisAdjustedX <= objAdjustedX + objAdjustedWidth &&
@@ -174,7 +181,7 @@ class OldCode {
 
 
     TTdrawOffset(ctx) {
-        if (this instanceof Character || this instanceof Witch || this instanceof Endboss) {   
+        if (this instanceof Character || this instanceof Witch || this instanceof Endboss) {
             ctx.beginPath();
             ctx.lineWidth = '2';
             ctx.strokeStyle = 'red';
@@ -232,7 +239,7 @@ class TestWorld {
             }
         });
         world.thowableObjects.forEach((projectile) => {
-            if (this.character.isColliding(projectile) && !projectile.isCollided) {                
+            if (this.character.isColliding(projectile) && !projectile.isCollided) {
                 projectile.playSpriteOnce();                // play animation
                 this.character.hit(20);                     // character hit
                 this.healthBar.setPrecentage(this.character.energy); // lifePoints

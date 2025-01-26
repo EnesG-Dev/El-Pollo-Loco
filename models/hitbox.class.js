@@ -11,13 +11,18 @@ class HitBox {
         this.addToCollisionList();
     }
 
+    onCollision(other) {
+        return;
+    }
 
     addToCollisionList() {
         COLLISION_MANAGER.addObject(this);
     }
 
-    removeFromCollisionList() {
-        COLLISION_MANAGER.removeObject(this);
+    removeFromCollisionList(afterTime = 0) {
+        setTimeout(() => {
+            COLLISION_MANAGER.removeObject(this);
+        }, afterTime);
     }
 
     draw(ctx) {

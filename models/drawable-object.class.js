@@ -14,13 +14,6 @@ class DrawableObject {
     moveInterval;
     animationInterval;    // currunt temporare intervalID for clearInterval
 
-    offsetY = this.offsetY || 0;
-    offsetX = this.offsetX || 0;
-    // Zusätzliche Positionsoffsets für Verschiebung
-    positionOffsetX = 0; // Beispiel: verschiebt den Bereich 30px nach rechts
-    positionOffsetY = 0; // Beispiel: verschiebt den Bereich 20px nach unten
-
-
     playSpriteOnce(images, animationSpeed, onComplete, actionI = -1) {
         clearInterval(this.animationInterval);
         this.imageIndex = -1;
@@ -60,7 +53,6 @@ class DrawableObject {
             this.playAnimation(images);
         }, animationS);
     }
-
 
     /**
      * 
@@ -140,5 +132,4 @@ class DrawableObject {
             ctx.stroke();
         }
     }
-
 }
