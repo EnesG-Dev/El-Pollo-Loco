@@ -9,11 +9,11 @@ const COLLISION_MANAGER = new CollisionManager();
 async function init() {
     const response = await fetch('./assets/paths/img_paths.json');
     imgPaths = await response.json();
-    const levelData = await loadLevelData(); // Lade die JSON-Daten
-    LEVEL_1 = await createLevelFromData(levelData); // Erstelle das Level
-    
+
     canvas = document.getElementById('canvas');
-    world = new World(canvas, keyboard);
+
+    createLevel();
+    world = new World(canvas, keyboard, LEVEL_1);
 }
 
 async function loadLevelData() {
@@ -41,7 +41,7 @@ async function createLevelFromData(levelData) {
     const backgroundLayers = levelData.backgroundLayers;
 
     // Erstelle das Level-Objekt
-    return new Level(enemies, clouds, backgroundLayers, backgroundLayers);
+    return new Level(enemies, clouds, backgroundLayers);
 }
 
 document.addEventListener('keydown', (event) => {

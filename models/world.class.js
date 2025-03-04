@@ -3,16 +3,15 @@ class World {
     camera_x = 0;
     thowableObjects = [];
 
-    gameMap = new BackgroundObject("img/05_background/TileSet Wasteland/gameMap.png", -150, 2155, 480);
-    gameMap2 = new BackgroundObject("img/05_background/TileSet Wasteland/gameMap2.png", 2005, 2155, 480)
     lastShot = 0;
 
-    constructor(canvas, keyboard) {
+    constructor(canvas, keyboard, level) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.keyboard = keyboard;
+        this.level = level;
+
         this.character = new Character();
-        this.level = LEVEL_1;
         this.healthBar = new StatusBar();
 
         this.draw();
@@ -40,10 +39,9 @@ class World {
         
         // Hintergrund und Objekte hinzufügen
         this.addObjectsToMap(this.level.backgroundObjects);
-        this.addToMap(this.gameMap);
-        this.addToMap(this.gameMap2);
-
         this.addObjectsToMap(this.level.clouds);
+        this.addObjectsToMap(this.level.map);
+
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.thowableObjects);
         this.addToMap(this.character);

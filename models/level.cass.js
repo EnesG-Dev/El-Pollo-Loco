@@ -1,28 +1,30 @@
 class Level {
-    enemies;
-    clouds;
-    backgroundPaths1;
-    backgroundPaths2;
+   
     backgroundObjects = [];
     level_end_x = 3880;
 
-    constructor(enemies, clouds, backgroundPaths1, backgroundPaths2,) {
-        this.enemies = enemies;
+    // constructor(enemies, clouds, backgroundPaths1, backgroundPaths2, background, map) {
+    constructor(background, map, clouds, enemies, ) {
+        this.backgroundPaths = background[0];
+        this.map = map;
         this.clouds = clouds;
-        this.backgroundPaths1 = backgroundPaths1;
-        this.backgroundPaths2 = backgroundPaths2;
+        this.enemies = enemies;
+
         this.backgroundLoop();
     }
 
-    backgroundLoop() {
-        for (let loopIndex = -1; loopIndex < 6; loopIndex++) {
-            this.backgroundPaths1.forEach(path => {
+    backgroundLoop() {        
+        for (let loopIndex = -1; loopIndex < 7; loopIndex++) {
+            this.backgroundPaths.layers_1.forEach(path => {
                 this.backgroundObjects.push(new BackgroundObject(path, 719*loopIndex));
             });
-            loopIndex++;
-            this.backgroundPaths2.forEach(path => {
-                this.backgroundObjects.push(new BackgroundObject(path, 719*loopIndex));
-            });
+
+            if (this.backgroundPaths.layers_2) {
+                loopIndex++;
+                this.backgroundPaths.layers_2.forEach(path => {
+                    this.backgroundObjects.push(new BackgroundObject(path, 719*loopIndex));
+                });
+            }
         }
     }
 }

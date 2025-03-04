@@ -154,5 +154,27 @@
             "img/03_enemies/witch/Hit/Hit3.png",
             "img/03_enemies/witch/Hit/Hit4.png"
         ]
+    },
+    "background": {
+        "layers_1": [
+            "img/05_background/Wasteland/Layers/Background.png",
+            "img/05_background/Wasteland/Layers/Clouds.png",
+            "img/05_background/Wasteland/Layers/Far-Mountains.png",
+            "img/05_background/Wasteland/Layers/Mountains.png"
+        ]
+    },
+    "map": [
+        "img/05_background/Wasteland/map/gameMap.png",
+        "img/05_background/Wasteland/map/gameMap2.png"
+    ],
+    "clouds": {
+        "layers_1": [
+            "img/05_background/clouds/1.png",
+            "img/05_background/clouds/2.png",
+            "img/05_background/clouds/3.png",
+            "img/05_background/clouds/4.png",
+            "img/05_background/clouds/5.png",
+            "img/05_background/clouds/6.png"
+        ]
     }
 }
