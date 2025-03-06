@@ -16,34 +16,6 @@ async function init() {
     world = new World(canvas, keyboard, LEVEL_1);
 }
 
-async function loadLevelData() {
-    const response = await fetch('./assets/levels/level_1.json');
-    return response.json(); // Liefert die JSON-Daten als Objekt
-}
-
-async function createLevelFromData(levelData) {
-    const enemies = levelData.enemies.map(enemyData => {
-        if (enemyData.type === 'Witch') {
-            return new Witch(enemyData.x, enemyData.y);
-        } else if (enemyData.type === 'Endboss') {
-            return new Endboss(enemyData.x, enemyData.y);
-        }
-        throw new Error(`Unbekannter Gegner-Typ: ${enemyData.type}`);
-    });
-
-    const clouds = levelData.clouds.map(cloudData => {
-        if (cloudData.type === 'Cloud') {
-            return new Cloud(cloudData.x, cloudData.y);
-        }
-        throw new Error(`Unbekannter Wolken-Typ: ${cloudData.type}`);
-    });
-
-    const backgroundLayers = levelData.backgroundLayers;
-
-    // Erstelle das Level-Objekt
-    return new Level(enemies, clouds, backgroundLayers);
-}
-
 document.addEventListener('keydown', (event) => {
     if (event.code === 'ArrowLeft') {
         keyboard.LEFT = true;

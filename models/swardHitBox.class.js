@@ -14,7 +14,6 @@ class SwordHitBox extends HitBox {
 
     alignHitBox() {
         if (this.character.otherDirection) {
-            console.log('drehung');
             this.offsetX = 10;
         } else this.offsetX = 105;
     }

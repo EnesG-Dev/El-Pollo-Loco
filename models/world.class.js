@@ -42,6 +42,13 @@ class World {
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.map);
 
+         // Kamera zurücksetzen
+         this.ctx.translate(-this.camera_x, 0);
+         // UI-Elemente oder feste Objekte hinzufügen
+         this.addToMap(this.healthBar);
+        // Verschieben für die Kamera
+        this.ctx.translate(this.camera_x, 0);
+
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.thowableObjects);
         this.addToMap(this.character);
@@ -52,7 +59,7 @@ class World {
         this.ctx.translate(-this.camera_x, 0);
     
         // UI-Elemente oder feste Objekte hinzufügen
-        this.addToMap(this.healthBar);
+        // this.addToMap(this.healthBar);
     
         // draw wird immer wieder aufgerufen!
         let self = this;
@@ -60,8 +67,6 @@ class World {
             self.draw();
         });
     }
-
-
 
     addObjectsToMap(objects) {
         objects.forEach(o => {

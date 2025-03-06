@@ -39,7 +39,7 @@ class MovableObject extends DrawableObject {
 
     applyGravity() {
         setInterval(() => {
-            const groundLevel = this.getGroundLevel(this.x); // Bodenhöhe an aktueller X-Position
+            const groundLevel = this.getGroundLevel(this.x, this.y); // Bodenhöhe an aktueller X-Position
 
             // Aktualisiere die Position und Geschwindigkeit nur, wenn über dem Boden
             if (this.isAboveGround() || this.speedY > 0) {
@@ -55,22 +55,35 @@ class MovableObject extends DrawableObject {
         }, 1000 / 60);
     }
 
-    isAboveGround() {
-        const groundLevel = this.getGroundLevel(this.x);
+    isAboveGround(j = 0) {
+        const groundLevel = this.getGroundLevel(this.x, this.y);
         if (this instanceof ThrowableObject) {
             return true;
         }
-        return this.y < groundLevel;
+        return this.y < groundLevel - j;
     }
 
-    getGroundLevel(x) {
-        // Prüfe, ob die X-Position innerhalb des Bereichs der Rampe liegt
-        const rampStartX = 105; // Start der Rampe
-        const rampEndX = 260;   // Ende der Rampe
-
-        if (x >= rampStartX && x <= rampEndX) {
-            return this.getRampLevel(x); // Berechne die Höhe der Rampe
+    getGroundLevel(x, y) {
+        // Suche nach der passenden Konfiguration basierend auf x
+        const config = world.level.configs.find(cfg => x >= cfg.minX && x < cfg.maxX);
+        
+        if (!config) {
+            // Fallback, falls kein Eintrag gefunden wird
+            console.log('kein eintrag', x, y);
+            return 225;
         }
+        
+        if (config.type === "ramp") {
+            // Für Rampen: lineare Interpolation zwischen startLevel und endLevel
+            return this.getRampLevel(x, config.minX, config.maxX, config.startLevel, config.endLevel);
+        } else {
+            // Für statische Ebenen:
+            return config.groundLevel;
+        }
+    }
+    
+
+    getGroundLevelTestStop(x, y) {
 
         // Beispiel für andere Ebenen
         if (x > 4000) {
@@ -83,40 +96,58 @@ class MovableObject extends DrawableObject {
             return 183; // Rampe 3 end
 
             // Rampe
+        }else if (x >= 2560 && x <= 2750) {
+            return this.getRampLevel(x, 2560, 2750, 290, 183);
+
         } else if (x > 2400) {
             return 300; // Graben 2 #####
 
-        } else if (x > 1080) {
-            return 245; // Ebene 3
+            // higtground - 4
+        } else if (x > 1690 && x < 2040 && y >= -5 && y <= 5) {
+            return 0;
 
-            // Rampe
-        } else if (x > 780) {
-            return 230; // nach Graben 1
+            // higtground - 3
+        } else if (x > 1760 && x < 1995 && y >= 115 && y <= 125) {
+            return 120;
+
+            // higtground - 2
+        } else if (x > 1230 && x < 1420 && y >= 115 && y <= 125) {
+            return 120;
+
+        } else if (x > 1105) {
+            return 245; // Ebene 3
+        
+        } else if (x > 1010) {
+            return 120; // 
+
+            // Rampe2
+        }else if (x >= 780 && x <= 1010) {
+            return this.getRampLevel(x, 800, 1010, 230, 120);
+
         } else if (x > 630) {
             return 280; // Graben 1
+
+            // higtground
+        } else if (x > 300 && x < 480 && y >= 50 && y <= 60) {
+            return 55;
+
         } else if (x > 260) {
             return 170; // Ebene 1
+            
+            // Rampe
+        }else if (x >= 105 && x <= 260) {
+            return this.getRampLevel(x, 105, 260, 225, 170);
+
         } else {
             return 225; // Ebene 0
         }
     }
 
-    getRampLevel(x) {
-        const startX = 105; // Start der Rampe
-        const endX = 260;   // Ende der Rampe
-        const startY = 225; // Höhe am Startpunkt
-        const endY = 170;   // Höhe am Endpunkt
-
-        // Prüfen, ob x innerhalb der Rampe liegt
-        if (x >= startX && x <= endX) {
-            // Berechne Steigung (m)
-            const m = (endY - startY) / (endX - startX);
-            // Berechne y-Wert für x
-            return m * (x - startX) + startY;
-        }
-
-        // Rückgabe der Bodenhöhe außerhalb der Rampe
-        return x < startX ? startY : endY;
+    getRampLevel(x, startX, endX, startY, endY) {
+        // Berechne Steigung (m)
+        const m = (endY - startY) / (endX - startX);
+        // Berechne y-Wert für x
+        return m * (x - startX) + startY;
     }
 
     moveRight() {

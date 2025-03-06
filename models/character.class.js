@@ -1,7 +1,7 @@
 class Character extends MovableObject {
     height = 150;
     width = 150;
-    speed = 5;
+    speed = 4;
     walking_sound = new Audio('/audio/walk.mp3')
 
     constructor() {
@@ -34,9 +34,13 @@ class Character extends MovableObject {
                 }
 
                 if (world.keyboard.LEFT && this.x > -100) {
-                    this.moveLeft(true);
                     this.swordHitBox.alignHitBox();
                     this.walking_sound.play();
+
+                    if (this.x >= 630 && this.x <= 640 && this.y > 170) {}
+                    else if (this.x >= 1100 && this.x <= 1110 && this.y > 120) {}
+                    else if (this.x >= 2840 && this.x <= 2850 && this.y > 183) {}
+                    else this.moveLeft(true);
                 }
 
                 if (world.keyboard.UP && !this.isAboveGround()) {
@@ -67,7 +71,7 @@ class Character extends MovableObject {
                 }
 
                 // JUMP    
-            } else if (this.isAboveGround() && this.status !== 'attack') {
+            } else if (this.isAboveGround(10) && this.status !== 'attack') {
                 if (this.status !== 'jump') {
                     this.status = 'jump';
                     this.playSpriteOnce(this.IMAGES_JUMP, 70);
@@ -83,7 +87,6 @@ class Character extends MovableObject {
                 // IDLE
             } else if (this.status === '' || this.status === 'walk') {
                 this.status = 'idle';
-                console.log('Status:', this.status);
 
                 this.playSprite(this.IMAGES_IDLE, 250);
             }

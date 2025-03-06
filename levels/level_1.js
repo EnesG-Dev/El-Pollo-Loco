@@ -1,6 +1,6 @@
 
 function createLevel() {
-    
+
     LEVEL_1 = new Level(
         [
             imgPaths.background
@@ -16,7 +16,7 @@ function createLevel() {
             new Cloud(3, 700, 40, 0.5),
             new Cloud(4, 900, 40, 0.8),
             new Cloud(5, 1100, 80, 2.0),
-            
+
             new Cloud(0, 1100, 40, 0.5),
             new Cloud(1, 1500, 40, 0.8),
             new Cloud(2, 1700, 100, 1),
@@ -52,6 +52,38 @@ function createLevel() {
             // new Chicken(),
             new Endboss(),
         ],
+        [
+            { minX: 4000, maxX: Infinity, groundLevel: 300, type: "static" },
+            { minX: 2845, maxX: 4000, groundLevel: 255, type: "static" },
+            { minX: 2750, maxX: 2845, groundLevel: 183, type: "static" },
+            {
+                minX: 2560,
+                maxX: 2750,
+                type: "ramp",
+                startLevel: 290,
+                endLevel: 183
+            },
+            { minX: 2400, maxX: 2560, groundLevel: 300, type: "static" },
+            { minX: 1105, maxX: 2400, groundLevel: 245, type: "static" },
+            { minX: 1010, maxX: 1105, groundLevel: 120, type: "static" },
+            {
+                minX: 780,
+                maxX: 1010,
+                type: "ramp",
+                startLevel: 230,
+                endLevel: 120
+            },
+            { minX: 630, maxX: 780, groundLevel: 280, type: "static" },
+            { minX: 260, maxX: 630, groundLevel: 170, type: "static" },
+            {
+                minX: 105,
+                maxX: 260,
+                type: "ramp",
+                startLevel: 225,
+                endLevel: 170
+            },
+            { minX: 0, maxX: 105, groundLevel: 225, type: "static" }
+        ]
     );
-    
+
 }
