@@ -29,22 +29,30 @@
             "img/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking18.png"
         ],
         "jump": [
-            "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)1.png",
-            "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)2.png",
-            "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)3.png",
-            "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)4.png",
-            "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)5.png",
-            "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)6.png",
-            "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)7.png",
-            "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)8.png",
-            "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)9.png",
-            "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)10.png",
-            "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)11.png",
-            "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)12.png",
-            "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)13.png",
-            "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)14.png",
-            "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)15.png",
-            "img/00_JoannaD'ArcIII_v1/Sprites/JumpAndFall/Full/FX/JumpAndFall(FX)16.png"
+            "img/00_JoannaD'ArcIII_v1/JumpAndFall/1_jump/Jump1.png",
+            "img/00_JoannaD'ArcIII_v1/JumpAndFall/1_jump/Jump2.png"
+        ],
+        "jumping": [
+            "img/00_JoannaD'ArcIII_v1/JumpAndFall/2_jumping/Jumping1.png",
+            "img/00_JoannaD'ArcIII_v1/JumpAndFall/2_jumping/Jumping2.png",
+            "img/00_JoannaD'ArcIII_v1/JumpAndFall/2_jumping/Jumping3.png"
+        ],
+        "fall": [
+            "img/00_JoannaD'ArcIII_v1/JumpAndFall/3_fall/Fall1.png",
+            "img/00_JoannaD'ArcIII_v1/JumpAndFall/3_fall/Fall2.png",
+            "img/00_JoannaD'ArcIII_v1/JumpAndFall/3_fall/Fall3.png"
+        ],
+        "falling": [
+            "img/00_JoannaD'ArcIII_v1/JumpAndFall/4_falling/Falling1.png",
+            "img/00_JoannaD'ArcIII_v1/JumpAndFall/4_falling/Falling2.png",
+            "img/00_JoannaD'ArcIII_v1/JumpAndFall/4_falling/Falling3.png"
+        ],
+        "land": [
+            "img/00_JoannaD'ArcIII_v1/JumpAndFall/5_land/Land1.png",
+            "img/00_JoannaD'ArcIII_v1/JumpAndFall/5_land/Land2.png",
+            "img/00_JoannaD'ArcIII_v1/JumpAndFall/5_land/Land3.png",
+            "img/00_JoannaD'ArcIII_v1/JumpAndFall/5_land/Land4.png",
+            "img/00_JoannaD'ArcIII_v1/JumpAndFall/5_land/Land5.png"
         ],
         "hurt": [
             "img/00_JoannaD'ArcIII_v1/Sprites/Hurt/FX/Hurt1.png",

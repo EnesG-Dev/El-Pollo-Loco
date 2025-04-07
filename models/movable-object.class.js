@@ -9,7 +9,7 @@ class MovableObject extends DrawableObject {
     energy = 100;
     lastHit = 0;
     lastAttack = 0;
-
+    lastJump = 0;
 
     hit(demage) {
         if (!this.isHurt() || this.lastHit == 0) {
@@ -29,7 +29,7 @@ class MovableObject extends DrawableObject {
     }
 
     /**
-     * Checks if the energy level is zero.
+    * Checks if the energy level is zero.
     *
     * @returns {boolean} - Returns `true` if the energy is zero, otherwise `false`.
     */
@@ -52,6 +52,7 @@ class MovableObject extends DrawableObject {
                 this.y = groundLevel; // Korrigiere die Position
                 this.speedY = 0; // Setze die vertikale Geschwindigkeit auf 0
             }
+            
         }, 1000 / 60);
     }
 
@@ -64,85 +65,22 @@ class MovableObject extends DrawableObject {
     }
 
     getGroundLevel(x, y) {
-        // Suche nach der passenden Konfiguration basierend auf x
-        const config = world.level.configs.find(cfg => x >= cfg.minX && x < cfg.maxX);
+        const config = world.level.configs.find(cfg => 
+            x >= cfg.minX && x < cfg.maxX &&
+            (cfg.minY === undefined || cfg.maxY === undefined || (y >= cfg.minY && y < cfg.maxY))
+        );
         
         if (!config) {
-            // Fallback, falls kein Eintrag gefunden wird
-            console.log('kein eintrag', x, y);
-            return 225;
+            console.error('no lvl entries', x, y);
         }
         
         if (config.type === "ramp") {
-            // Für Rampen: lineare Interpolation zwischen startLevel und endLevel
             return this.getRampLevel(x, config.minX, config.maxX, config.startLevel, config.endLevel);
         } else {
-            // Für statische Ebenen:
             return config.groundLevel;
         }
     }
     
-
-    getGroundLevelTestStop(x, y) {
-
-        // Beispiel für andere Ebenen
-        if (x > 4000) {
-            return 300; // end
-
-        } else if (x > 2845) {
-            return 255; // Ebene 4 final
-
-        } else if (x > 2750) {
-            return 183; // Rampe 3 end
-
-            // Rampe
-        }else if (x >= 2560 && x <= 2750) {
-            return this.getRampLevel(x, 2560, 2750, 290, 183);
-
-        } else if (x > 2400) {
-            return 300; // Graben 2 #####
-
-            // higtground - 4
-        } else if (x > 1690 && x < 2040 && y >= -5 && y <= 5) {
-            return 0;
-
-            // higtground - 3
-        } else if (x > 1760 && x < 1995 && y >= 115 && y <= 125) {
-            return 120;
-
-            // higtground - 2
-        } else if (x > 1230 && x < 1420 && y >= 115 && y <= 125) {
-            return 120;
-
-        } else if (x > 1105) {
-            return 245; // Ebene 3
-        
-        } else if (x > 1010) {
-            return 120; // 
-
-            // Rampe2
-        }else if (x >= 780 && x <= 1010) {
-            return this.getRampLevel(x, 800, 1010, 230, 120);
-
-        } else if (x > 630) {
-            return 280; // Graben 1
-
-            // higtground
-        } else if (x > 300 && x < 480 && y >= 50 && y <= 60) {
-            return 55;
-
-        } else if (x > 260) {
-            return 170; // Ebene 1
-            
-            // Rampe
-        }else if (x >= 105 && x <= 260) {
-            return this.getRampLevel(x, 105, 260, 225, 170);
-
-        } else {
-            return 225; // Ebene 0
-        }
-    }
-
     getRampLevel(x, startX, endX, startY, endY) {
         // Berechne Steigung (m)
         const m = (endY - startY) / (endX - startX);
@@ -160,4 +98,3 @@ class MovableObject extends DrawableObject {
         this.otherDirection = mirror;
     }
 }
-

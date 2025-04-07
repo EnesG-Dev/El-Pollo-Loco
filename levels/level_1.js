@@ -64,6 +64,30 @@ function createLevel() {
                 endLevel: 183
             },
             { minX: 2400, maxX: 2560, groundLevel: 300, type: "static" },
+            {
+                minX: 1690,
+                maxX: 2040,
+                groundLevel: 0,
+                type: "highground",
+                minY: -5,
+                maxY: 5
+            },
+            {
+                minX: 1760,
+                maxX: 1995,
+                groundLevel: 120,
+                type: "highground",
+                minY: 115,
+                maxY: 125
+            },
+            {
+                minX: 1230,
+                maxX: 1420,
+                groundLevel: 120,
+                type: "highground",
+                minY: 115,
+                maxY: 125
+            },
             { minX: 1105, maxX: 2400, groundLevel: 245, type: "static" },
             { minX: 1010, maxX: 1105, groundLevel: 120, type: "static" },
             {
@@ -74,6 +98,14 @@ function createLevel() {
                 endLevel: 120
             },
             { minX: 630, maxX: 780, groundLevel: 280, type: "static" },
+            {
+                minX: 300,
+                maxX: 480,
+                groundLevel: 55,
+                type: "highground",
+                minY: 50,
+                maxY: 60
+            },
             { minX: 260, maxX: 630, groundLevel: 170, type: "static" },
             {
                 minX: 105,
@@ -82,8 +114,7 @@ function createLevel() {
                 startLevel: 225,
                 endLevel: 170
             },
-            { minX: 0, maxX: 105, groundLevel: 225, type: "static" }
+            { minX: -200, maxX: 105, groundLevel: 225, type: "static" }
         ]
     );
-
 }

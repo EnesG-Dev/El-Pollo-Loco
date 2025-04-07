@@ -72,10 +72,28 @@ class Character extends MovableObject {
 
                 // JUMP    
             } else if (this.isAboveGround(10) && this.status !== 'attack') {
-                if (this.status !== 'jump') {
-                    this.status = 'jump';
-                    this.playSpriteOnce(this.IMAGES_JUMP, 70);
-                }
+                    
+                    if (this.speedY > 5 && this.status !== 'jumping') {
+                        this.status = 'jumping';
+
+                        this.playSpriteOnce(this.IMAGES_JUMP, 80, () => {
+                            this.status = 'jumping';
+                            this.playSprite(this.IMAGES_JUMPING, 80);
+                        });
+                    }
+                    
+                    if (this.speedY < 5 && this.status !== 'fall') {
+                        this.status = 'fall';
+
+                        this.playSpriteOnce(this.IMAGES_FALL, 120, () => {
+                            this.status = 'fall';
+                            this.playSprite(this.IMAGES_FALLING, 120);
+                        });
+                    }
+                    
+            } else if (!this.isAboveGround() && this.status == 'fall') {
+                    this.status = 'land';
+                    this.playSpriteOnce(this.IMAGES_LAND, 70);
 
                 // WALK
             } else if ((world.keyboard.RIGHT || world.keyboard.LEFT) && this.isAboveGround) {
@@ -106,8 +124,16 @@ class Character extends MovableObject {
         console.log('Status:', this.status);
     }
 
+    /**
+     * set speedY = 15
+     */
     jump() {
-        this.speedY = 15;
+        let timePassed = new Date().getTime() - this.lastJump;
+        timePassed = timePassed / 1000;
+        if (timePassed > 1) {            
+            this.speedY = 15;
+            this.lastJump = new Date().getTime();
+        }
     }
 
     addAttackArea() {
