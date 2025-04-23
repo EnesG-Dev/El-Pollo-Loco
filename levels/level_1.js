@@ -49,6 +49,7 @@ function createLevel() {
         [
             new Witch(1300, 35),
             new Witch(2750, 100),
+            new Phantom(530, 130),
             // new Chicken(),
             new Endboss(),
         ],

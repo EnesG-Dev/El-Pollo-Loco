@@ -1,18 +1,24 @@
 @font-face {
     font-family: 'Zabars';
     src: url("fonts/zabars.ttf") format('truetype');
-  } 
+}
+
+@font-face {
+    font-family: 'houseOfTheDragon';
+    src: url('fonts/houseOfTheDragon/HouseOfTheDragon_PERSONAL_USE_ONLY.otf') format('opentype');
+    font-style: normal;
+}
 
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url(picture/desert-5385998_1280.png);
+    background-image: url(img/picture/background.jpg);
     background-position: center;
 }
 
 h1 {
-    font-family: 'Zabars', Arial, Helvetica, sans-serif;
+    font-family: 'houseOfTheDragon', Arial, Helvetica, sans-serif;
     font-size: 46px;
     letter-spacing: 4px;
     text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
@@ -21,6 +27,22 @@ h1 {
 canvas {
     background-color: black;
     display: block;     /* wichtig für responsive */
+}
+
+.character-images {
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    
+}
+
+.character-images img {
+    width: 50%;
+
 }
 
 /* smartphones ------- */

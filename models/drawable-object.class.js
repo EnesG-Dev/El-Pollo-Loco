@@ -109,7 +109,7 @@ class DrawableObject {
     }
 
     drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Witch || this instanceof Endboss || this instanceof Projectile) {
+        if (this instanceof Character || this instanceof Witch || this instanceof Endboss || this instanceof Projectile || this instanceof Phantom) {
             ctx.beginPath();
             ctx.lineWidth = '5';
             ctx.strokeStyle = 'blue';
@@ -119,7 +119,7 @@ class DrawableObject {
     }
 
     drawOffset(ctx) {
-        if (this instanceof Character || this instanceof Witch || this instanceof Endboss || this instanceof Projectile) {
+        if (this instanceof Character || this instanceof Witch || this instanceof Endboss || this instanceof Projectile || this instanceof Phantom) {
             ctx.beginPath();
             ctx.lineWidth = '2';
             ctx.strokeStyle = 'red';

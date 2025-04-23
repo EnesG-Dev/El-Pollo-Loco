@@ -37,9 +37,11 @@ class Character extends MovableObject {
                     this.swordHitBox.alignHitBox();
                     this.walking_sound.play();
 
+                    // wall blocks move left
                     if (this.x >= 630 && this.x <= 640 && this.y > 170) {}
                     else if (this.x >= 1100 && this.x <= 1110 && this.y > 120) {}
                     else if (this.x >= 2840 && this.x <= 2850 && this.y > 183) {}
+
                     else this.moveLeft(true);
                 }
 

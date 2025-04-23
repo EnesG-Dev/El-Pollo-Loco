@@ -147,6 +147,65 @@
             "img/03_enemies/witch/DEATH/frame_006.png"
         ]
     },
+    "phantom": {
+        "idle": [
+            "img/03_enemies/phantom/IDLE/Idle1.png",
+            "img/03_enemies/phantom/IDLE/Idle2.png",
+            "img/03_enemies/phantom/IDLE/Idle3.png",
+            "img/03_enemies/phantom/IDLE/Idle4.png",
+            "img/03_enemies/phantom/IDLE/Idle5.png",
+            "img/03_enemies/phantom/IDLE/Idle6.png",
+            "img/03_enemies/phantom/IDLE/Idle7.png",
+            "img/03_enemies/phantom/IDLE/Idle8.png",
+            "img/03_enemies/phantom/IDLE/Idle9.png",
+            "img/03_enemies/phantom/IDLE/Idle10.png"
+
+        ],
+        "attack": [
+            "img/03_enemies/phantom/ATTACK/LightAtk1.png",
+            "img/03_enemies/phantom/ATTACK/LightAtk2.png",
+            "img/03_enemies/phantom/ATTACK/LightAtk3.png",
+            "img/03_enemies/phantom/ATTACK/LightAtk4.png",
+            "img/03_enemies/phantom/ATTACK/LightAtk5.png",
+            "img/03_enemies/phantom/ATTACK/LightAtk6.png",
+            "img/03_enemies/phantom/ATTACK/LightAtk7.png",
+            "img/03_enemies/phantom/ATTACK/LightAtk8.png",
+            "img/03_enemies/phantom/ATTACK/LightAtk9.png"
+        ],
+        "hurt": [
+            "img/03_enemies/phantom/HITED/Hited1.png",
+            "img/03_enemies/phantom/HITED/Hited2.png",
+            "img/03_enemies/phantom/HITED/Hited3.png"
+        ],
+        "death": [
+            "img/03_enemies/phantom/DEATH/Death1.png",
+            "img/03_enemies/phantom/DEATH/Death2.png",
+            "img/03_enemies/phantom/DEATH/Death3.png",
+            "img/03_enemies/phantom/DEATH/Death4.png",
+            "img/03_enemies/phantom/DEATH/Death5.png",
+            "img/03_enemies/phantom/DEATH/Death6.png",
+            "img/03_enemies/phantom/DEATH/Death7.png",
+            "img/03_enemies/phantom/DEATH/Death8.png",
+            "img/03_enemies/phantom/DEATH/Death9.png",
+            "img/03_enemies/phantom/DEATH/Death10.png",
+            "img/03_enemies/phantom/DEATH/Death11.png",
+            "img/03_enemies/phantom/DEATH/Death12.png",
+            "img/03_enemies/phantom/DEATH/Death13.png",
+            "img/03_enemies/phantom/DEATH/Death14.png",
+            "img/03_enemies/phantom/DEATH/Death15.png",
+            "img/03_enemies/phantom/DEATH/Death16.png",
+            "img/03_enemies/phantom/DEATH/Death17.png",
+            "img/03_enemies/phantom/DEATH/Death18.png",
+            "img/03_enemies/phantom/DEATH/Death19.png",
+            "img/03_enemies/phantom/DEATH/Death20.png",
+            "img/03_enemies/phantom/DEATH/Death21.png",
+            "img/03_enemies/phantom/DEATH/Death22.png",
+            "img/03_enemies/phantom/DEATH/Death23.png",
+            "img/03_enemies/phantom/DEATH/Death24.png",
+            "img/03_enemies/phantom/DEATH/Death25.png",
+            "img/03_enemies/phantom/DEATH/Death26.png"
+        ]
+    },
     "bullet": {
         "bullet": [
             "img/03_enemies/witch/PROJECTILE/frame_000.png",
