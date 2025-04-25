@@ -75,8 +75,6 @@ class Phantom extends MovableObject {
         }
     }
 
-    // moveToLeft und otherDirection sehr ähnlich!!!
-
     movePhantom() {
         if (this.moveToLeft) {
             this.moveLeft(true);
@@ -92,10 +90,6 @@ class Phantom extends MovableObject {
     }
 
     isCharacterNearby() {
-        if (world.character.x >= (this.x - 60)) {
-            
-            //debugger
-        }
         if (world && (world.character.y + 100) >= (this.y + 50) && (world.character.y + 100) <= (this.y + 200)) {
             if (this.otherDirection) {
                 return world.character.x >= (this.x - 60) && world.character.x < (this.x + 140);
@@ -122,7 +116,7 @@ class Phantom extends MovableObject {
         this.attackHitBox.removeFromCollisionList(300);
     }
 
-    statusDead() {      // doppel
+    statusDead() {
         this.status = 'die';
 
         this.hitBox.removeFromCollisionList();
