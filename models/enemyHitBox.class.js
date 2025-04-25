@@ -1,7 +1,7 @@
 class EnemyHitBox extends HitBox {
 
-    constructor(x, y, w, h, owner) {
-        super(x, y, w, h, owner);
+    constructor(x, y, w, h, owner, cX) {
+        super(x, y, w, h, owner, cX);
         
     }
 

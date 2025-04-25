@@ -1,9 +1,8 @@
 class PhantomHitBox extends EnemyHitBox {
 
-    constructor(x, y, w, h, owner) {
-        super(x, y, w, h, owner);
+    constructor(x, y, w, h, owner, cX) {
+        super(x, y, w, h, owner, cX);
         this.phantom = owner;
-
     }
 
     onCollision(other) {

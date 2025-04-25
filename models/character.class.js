@@ -10,7 +10,7 @@ class Character extends MovableObject {
 
         // Charakter-HitBox
         this.hitBoxCharacter = new CharacterHitBox(50, 25, 50, 100, this);
-        this.swordHitBox = new SwordHitBox(105, 25, 35, 90, this);
+        this.swordHitBox = new SwordHitBox(105, 25, 35, 90, this, 95);
 
         this.applyGravity();
         this.setMoveInterval();
@@ -29,12 +29,10 @@ class Character extends MovableObject {
 
                 if (world.keyboard.RIGHT && this.x < world.level.level_end_x) {
                     this.moveRight();
-                    this.swordHitBox.alignHitBox();
                     this.walking_sound.play();
                 }
 
                 if (world.keyboard.LEFT && this.x > -100) {
-                    this.swordHitBox.alignHitBox();
                     this.walking_sound.play();
 
                     // wall blocks move left

@@ -18,15 +18,15 @@ class Phantom extends MovableObject {
         this.y = y;
         
         // Charakter-HitBox
-        this.hitBox = new PhantomHitBox(70, 80, 60, 80, this);
-        this.attackHitBox = new EnemyAttackArea(105, 25, 35, 90, this);
+        this.hitBox = new PhantomHitBox(70, 80, 60, 80, this, -20);
+        this.attackHitBox = new EnemyAttackArea(130, 60, 50, 100, this, 90);
 
 
         this.checkStatus();
     }
 
     checkStatus() {
-        this.mainInterval = setInterval(() => {
+        this.mainInterval = setInterval(() => {            
 
             // DEAD
             if (this.isDead() && !this.isHurt()) {
@@ -44,6 +44,7 @@ class Phantom extends MovableObject {
                 // ATTACK
             } else if ((this.isCharacterNearby() && this.attackReady) || this.status == 'attack') {
                 if (this.status !== 'attack') {
+                    this.turnToCharecter();
                     this.attack();
                 }
 
@@ -61,6 +62,21 @@ class Phantom extends MovableObject {
         }, 1000 / 30);
     }
 
+    turnToCharecter() {
+        
+        if (world.character.x < this.x) {
+            this.moveToLeft = true;
+            this.otherDirection = true;
+            this.attackHitBox.updatePosition();
+        } else {
+            this.moveToLeft = false;
+            this.otherDirection = false;
+            this.attackHitBox.updatePosition();
+        }
+    }
+
+    // moveToLeft und otherDirection sehr ähnlich!!!
+
     movePhantom() {
         if (this.moveToLeft) {
             this.moveLeft(true);
@@ -73,12 +89,17 @@ class Phantom extends MovableObject {
                 this.moveToLeft = true;
             }
         }
-
     }
 
     isCharacterNearby() {
-        if (world) {
-            return world.character.x >= (this.x - 100) && world.character.x < (this.x + 100);
+        if (world.character.x >= (this.x - 60)) {
+            
+            //debugger
+        }
+        if (world && (world.character.y + 100) >= (this.y + 50) && (world.character.y + 100) <= (this.y + 200)) {
+            if (this.otherDirection) {
+                return world.character.x >= (this.x - 60) && world.character.x < (this.x + 140);
+            } else return world.character.x >= (this.x - 80) && world.character.x < (this.x + 130); 
         }
     }
 
@@ -87,17 +108,18 @@ class Phantom extends MovableObject {
         this.attackReady = false; // Angriff deaktivieren
 
         this.playSpriteOnce(this.IMAGES_ATTACK, 150, () => {
-            //this.spawnProjectile();
             this.addAttackArea();
-        }, 2);
+        }, 4);
 
         setTimeout(() => {
             this.attackReady = true;
-        }, 3000);
+        }, 1500);
     }
-
-    spawnProjectile() {
-        world.thowableObjects.push(new Projectile(this.x + 70, this.y + 95));
+    
+    addAttackArea() {
+        this.attackHitBox.alignmentCorrection();
+        this.attackHitBox.addToCollisionList();
+        this.attackHitBox.removeFromCollisionList(300);
     }
 
     statusDead() {      // doppel
@@ -110,12 +132,6 @@ class Phantom extends MovableObject {
         });
     }
 
-    addAttackArea() {
-        this.attackHitBox.addToCollisionList();
-        this.attackHitBox.removeFromCollisionList(300);
-    }
-
-    // TODO: spawn Coin
     deleteThis() {
         world.level.enemies = world.level.enemies.filter(enemy => enemy !== this);
         clearInterval(this.moveInterval);

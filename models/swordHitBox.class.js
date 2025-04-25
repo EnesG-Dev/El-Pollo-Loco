@@ -1,7 +1,7 @@
 class SwordHitBox extends HitBox {
 
-    constructor(x, y, w, h, owner) {
-        super(x, y, w, h, owner);
+    constructor(x, y, w, h, owner, cX) {
+        super(x, y, w, h, owner, cX);
         this.character = owner;
         this.removeFromCollisionList();
     }
@@ -10,11 +10,5 @@ class SwordHitBox extends HitBox {
         if (other instanceof EnemyHitBox) {
             other.owner.hit(10);
         }
-    }
-
-    alignHitBox() {
-        if (this.character.otherDirection) {
-            this.offsetX = 10;
-        } else this.offsetX = 105;
     }
 }
