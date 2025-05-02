@@ -13,9 +13,8 @@ class Projectile extends MovableObject {
         this.loadImageSprites(imgPaths.bullet);
         this.x = x;
         this.y = y;
-        this.hitBox = new ProjectileHitBox(12, 25, 50, 25, this);
+        this.hitBox = new HitBox(12, 25, 50, 25, this, 0, 'projectile');
 
-        
         this.playSprite(this.IMAGES_BULLET, 150);
         this.moveAction();
     }

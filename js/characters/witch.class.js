@@ -15,8 +15,9 @@ class Witch extends MovableObject {
         this.x = x;
         this.y = y;
 
-        // Charakter-HitBox
-        this.hitBox = new WitchHitBox(100, 90, 50, 100, this);
+        this.energy = 40;
+
+        this.hitBox = new HitBox(100, 90, 50, 100, this, 0, 'enemy');
 
         this.checkStatus();
     }

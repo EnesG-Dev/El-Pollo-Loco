@@ -9,8 +9,8 @@ class Character extends MovableObject {
         this.loadImageSprites(imgPaths.character);
 
         // Charakter-HitBox
-        this.hitBoxCharacter = new CharacterHitBox(50, 25, 50, 100, this);
-        this.swordHitBox = new SwordHitBox(105, 25, 35, 90, this, 95);
+        this.hitBox = new HitBox(50, 25, 50, 100, this, 0, 'character');
+        this.hitBoxSword = new HitBox(105, 25, 35, 90, this, 95, 'sword');
 
         this.applyGravity();
         this.setMoveInterval();
@@ -137,7 +137,7 @@ class Character extends MovableObject {
     }
 
     addAttackArea() {
-        this.swordHitBox.addToCollisionList();
-        this.swordHitBox.removeFromCollisionList(300);
+        this.hitBoxSword.addToCollisionList();
+        this.hitBoxSword.removeFromCollisionList(300);
     }
 }

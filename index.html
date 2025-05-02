@@ -6,46 +6,38 @@
     <link rel="stylesheet" href="style.css">
     <title>Game</title>
 
-    <script src="models/collision-manager.class.js"></script>
-    <script src="models/keyboard.class.js"></script>
-    <script src="models/world.class.js"></script>
-    <script src="models/drawable-object.class.js"></script>
-    <script src="models/movable-object.class.js"></script>
-    <script src="models/witch.class.js"></script>
-    <script src="models/background-object.class.js"></script>
-    <script src="models/cloud.class.js"></script>
-    <script src="models/character.class.js"></script>
-    <script src="models/chicken.class.js"></script>
-    <script src="models/level.cass.js"></script>
-    <script src="models/endboss.class.js"></script>
-    <script src="models/status-bar.class.js"></script>
-    <script src="models/thowable-object.cass.js"></script>
-    <script src="models/projectile.class.js"></script>
-    <script src="models/phantom.class.js"></script>
+    <script src="js/core/collision-manager.class.js"></script>
+    <script src="js/core/keyboard.class.js"></script>
+    <script src="js/core/hitbox.class.js"></script>
+    <script src="js/core/drawable-object.class.js"></script>
+    <script src="js/core/movable-object.class.js"></script>
+    <script src="js/core/world.class.js"></script>
 
-    <script src="models/hitbox.class.js"></script>
-    <script src="models/swordHitBox.class.js"></script>
-    <script src="models/characterHitBox.class.js"></script>
-    <script src="models/enemyHitBox.class.js"></script>
-    <script src="models/projectileHitBox.class.js"></script>
-    <script src="models/witchHitBox.class.js"></script>
-    <script src="models/phantomHitBox.class.js"></script>
-    <script src="models/enemyAttackArea.class.js"></script>
+    <script src="js/environment/background-object.class.js"></script>
+    <script src="js/environment/cloud.class.js"></script>
+    <script src="js/environment/level.class.js"></script>
+    <script src="js/environment/throwable-object.class.js"></script>
 
-    <script src="models/aoe.class.js"></script>
-    
-    
-    <script src="levels/level_1.js"></script>
-    <script src="js/game.js"></script>
-    <!-- <script src="levels/level_1.js"></script> -->
+    <script src="js/characters/character.class.js"></script>
+    <script src="js/characters/witch.class.js"></script>
+    <script src="js/characters/endboss.class.js"></script>
+    <script src="js/characters/phantom.class.js"></script>
+    <script src="js/characters/projectile.class.js"></script>
+
+    <script src="js/ui/status-bar.class.js"></script>
+
+    <script src="js/levels/level_1.js"></script>
+
+    <script src="game.js"></script>
+
 </head>
 <body onload="init()">
     <h1>Legend of Ailish</h1>
 
     <canvas id="canvas" width="720" height="480"></canvas>
     <div class="character-images">
-        <img src="img/picture/witch.png">
-        <img src="img/picture/hero.png">
+        <img src="./assets/images/background/witch.png">
+        <img src="./assets/images/background/hero.png">
     </div>
 </body>
 </html>

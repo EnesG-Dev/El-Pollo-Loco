@@ -1,5 +1,5 @@
 class StatusBar extends DrawableObject {
-    empty = 'img/7_statusbars/4_bar_elements/statusbar_empty.png';
+    empty = '../assets/sprites/7_statusbars/4_bar_elements/statusbar_empty.png';
     icon;
     color;
     
@@ -8,25 +8,21 @@ class StatusBar extends DrawableObject {
     width = 230;
     height = 60;
     
-    IMAGES_HEALTH = [
-        'img/7_statusbars/1_statusbar/2_statusbar_health/green/0.png',
-        'img/7_statusbars/1_statusbar/2_statusbar_health/green/20.png',
-        'img/7_statusbars/1_statusbar/2_statusbar_health/green/40.png',
-        'img/7_statusbars/1_statusbar/2_statusbar_health/green/60.png',
-        'img/7_statusbars/1_statusbar/2_statusbar_health/green/80.png',
-        'img/7_statusbars/1_statusbar/2_statusbar_health/green/100.png',
-    ]
+    
     
     percentage = 100;
 
     constructor() {
-        super().loadImages(this.IMAGES_HEALTH);
+        super().loadImage(imgPaths.statusBar.health[0])
+        this.loadImageSprites(imgPaths.statusBar);
+
         this.setPrecentage(100);
     }
+    /*
     blue = 'img/7_statusbars/4_bar_elements/statusbar_blue.png';
     green = 'img/7_statusbars/4_bar_elements/statusbar_green.png';
     orange = 'img/7_statusbars/4_bar_elements/statusbar_orange.png';
-
+    */
 
     setPrecentage(percentage) {
         this.percentage = percentage;

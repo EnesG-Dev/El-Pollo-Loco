@@ -17,9 +17,11 @@ class Phantom extends MovableObject {
         this.x = x;
         this.y = y;
         
+        this.energy = 10;
+
         // Charakter-HitBox
-        this.hitBox = new PhantomHitBox(70, 80, 60, 80, this, -20);
-        this.attackHitBox = new EnemyAttackArea(130, 60, 50, 100, this, 90);
+        this.hitBox = new HitBox(70, 80, 60, 80, this, -20, 'enemy');
+        this.attackHitBox = new HitBox(130, 60, 50, 100, this, 90, 'attackArea');
 
 
         this.checkStatus();

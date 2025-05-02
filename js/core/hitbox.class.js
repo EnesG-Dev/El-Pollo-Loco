@@ -1,21 +1,45 @@
 class HitBox {
 
-    constructor(offsetX, offsetY, w, h, owner = undefined, correctionX = 0) {
+    constructor(offsetX, offsetY, w, h, owner = undefined, mirrorCorrectionX = 0, type = 'default') {
         this.owner = owner;
         
         this.offsetX = offsetX;
         this.offsetY = offsetY;
         this.width = w;
         this.height = h;
+        this.type = type;
 
-        this.resetOffsetX = offsetX;
-        this.alignX = offsetX - correctionX;
+        this.defaultOffsetX = offsetX;
+        this.mirroredOffsetX = offsetX - mirrorCorrectionX;
         
-        this.addToCollisionList();
+        this.initialCollisionRegister();
     }
 
     onCollision(other) {
-        return;
+        if (this.type === 'character' && other.type === 'enemy') {
+            this.owner.hit(10);
+        }
+        
+        if (this.type === 'sword' && other.type === 'enemy') {
+            other.owner.hit(20);
+        }
+        
+        if (this.type === 'attackArea' && other.type === 'character') {
+            other.owner.hit(20);
+        }
+
+        if (this.type === 'projectile' && other.type === 'character') {
+            other.owner.hit(40);
+            this.owner.detonate();
+        }
+        
+        world.healthBar.setPrecentage(world.character.energy);
+    }
+
+    initialCollisionRegister() {
+        if (this.type !== 'sword' && this.type !== 'attackArea') {
+            COLLISION_MANAGER.addObject(this);
+        }
     }
 
     addToCollisionList() {
@@ -49,8 +73,8 @@ class HitBox {
 
     alignmentCorrection() {
         if (this.owner.otherDirection) {
-            this.offsetX = this.alignX;
-        } else this.offsetX = this.resetOffsetX;
+            this.offsetX = this.mirroredOffsetX;
+        } else this.offsetX = this.defaultOffsetX;
     }
 
     // damit keine fehler entstehen provisorisch!!

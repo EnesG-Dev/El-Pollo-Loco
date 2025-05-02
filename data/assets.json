@@ -1,0 +1,295 @@
+{
+    "character": {
+        "idle": [
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Idle/Idle1.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Idle/Idle2.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Idle/Idle3.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Idle/Idle4.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Idle/Idle5.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Idle/Idle6.png"
+        ],
+        "walk": [
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking1.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking2.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking3.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking4.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking5.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking6.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking7.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking8.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking9.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking10.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking11.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking12.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking13.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking14.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking15.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking16.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking17.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Walk/Walking/Walking18.png"
+        ],
+        "jump": [
+            "../assets/sprites/00_JoannaD'ArcIII_v1/JumpAndFall/1_jump/Jump1.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/JumpAndFall/1_jump/Jump2.png"
+        ],
+        "jumping": [
+            "../assets/sprites/00_JoannaD'ArcIII_v1/JumpAndFall/2_jumping/Jumping1.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/JumpAndFall/2_jumping/Jumping2.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/JumpAndFall/2_jumping/Jumping3.png"
+        ],
+        "fall": [
+            "../assets/sprites/00_JoannaD'ArcIII_v1/JumpAndFall/3_fall/Fall1.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/JumpAndFall/3_fall/Fall2.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/JumpAndFall/3_fall/Fall3.png"
+        ],
+        "falling": [
+            "../assets/sprites/00_JoannaD'ArcIII_v1/JumpAndFall/4_falling/Falling1.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/JumpAndFall/4_falling/Falling2.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/JumpAndFall/4_falling/Falling3.png"
+        ],
+        "land": [
+            "../assets/sprites/00_JoannaD'ArcIII_v1/JumpAndFall/5_land/Land1.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/JumpAndFall/5_land/Land2.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/JumpAndFall/5_land/Land3.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/JumpAndFall/5_land/Land4.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/JumpAndFall/5_land/Land5.png"
+        ],
+        "hurt": [
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Hurt/FX/Hurt1.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Hurt/FX/Hurt2.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Hurt/FX/Hurt3.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Hurt/FX/Hurt4.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Hurt/FX/Hurt5.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Hurt/FX/Hurt6.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Idle/Idle6.png"
+        ],
+        "dead": [
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death1.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death2.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death3.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death4.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death5.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death6.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death7.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death8.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death9.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death10.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death11.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death12.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death13.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death14.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death15.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death16.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death17.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death18.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death19.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death20.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death21.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death22.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death23.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death24.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death25.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death26.png"
+        ],
+        "attack1": [
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk1.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk2.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk3.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk4.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk5.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk6.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk7.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk8.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk9.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk10.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk11.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Attacks/LightAtk/LightAtk12.png",
+            "../assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Idle/Idle6.png"
+        ]
+    },
+    "witch": {
+        "idle": [
+            "../assets/sprites/03_enemies/witch/IDLE/frame_000.png",
+            "../assets/sprites/03_enemies/witch/IDLE/frame_001.png",
+            "../assets/sprites/03_enemies/witch/IDLE/frame_002.png",
+            "../assets/sprites/03_enemies/witch/IDLE/frame_003.png",
+            "../assets/sprites/03_enemies/witch/IDLE/frame_004.png",
+            "../assets/sprites/03_enemies/witch/IDLE/frame_005.png"
+        ],
+        "attack": [
+            "../assets/sprites/03_enemies/witch/ATTACK/frame_000.png",
+            "../assets/sprites/03_enemies/witch/ATTACK/frame_001.png",
+            "../assets/sprites/03_enemies/witch/ATTACK/frame_002.png",
+            "../assets/sprites/03_enemies/witch/ATTACK/frame_003.png",
+            "../assets/sprites/03_enemies/witch/ATTACK/frame_004.png",
+            "../assets/sprites/03_enemies/witch/ATTACK/frame_005.png"
+        ],
+        "hurt": [
+            "../assets/sprites/03_enemies/witch/HURT/frame_000.png",
+            "../assets/sprites/03_enemies/witch/HURT/frame_001.png",
+            "../assets/sprites/03_enemies/witch/HURT/frame_002.png"
+        ],
+        "projectile": [
+            "../assets/sprites/03_enemies/witch/PROJECTILE/frame_000.png",
+            "../assets/sprites/03_enemies/witch/PROJECTILE/frame_001.png",
+            "../assets/sprites/03_enemies/witch/PROJECTILE/frame_002.png",
+            "../assets/sprites/03_enemies/witch/PROJECTILE/frame_003.png",
+            "../assets/sprites/03_enemies/witch/PROJECTILE/frame_004.png",
+            "../assets/sprites/03_enemies/witch/PROJECTILE/frame_005.png"
+        ],
+        "death": [
+            "../assets/sprites/03_enemies/witch/DEATH/frame_000.png",
+            "../assets/sprites/03_enemies/witch/DEATH/frame_001.png",
+            "../assets/sprites/03_enemies/witch/DEATH/frame_002.png",
+            "../assets/sprites/03_enemies/witch/DEATH/frame_003.png",
+            "../assets/sprites/03_enemies/witch/DEATH/frame_004.png",
+            "../assets/sprites/03_enemies/witch/DEATH/frame_005.png",
+            "../assets/sprites/03_enemies/witch/DEATH/frame_006.png"
+        ]
+    },
+    "phantom": {
+        "idle": [
+            "../assets/sprites/03_enemies/phantom/IDLE/Idle1.png",
+            "../assets/sprites/03_enemies/phantom/IDLE/Idle2.png",
+            "../assets/sprites/03_enemies/phantom/IDLE/Idle3.png",
+            "../assets/sprites/03_enemies/phantom/IDLE/Idle4.png",
+            "../assets/sprites/03_enemies/phantom/IDLE/Idle5.png",
+            "../assets/sprites/03_enemies/phantom/IDLE/Idle6.png",
+            "../assets/sprites/03_enemies/phantom/IDLE/Idle7.png",
+            "../assets/sprites/03_enemies/phantom/IDLE/Idle8.png",
+            "../assets/sprites/03_enemies/phantom/IDLE/Idle9.png",
+            "../assets/sprites/03_enemies/phantom/IDLE/Idle10.png"
+
+        ],
+        "attack": [
+            "../assets/sprites/03_enemies/phantom/ATTACK/LightAtk1.png",
+            "../assets/sprites/03_enemies/phantom/ATTACK/LightAtk2.png",
+            "../assets/sprites/03_enemies/phantom/ATTACK/LightAtk3.png",
+            "../assets/sprites/03_enemies/phantom/ATTACK/LightAtk4.png",
+            "../assets/sprites/03_enemies/phantom/ATTACK/LightAtk5.png",
+            "../assets/sprites/03_enemies/phantom/ATTACK/LightAtk6.png",
+            "../assets/sprites/03_enemies/phantom/ATTACK/LightAtk7.png",
+            "../assets/sprites/03_enemies/phantom/ATTACK/LightAtk8.png",
+            "../assets/sprites/03_enemies/phantom/ATTACK/LightAtk9.png"
+        ],
+        "hurt": [
+            "../assets/sprites/03_enemies/phantom/HITED/Hited1.png",
+            "../assets/sprites/03_enemies/phantom/HITED/Hited2.png",
+            "../assets/sprites/03_enemies/phantom/HITED/Hited3.png"
+        ],
+        "death": [
+            "../assets/sprites/03_enemies/phantom/DEATH/Death1.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death2.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death3.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death4.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death5.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death6.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death7.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death8.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death9.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death10.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death11.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death12.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death13.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death14.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death15.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death16.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death17.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death18.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death19.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death20.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death21.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death22.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death23.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death24.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death25.png",
+            "../assets/sprites/03_enemies/phantom/DEATH/Death26.png"
+        ]
+    },
+    "bullet": {
+        "bullet": [
+            "../assets/sprites/03_enemies/witch/PROJECTILE/frame_000.png",
+            "../assets/sprites/03_enemies/witch/PROJECTILE/frame_001.png",
+            "../assets/sprites/03_enemies/witch/PROJECTILE/frame_002.png",
+            "../assets/sprites/03_enemies/witch/PROJECTILE/frame_003.png",
+            "../assets/sprites/03_enemies/witch/PROJECTILE/frame_004.png",
+            "../assets/sprites/03_enemies/witch/PROJECTILE/frame_005.png"
+        ],
+        "hit": [
+            "../assets/sprites/03_enemies/witch/Hit/Hit1.png",
+            "../assets/sprites/03_enemies/witch/Hit/Hit2.png",
+            "../assets/sprites/03_enemies/witch/Hit/Hit3.png",
+            "../assets/sprites/03_enemies/witch/Hit/Hit4.png"
+        ]
+    },
+    "background": {
+        "layers_1": [
+            "../assets/sprites/05_background/Wasteland/Layers/Background.png",
+            "../assets/sprites/05_background/Wasteland/Layers/Clouds.png",
+            "../assets/sprites/05_background/Wasteland/Layers/Far-Mountains.png",
+            "../assets/sprites/05_background/Wasteland/Layers/Mountains.png"
+        ]
+    },
+    "map": [
+        "../assets/sprites/05_background/Wasteland/map/gameMap.png",
+        "../assets/sprites/05_background/Wasteland/map/gameMap2.png"
+    ],
+    "clouds": {
+        "layers_1": [
+            "../assets/sprites/05_background/clouds/1.png",
+            "../assets/sprites/05_background/clouds/2.png",
+            "../assets/sprites/05_background/clouds/3.png",
+            "../assets/sprites/05_background/clouds/4.png",
+            "../assets/sprites/05_background/clouds/5.png",
+            "../assets/sprites/05_background/clouds/6.png"
+        ]
+    },
+    "boss": {
+        "alert": [
+            "../assets/sprites/4_enemie_boss_chicken/2_alert/G5.png",
+            "../assets/sprites/4_enemie_boss_chicken/2_alert/G6.png",
+            "../assets/sprites/4_enemie_boss_chicken/2_alert/G7.png",
+            "../assets/sprites/4_enemie_boss_chicken/2_alert/G8.png",
+            "../assets/sprites/4_enemie_boss_chicken/2_alert/G9.png",
+            "../assets/sprites/4_enemie_boss_chicken/2_alert/G10.png",
+            "../assets/sprites/4_enemie_boss_chicken/2_alert/G11.png",
+            "../assets/sprites/4_enemie_boss_chicken/2_alert/G12.png"
+        ],
+        "walk":[
+            "../assets/sprites/4_enemie_boss_chicken/1_walk/G1.png",
+            "../assets/sprites/4_enemie_boss_chicken/1_walk/G2.png",
+            "../assets/sprites/4_enemie_boss_chicken/1_walk/G3.png",
+            "../assets/sprites/4_enemie_boss_chicken/1_walk/G4.png"
+        ],
+        "attack":[
+            "../assets/sprites/4_enemie_boss_chicken/3_attack/G13.png",
+            "../assets/sprites/4_enemie_boss_chicken/3_attack/G14.png",
+            "../assets/sprites/4_enemie_boss_chicken/3_attack/G15.png",
+            "../assets/sprites/4_enemie_boss_chicken/3_attack/G16.png",
+            "../assets/sprites/4_enemie_boss_chicken/3_attack/G17.png",
+            "../assets/sprites/4_enemie_boss_chicken/3_attack/G18.png",
+            "../assets/sprites/4_enemie_boss_chicken/3_attack/G19.png",
+            "../assets/sprites/4_enemie_boss_chicken/3_attack/G20.png"
+        ],
+        "hurt":[
+            "../assets/sprites/4_enemie_boss_chicken/4_hurt/G21.png",
+            "../assets/sprites/4_enemie_boss_chicken/4_hurt/G22.png",
+            "../assets/sprites/4_enemie_boss_chicken/4_hurt/G23.png"
+        ],
+        "dead":[
+            "../assets/sprites/4_enemie_boss_chicken/5_dead/G24.png",
+            "../assets/sprites/4_enemie_boss_chicken/5_dead/G25.png",
+            "../assets/sprites/4_enemie_boss_chicken/5_dead/G26.png"
+        ]
+    },
+    "statusBar": {
+        "health": [
+            "../assets/sprites/7_statusbars/1_statusbar/2_statusbar_health/green/0.png",
+            "../assets/sprites/7_statusbars/1_statusbar/2_statusbar_health/green/20.png",
+            "../assets/sprites/7_statusbars/1_statusbar/2_statusbar_health/green/40.png",
+            "../assets/sprites/7_statusbars/1_statusbar/2_statusbar_health/green/60.png",
+            "../assets/sprites/7_statusbars/1_statusbar/2_statusbar_health/green/80.png",
+            "../assets/sprites/7_statusbars/1_statusbar/2_statusbar_health/green/100.png"
+        ]
+    }
+}

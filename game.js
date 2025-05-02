@@ -7,7 +7,7 @@ const COLLISION_MANAGER = new CollisionManager();
 
 
 async function init() {
-    const response = await fetch('./assets/paths/img_paths.json');
+    const response = await fetch('data/assets.json');
     imgPaths = await response.json();
 
     canvas = document.getElementById('canvas');

@@ -1,11 +1,6 @@
 @font-face {
-    font-family: 'Zabars';
-    src: url("fonts/zabars.ttf") format('truetype');
-}
-
-@font-face {
     font-family: 'houseOfTheDragon';
-    src: url('fonts/houseOfTheDragon/HouseOfTheDragon_PERSONAL_USE_ONLY.otf') format('opentype');
+    src: url('../assets/fonts/houseOfTheDragon/HouseOfTheDragon.otf') format('opentype');
     font-style: normal;
 }
 
@@ -13,7 +8,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url(img/picture/background.jpg);
+    background-image: url(../assets/images/background/background.jpg);
     background-position: center;
 }
 
