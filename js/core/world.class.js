@@ -2,7 +2,7 @@ class World {
 
     camera_x = 0;
     thowableObjects = [];
-
+    shadows;
     lastShot = 0;
 
     constructor(canvas, keyboard, level) {
@@ -26,7 +26,6 @@ class World {
     }
 
     updateGameObjects() {
-        // Aktualisiere alle Spielobjekte (Bewegung, Zeichnen, etc.)
         COLLISION_MANAGER.objects.forEach(o => o.updatePosition())
     }
 
@@ -49,6 +48,7 @@ class World {
         // Verschieben für die Kamera
         this.ctx.translate(this.camera_x, 0);
 
+        // this.addObjectsToMap(this.shadows);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.thowableObjects);
         this.addToMap(this.character);

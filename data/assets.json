@@ -245,6 +245,28 @@
         ]
     },
     "boss": {
+        "idle": [
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Idle/Idle1.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Idle/Idle2.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Idle/Idle3.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Idle/Idle4.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Idle/Idle5.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Idle/Idle6.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Idle/Idle7.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Idle/Idle8.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Idle/Idle9.png"            
+        ],
+        "shadow": [
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Idle/Shadow/Shadow1.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Idle/Shadow/Shadow2.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Idle/Shadow/Shadow3.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Idle/Shadow/Shadow4.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Idle/Shadow/Shadow5.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Idle/Shadow/Shadow6.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Idle/Shadow/Shadow7.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Idle/Shadow/Shadow8.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Idle/Shadow/Shadow9.png"
+        ],
         "alert": [
             "../assets/sprites/4_enemie_boss_chicken/2_alert/G5.png",
             "../assets/sprites/4_enemie_boss_chicken/2_alert/G6.png",
@@ -272,14 +294,44 @@
             "../assets/sprites/4_enemie_boss_chicken/3_attack/G20.png"
         ],
         "hurt":[
-            "../assets/sprites/4_enemie_boss_chicken/4_hurt/G21.png",
-            "../assets/sprites/4_enemie_boss_chicken/4_hurt/G22.png",
-            "../assets/sprites/4_enemie_boss_chicken/4_hurt/G23.png"
+ 
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Hurt/Hurt1.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Hurt/Hurt2.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Hurt/Hurt3.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Hurt/Hurt4.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Hurt/Hurt5.png"
         ],
-        "dead":[
-            "../assets/sprites/4_enemie_boss_chicken/5_dead/G24.png",
-            "../assets/sprites/4_enemie_boss_chicken/5_dead/G25.png",
-            "../assets/sprites/4_enemie_boss_chicken/5_dead/G26.png"
+        "death":[
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die1.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die2.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die3.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die4.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die5.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die6.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die7.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die8.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die9.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die10.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die11.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die12.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die13.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die14.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die15.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die16.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die17.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die18.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die19.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die20.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die21.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die22.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die23.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die24.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die25.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die26.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die27.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die28.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die29.png",
+            "../assets/sprites/03_enemies/boss_salamanderWitch/Death/Die30.png"
         ]
     },
     "statusBar": {

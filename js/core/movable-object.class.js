@@ -5,6 +5,7 @@ class MovableObject extends DrawableObject {
 
     speedY = 0;         // Sprung
     acceleration = 0.5; // Beschleunigung
+    objectGround = 0;
 
     energy = 100;
     lastHit = 0;
@@ -48,20 +49,20 @@ class MovableObject extends DrawableObject {
             }
 
             // Prüfe, ob das Objekt unter den Boden gefallen ist
-            if (this.y > groundLevel) {
-                this.y = groundLevel; // Korrigiere die Position
+            if (this.y + this.objectGround > groundLevel) {
+                this.y = groundLevel + this.objectGround; // Korrigiere die Position
                 this.speedY = 0; // Setze die vertikale Geschwindigkeit auf 0
             }
             
         }, 1000 / 60);
     }
 
-    isAboveGround(j = 0) {
+    isAboveGround(minHeight = 0) {
         const groundLevel = this.getGroundLevel(this.x, this.y);
         if (this instanceof ThrowableObject) {
             return true;
         }
-        return this.y < groundLevel - j;
+        return this.y + this.objectGround < groundLevel - minHeight;
     }
 
     getGroundLevel(x, y) {

@@ -53,7 +53,6 @@ function createLevel() {
             new Phantom(1400, 200),
             new Phantom(2000, 200),
             new Phantom(1950, -40),
-            // new Chicken(),
             new Endboss(),
         ],
         [
