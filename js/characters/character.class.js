@@ -15,7 +15,7 @@ class Character extends MovableObject {
         this.applyGravity();
         this.setMoveInterval();
         this.setAnimationInterval();
-        // this.x = 3300;
+        this.x = 3300;
     }
 
     setMoveInterval() {

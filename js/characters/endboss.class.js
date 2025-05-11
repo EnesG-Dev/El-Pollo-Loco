@@ -60,7 +60,7 @@ class Endboss extends MovableObject {
             // this.deleteThis();
         });
     }
-
+    
     // TODO: spawn Coin
     deleteThis() {
         world.level.enemies = world.level.enemies.filter(enemy => enemy !== this);
