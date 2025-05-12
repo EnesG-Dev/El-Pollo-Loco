@@ -104,6 +104,7 @@ class DrawableObject {
                 status: this.status,
                 error: error.message
             });
+            // FIXME: remove debugger
             debugger;
         }
     }
@@ -114,21 +115,6 @@ class DrawableObject {
             ctx.lineWidth = '5';
             ctx.strokeStyle = 'blue';
             ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.stroke();
-        }
-    }
-
-    drawOffset(ctx) {
-        if (this instanceof Character || this instanceof Witch || this instanceof Endboss || this instanceof Projectile || this instanceof Phantom) {
-            ctx.beginPath();
-            ctx.lineWidth = '2';
-            ctx.strokeStyle = 'red';
-            ctx.rect(
-                this.x + this.offsetX / 2 + this.positionOffsetX,
-                this.y + this.offsetY / 2 + this.positionOffsetY,
-                this.width - this.offsetX,
-                this.height - this.offsetY
-            );
             ctx.stroke();
         }
     }

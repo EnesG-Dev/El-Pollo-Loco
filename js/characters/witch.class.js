@@ -56,8 +56,8 @@ class Witch extends MovableObject {
     }
 
     isCharacterNearby() {
-        if (world) {
-            return world.character.x >= (this.x - 450) && world.character.x < (this.x + 100);
+        if (this.world) {
+            return this.world.character.x >= (this.x - 450) && this.world.character.x < (this.x + 100);
         }
     }
 
@@ -75,7 +75,7 @@ class Witch extends MovableObject {
     }
 
     spawnProjectile() {
-        world.thowableObjects.push(new Projectile(this.x + 70, this.y + 95));
+        this.world.tempObjects.push(new Projectile(this.world, this.x + 70, this.y + 95));
     }
 
     statusDead() {      // doppel
@@ -90,7 +90,7 @@ class Witch extends MovableObject {
 
     // TODO: spawn Coin
     deleteThis() {
-        world.level.enemies = world.level.enemies.filter(enemy => enemy !== this);
+        this.world.level.enemies = this.world.level.enemies.filter(enemy => enemy !== this);
         clearInterval(this.moveInterval);
         clearInterval(this.animationInterval);
     }

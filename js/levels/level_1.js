@@ -1,7 +1,7 @@
 
 function createLevel() {
 
-    LEVEL_1 = new Level(
+    return new Level(
         [
             imgPaths.background
         ],

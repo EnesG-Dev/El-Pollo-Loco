@@ -4,11 +4,11 @@ class Character extends MovableObject {
     speed = 4;
     walking_sound = new Audio('/audio/walk.mp3')
 
-    constructor() {
+    constructor(world) {
         super().loadImage(imgPaths.character.idle[0]);
         this.loadImageSprites(imgPaths.character);
 
-        // Charakter-HitBox
+        this.world = world;
         this.hitBox = new HitBox(50, 25, 50, 100, this, 0, 'character');
         this.hitBoxSword = new HitBox(105, 25, 35, 90, this, 95, 'sword');
 
@@ -23,17 +23,17 @@ class Character extends MovableObject {
         this.moveInterval = setInterval(() => {
             if (!this.isDead()) {
 
-                if (world.keyboard.C && this.status !== 'attack') {
+                if (this.world.keyboard.C && this.status !== 'attack') {
                     this.status = 'attack';
                     this.attack1();
                 }
 
-                if (world.keyboard.RIGHT && this.x < world.level.level_end_x) {
+                if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                     this.moveRight();
                     this.walking_sound.play();
                 }
 
-                if (world.keyboard.LEFT && this.x > -100) {
+                if (this.world.keyboard.LEFT && this.x > -100) {
                     this.walking_sound.play();
 
                     // wall blocks move left
@@ -44,13 +44,13 @@ class Character extends MovableObject {
                     else this.moveLeft(true);
                 }
 
-                if (world.keyboard.UP && !this.isAboveGround()) {
+                if (this.world.keyboard.UP && !this.isAboveGround()) {
                     this.jump();
                 }
 
             }
 
-            world.camera_x = -this.x + 100;
+            this.world.camera_x = -this.x + 100;
         }, 1000 / 60);
     }
 
@@ -97,7 +97,7 @@ class Character extends MovableObject {
                     this.playSpriteOnce(this.IMAGES_LAND, 70);
 
                 // WALK
-            } else if ((world.keyboard.RIGHT || world.keyboard.LEFT) && this.isAboveGround) {
+            } else if ((this.world.keyboard.RIGHT || this.world.keyboard.LEFT) && this.isAboveGround) {
                 if (this.status !== 'walk') {
                     this.status = 'walk';
                     this.playSprite(this.IMAGES_WALK, 50);

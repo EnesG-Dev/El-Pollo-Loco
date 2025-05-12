@@ -1,6 +1,5 @@
 class ThrowableObject extends MovableObject {
 
-    world;
     x = 100;
     y = 100;
     width = 100;

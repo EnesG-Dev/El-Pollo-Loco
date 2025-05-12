@@ -3,7 +3,6 @@ class Level {
     backgroundObjects = [];
     level_end_x = 3880;
 
-    // constructor(enemies, clouds, backgroundPaths1, backgroundPaths2, background, map) {
     constructor(background, map, clouds, enemies, lvlConfig) {
         this.backgroundPaths = background[0];
         this.map = map;

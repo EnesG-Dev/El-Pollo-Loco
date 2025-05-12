@@ -66,7 +66,7 @@ class Phantom extends MovableObject {
 
     turnToCharecter() {
         
-        if (world.character.x < this.x) {
+        if (this.world.character.x < this.x) {
             this.moveToLeft = true;
             this.otherDirection = true;
             this.attackHitBox.updatePosition();
@@ -92,10 +92,10 @@ class Phantom extends MovableObject {
     }
 
     isCharacterNearby() {
-        if (world && (world.character.y + 100) >= (this.y + 50) && (world.character.y + 100) <= (this.y + 200)) {
+        if (this.world && (this.world.character.y + 100) >= (this.y + 50) && (this.world.character.y + 100) <= (this.y + 200)) {
             if (this.otherDirection) {
-                return world.character.x >= (this.x - 60) && world.character.x < (this.x + 140);
-            } else return world.character.x >= (this.x - 80) && world.character.x < (this.x + 130); 
+                return this.world.character.x >= (this.x - 60) && this.world.character.x < (this.x + 140);
+            } else return this.world.character.x >= (this.x - 80) && this.world.character.x < (this.x + 130); 
         }
     }
 
@@ -129,7 +129,7 @@ class Phantom extends MovableObject {
     }
 
     deleteThis() {
-        world.level.enemies = world.level.enemies.filter(enemy => enemy !== this);
+        this.world.level.enemies = this.world.level.enemies.filter(enemy => enemy !== this);
         clearInterval(this.moveInterval);
         clearInterval(this.animationInterval);
     }

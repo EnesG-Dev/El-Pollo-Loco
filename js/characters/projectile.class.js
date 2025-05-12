@@ -8,9 +8,10 @@ class Projectile extends MovableObject {
     speed = 5;
     isCollided = false;
 
-    constructor(x = 100, y = 100) {
+    constructor(world, x = 100, y = 100) {
         super().loadImage(imgPaths.bullet.bullet[0]);
         this.loadImageSprites(imgPaths.bullet);
+        this.world = world;
         this.x = x;
         this.y = y;
         this.hitBox = new HitBox(12, 25, 50, 25, this, 0, 'projectile');
@@ -20,7 +21,7 @@ class Projectile extends MovableObject {
     }
 
     moveAction() {
-        clearInterval(this.moveInterval);    // Vorheriges Intervall entfernen
+        clearInterval(this.moveInterval);
         this.moveInterval = setInterval(() => {
             this.moveLeft();
             this.outOfMap();
@@ -42,8 +43,8 @@ class Projectile extends MovableObject {
     }
 
     deleteThis() {
-        world.thowableObjects = world.thowableObjects.filter(projectile => projectile !== this);
-        clearInterval(this.moveInterval); // Bewegung stoppen
-        clearInterval(this.animationInterval); // Animation stoppen
+        this.world.tempObjects = this.world.tempObjects.filter(projectile => projectile !== this);
+        clearInterval(this.moveInterval);
+        clearInterval(this.animationInterval);
     }
 }

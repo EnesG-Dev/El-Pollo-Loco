@@ -12,6 +12,15 @@ class MovableObject extends DrawableObject {
     lastAttack = 0;
     lastJump = 0;
 
+    constructor() {
+        super();
+        this.world = null;
+    }
+
+    init(world) {
+        this.world = world;
+    }
+
     hit(demage) {
         if (!this.isHurt() || this.lastHit == 0) {
             this.energy -= demage;
@@ -66,7 +75,7 @@ class MovableObject extends DrawableObject {
     }
 
     getGroundLevel(x, y) {
-        const config = world.level.configs.find(cfg => 
+        const config = this.world.level.configs.find(cfg => 
             x >= cfg.minX && x < cfg.maxX &&
             (cfg.minY === undefined || cfg.maxY === undefined || (y >= cfg.minY && y < cfg.maxY))
         );

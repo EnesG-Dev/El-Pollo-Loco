@@ -11,13 +11,13 @@ class Endboss extends MovableObject {
         super().loadImage(imgPaths.boss.idle[0])
         this.loadImageSprites(imgPaths.boss);
         this.hitBox = new HitBox(50, 25, 50, 110, this, 0, 'enemy')
-        // world.shadows = new BossShadow(this);
+        // this.world.shadows = new BossShadow(this);
         this.applyGravity()
         this.checkStatus();
     }
 
     initShadow() {
-        world.level.enemies.push(this.shadow);
+        this.world.level.enemies.push(this.shadow);
 
     }
 
@@ -60,10 +60,10 @@ class Endboss extends MovableObject {
             // this.deleteThis();
         });
     }
-    
+
     // TODO: spawn Coin
     deleteThis() {
-        world.level.enemies = world.level.enemies.filter(enemy => enemy !== this);
+        this.world.level.enemies = this.world.level.enemies.filter(enemy => enemy !== this);
         clearInterval(this.moveInterval);
         clearInterval(this.animationInterval);
     }

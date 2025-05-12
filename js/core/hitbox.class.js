@@ -33,7 +33,7 @@ class HitBox {
             this.owner.detonate();
         }
         
-        world.healthBar.setPrecentage(world.character.energy);
+        // world.healthBar.setPrecentage(world.character.energy);
     }
 
     initialCollisionRegister() {
@@ -52,16 +52,9 @@ class HitBox {
         }, afterTime);
     }
 
-    draw(ctx) {
-        ctx.beginPath();
-        ctx.strokeStyle = 'rgba(255, 0, 0, 0.5)'; // Halbtransparentes Rot
-        ctx.rect(this.x, this.y, this.width, this.height);
-        ctx.stroke();
-    }
-
     updatePosition() {
         this.alignmentCorrection();
-
+        
         if (this.owner) {   
             this.x = this.owner.x + this.offsetX;
             this.y = this.owner.y + this.offsetY;
@@ -70,14 +63,18 @@ class HitBox {
             this.y = this.offsetY;
         }
     }
-
+    
     alignmentCorrection() {
         if (this.owner.otherDirection) {
             this.offsetX = this.mirroredOffsetX;
         } else this.offsetX = this.defaultOffsetX;
     }
-
-    // damit keine fehler entstehen provisorisch!!
-    drawFrame(ctx) {}
-    drawOffset(ctx) {}
+    
+    draw(ctx) {}
+    drawFrame(ctx) {
+        ctx.beginPath();
+        ctx.strokeStyle = 'rgba(255, 0, 0, 0.5)';
+        ctx.rect(this.x, this.y, this.width, this.height);
+        ctx.stroke();
+    }
 }

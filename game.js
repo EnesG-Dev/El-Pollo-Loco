@@ -1,19 +1,14 @@
-let canvas;
-let world;
-let keyboard = new Keyboard();;
+let devMode = true;
 let imgPaths;
-let LEVEL_1 = null;
+const keyboard = new Keyboard();
 const COLLISION_MANAGER = new CollisionManager();
-
 
 async function init() {
     const response = await fetch('data/assets.json');
     imgPaths = await response.json();
 
-    canvas = document.getElementById('canvas');
-
-    createLevel();
-    world = new World(canvas, keyboard, LEVEL_1);
+    const canvas = document.getElementById('canvas');
+    const game = new Game(canvas, keyboard);
 }
 
 document.addEventListener('keydown', (event) => {
@@ -36,7 +31,7 @@ document.addEventListener('keydown', (event) => {
     if (event.code === 'Space') {
         keyboard.SPACE = true;
     }
-    
+
     if (event.code === 'KeyC') {
         keyboard.C = true;
     }
@@ -51,7 +46,6 @@ document.addEventListener('keydown', (event) => {
 });
 
 document.addEventListener('keyup', (event) => {
-
     if (event.code === 'ArrowLeft') {
         keyboard.LEFT = false;
     }
@@ -71,7 +65,7 @@ document.addEventListener('keyup', (event) => {
     if (event.code === 'Space') {
         keyboard.SPACE = false;
     }
-    
+
     if (event.code === 'KeyC') {
         keyboard.C = false;
     }
@@ -83,5 +77,4 @@ document.addEventListener('keyup', (event) => {
     if (event.code === 'KeyB') {
         keyboard.B = false;
     }
-
 });

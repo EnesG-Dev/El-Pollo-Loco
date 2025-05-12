@@ -1,56 +1,54 @@
 class World {
 
-    camera_x = 0;
-    thowableObjects = [];
-    shadows;
-    lastShot = 0;
-
     constructor(canvas, keyboard, level) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.keyboard = keyboard;
         this.level = level;
-
-        this.character = new Character();
+        this.character = new Character(this);
         this.healthBar = new StatusBar();
-
-        this.draw();
-        this.run();
+        
+        this.camera_x = 0;
+        this.tempObjects = [];
     }
 
-    run() {
-        setInterval(() => {
-            COLLISION_MANAGER.checkCollisions(); // Kollisionsprüfung auslagern
-            this.updateGameObjects();
-        }, 1000 / 60);
+    initObjects() {
+        this.level.backgroundObjects.forEach(obj => obj.init(this));
+        this.level.clouds.forEach(obj => obj.init(this));
+        this.level.enemies.forEach(obj => obj.init(this));
+        this.tempObjects.forEach(obj => obj.init(this));
+    }
+
+    update() {
+        COLLISION_MANAGER.checkCollisions();
+        this.updateGameObjects();
     }
 
     updateGameObjects() {
         COLLISION_MANAGER.objects.forEach(o => o.updatePosition())
     }
 
-    draw() {
+    render(ctx) {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     
         // Verschieben für die Kamera
         this.ctx.translate(this.camera_x, 0);
     
-        
         // Hintergrund und Objekte hinzufügen
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.map);
 
-         // Kamera zurücksetzen
-         this.ctx.translate(-this.camera_x, 0);
-         // UI-Elemente oder feste Objekte hinzufügen
-         this.addToMap(this.healthBar);
+        // Kamera zurücksetzen
+        this.ctx.translate(-this.camera_x, 0);
+        // UI-Elemente oder feste Objekte hinzufügen
+        this.addToMap(this.healthBar);
         // Verschieben für die Kamera
         this.ctx.translate(this.camera_x, 0);
 
         // this.addObjectsToMap(this.shadows);
         this.addObjectsToMap(this.level.enemies);
-        this.addObjectsToMap(this.thowableObjects);
+        this.addObjectsToMap(this.tempObjects);
         this.addToMap(this.character);
 
         this.addObjectsToMap(COLLISION_MANAGER.objects);
@@ -61,17 +59,10 @@ class World {
         // UI-Elemente oder feste Objekte hinzufügen
         // this.addToMap(this.healthBar);
     
-        // draw wird immer wieder aufgerufen!
-        let self = this;
-        requestAnimationFrame(function () {
-            self.draw();
-        });
     }
 
     addObjectsToMap(objects) {
-        objects.forEach(o => {
-            this.addToMap(o);
-        })
+        objects.forEach(o => this.addToMap(o));
     }
 
     addToMap(mo) {
@@ -80,8 +71,9 @@ class World {
         }
 
         mo.draw(this.ctx);
-        mo.drawFrame(this.ctx);
-        // mo.drawOffset(this.ctx);        
+        if (devMode) {
+            mo.drawFrame(this.ctx);
+        }
 
         if (mo.otherDirection) {
             this.mirrorOff(mo);
@@ -98,5 +90,11 @@ class World {
     mirrorOff(mo) {
         mo.x = mo.x * -1;
         this.ctx.restore();
+    }
+
+    // TODO: start gameOver
+    isGameOver() {
+        // Beispiel: Spiel ist vorbei, wenn die Gesundheit 0 ist
+        return this.healthBar.value <= 0; // Annahme: StatusBar hat eine value-Eigenschaft
     }
 }

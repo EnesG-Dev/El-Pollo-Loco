@@ -1,5 +1,5 @@
 class StatusBar extends DrawableObject {
-    empty = '../assets/sprites/7_statusbars/4_bar_elements/statusbar_empty.png';
+    empty = './assets/sprites/7_statusbars/4_bar_elements/statusbar_empty.png';
     icon;
     color;
     
