@@ -50,7 +50,8 @@ class Character extends MovableObject {
 
             }
 
-            this.world.camera_x = -this.x + 100;
+            // this.world.camera_x = -this.x + 100;
+            this.world.camera.update(this.x, this.world.bossEnemy.x);
         }, 1000 / 60);
     }
 

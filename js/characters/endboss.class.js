@@ -11,14 +11,15 @@ class Endboss extends MovableObject {
         super().loadImage(imgPaths.boss.idle[0])
         this.loadImageSprites(imgPaths.boss);
         this.hitBox = new HitBox(50, 25, 50, 110, this, 0, 'enemy')
-        // this.world.shadows = new BossShadow(this);
-        this.applyGravity()
+        this.shadow = new BossShadow(this);
+
+        this.applyGravity();
         this.checkStatus();
     }
 
-    initShadow() {
-        this.world.level.enemies.push(this.shadow);
-
+    init(world) {
+        this.world = world;
+        this.world.tempObjects.push(this.shadow);
     }
 
     checkStatus() {

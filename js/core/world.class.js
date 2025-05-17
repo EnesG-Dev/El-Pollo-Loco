@@ -5,10 +5,13 @@ class World {
         this.canvas = canvas;
         this.keyboard = keyboard;
         this.level = level;
+        this.bossEnemy = this.level.enemies[this.level.enemies.length -1];
         this.character = new Character(this);
         this.healthBar = new StatusBar();
         
-        this.camera_x = 0;
+        this.camera = new Camera();
+        
+
         this.tempObjects = [];
     }
 
@@ -22,17 +25,18 @@ class World {
     update() {
         COLLISION_MANAGER.checkCollisions();
         this.updateGameObjects();
-    }
 
+    }
+    
     updateGameObjects() {
         COLLISION_MANAGER.objects.forEach(o => o.updatePosition())
     }
-
+    
     render(ctx) {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     
         // Verschieben für die Kamera
-        this.ctx.translate(this.camera_x, 0);
+        this.ctx.translate(this.camera.getX(), 0);
     
         // Hintergrund und Objekte hinzufügen
         this.addObjectsToMap(this.level.backgroundObjects);
@@ -40,11 +44,11 @@ class World {
         this.addObjectsToMap(this.level.map);
 
         // Kamera zurücksetzen
-        this.ctx.translate(-this.camera_x, 0);
+        this.ctx.translate(-this.camera.getX(), 0);
         // UI-Elemente oder feste Objekte hinzufügen
         this.addToMap(this.healthBar);
         // Verschieben für die Kamera
-        this.ctx.translate(this.camera_x, 0);
+        this.ctx.translate(this.camera.getX(), 0);
 
         // this.addObjectsToMap(this.shadows);
         this.addObjectsToMap(this.level.enemies);
@@ -54,7 +58,7 @@ class World {
         this.addObjectsToMap(COLLISION_MANAGER.objects);
 
         // Kamera zurücksetzen
-        this.ctx.translate(-this.camera_x, 0);
+        this.ctx.translate(-this.camera.getX(), 0);
     
         // UI-Elemente oder feste Objekte hinzufügen
         // this.addToMap(this.healthBar);

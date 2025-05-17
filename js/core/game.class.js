@@ -24,7 +24,7 @@ class Game {
     run() {
         setInterval(() => {
             this.currentScene.update();
-        }, 1000 / 60);
+        }, 1000 / 100);
     }
 
     draw() {

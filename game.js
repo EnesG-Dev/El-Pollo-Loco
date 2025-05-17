@@ -2,6 +2,7 @@ let devMode = true;
 let imgPaths;
 const keyboard = new Keyboard();
 const COLLISION_MANAGER = new CollisionManager();
+let GAME;
 
 async function init() {
     const response = await fetch('data/assets.json');
@@ -9,6 +10,7 @@ async function init() {
 
     const canvas = document.getElementById('canvas');
     const game = new Game(canvas, keyboard);
+    GAME = game;
 }
 
 document.addEventListener('keydown', (event) => {
