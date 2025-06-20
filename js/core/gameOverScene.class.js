@@ -5,14 +5,17 @@ class GameOverScene {
 
     // TODO: finish GameOverScene
     init() {
-        document.addEventListener('keydown', this.restartGameListener = (event) => {
-            if (event.code === 'Space') {
-                this.game.setState('menu');
-            }
-        });
+        this.onKeyDown = (e) => {
+            if (e.code === 'Space') this.game.setState('menu');
+        };
+        document.addEventListener('keydown', this.onKeyDown);
     }
 
-    update() {}
+    destroy() {
+        document.removeEventListener('keydown', this.onKeyDown);
+    }
+
+    update() { }
 
     render(ctx) {
         ctx.fillStyle = 'black';

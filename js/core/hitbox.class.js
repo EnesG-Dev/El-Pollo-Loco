@@ -31,9 +31,7 @@ class HitBox {
         if (this.type === 'projectile' && other.type === 'character') {
             other.owner.hit(40);
             this.owner.detonate();
-        }
-        
-        // world.healthBar.setPrecentage(world.character.energy);
+        }        
     }
 
     initialCollisionRegister() {

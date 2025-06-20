@@ -159,7 +159,6 @@
             "./assets/sprites/03_enemies/phantom/IDLE/Idle8.png",
             "./assets/sprites/03_enemies/phantom/IDLE/Idle9.png",
             "./assets/sprites/03_enemies/phantom/IDLE/Idle10.png"
-
         ],
         "attack": [
             "./assets/sprites/03_enemies/phantom/ATTACK/LightAtk1.png",
@@ -254,7 +253,7 @@
             "./assets/sprites/03_enemies/boss_salamanderWitch/Idle/Idle6.png",
             "./assets/sprites/03_enemies/boss_salamanderWitch/Idle/Idle7.png",
             "./assets/sprites/03_enemies/boss_salamanderWitch/Idle/Idle8.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Idle/Idle9.png"            
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Idle/Idle9.png"
         ],
         "shadow": [
             "./assets/sprites/03_enemies/boss_salamanderWitch/Idle/Shadow/Shadow1.png",
@@ -268,40 +267,22 @@
             "./assets/sprites/03_enemies/boss_salamanderWitch/Idle/Shadow/Shadow9.png"
         ],
         "alert": [
-            "./assets/sprites/4_enemie_boss_chicken/2_alert/G5.png",
-            "./assets/sprites/4_enemie_boss_chicken/2_alert/G6.png",
-            "./assets/sprites/4_enemie_boss_chicken/2_alert/G7.png",
-            "./assets/sprites/4_enemie_boss_chicken/2_alert/G8.png",
-            "./assets/sprites/4_enemie_boss_chicken/2_alert/G9.png",
-            "./assets/sprites/4_enemie_boss_chicken/2_alert/G10.png",
-            "./assets/sprites/4_enemie_boss_chicken/2_alert/G11.png",
-            "./assets/sprites/4_enemie_boss_chicken/2_alert/G12.png"
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Idle/Shadow/Shadow9.png"
         ],
-        "walk":[
-            "./assets/sprites/4_enemie_boss_chicken/1_walk/G1.png",
-            "./assets/sprites/4_enemie_boss_chicken/1_walk/G2.png",
-            "./assets/sprites/4_enemie_boss_chicken/1_walk/G3.png",
-            "./assets/sprites/4_enemie_boss_chicken/1_walk/G4.png"
+        "walk": [
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Idle/Shadow/Shadow9.png"
         ],
-        "attack":[
-            "./assets/sprites/4_enemie_boss_chicken/3_attack/G13.png",
-            "./assets/sprites/4_enemie_boss_chicken/3_attack/G14.png",
-            "./assets/sprites/4_enemie_boss_chicken/3_attack/G15.png",
-            "./assets/sprites/4_enemie_boss_chicken/3_attack/G16.png",
-            "./assets/sprites/4_enemie_boss_chicken/3_attack/G17.png",
-            "./assets/sprites/4_enemie_boss_chicken/3_attack/G18.png",
-            "./assets/sprites/4_enemie_boss_chicken/3_attack/G19.png",
-            "./assets/sprites/4_enemie_boss_chicken/3_attack/G20.png"
+        "attack": [
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Idle/Shadow/Shadow9.png"
         ],
-        "hurt":[
- 
+        "hurt": [
             "./assets/sprites/03_enemies/boss_salamanderWitch/Hurt/Hurt1.png",
             "./assets/sprites/03_enemies/boss_salamanderWitch/Hurt/Hurt2.png",
             "./assets/sprites/03_enemies/boss_salamanderWitch/Hurt/Hurt3.png",
             "./assets/sprites/03_enemies/boss_salamanderWitch/Hurt/Hurt4.png",
             "./assets/sprites/03_enemies/boss_salamanderWitch/Hurt/Hurt5.png"
         ],
-        "death":[
+        "death": [
             "./assets/sprites/03_enemies/boss_salamanderWitch/Death/Die1.png",
             "./assets/sprites/03_enemies/boss_salamanderWitch/Death/Die2.png",
             "./assets/sprites/03_enemies/boss_salamanderWitch/Death/Die3.png",
@@ -334,14 +315,156 @@
             "./assets/sprites/03_enemies/boss_salamanderWitch/Death/Die30.png"
         ]
     },
-    "statusBar": {
-        "health": [
-            "./assets/sprites/7_statusbars/1_statusbar/2_statusbar_health/green/0.png",
-            "./assets/sprites/7_statusbars/1_statusbar/2_statusbar_health/green/20.png",
-            "./assets/sprites/7_statusbars/1_statusbar/2_statusbar_health/green/40.png",
-            "./assets/sprites/7_statusbars/1_statusbar/2_statusbar_health/green/60.png",
-            "./assets/sprites/7_statusbars/1_statusbar/2_statusbar_health/green/80.png",
-            "./assets/sprites/7_statusbars/1_statusbar/2_statusbar_health/green/100.png"
-        ]
-    }
+    "status_bar": {
+        "portrait": {
+            "normal": [
+                "./assets/sprites/statusbars/character/portrait/portrait_00.png"
+            ],
+            "broken": [
+                "./assets/sprites/statusbars/character/portrait/broken/brokenPortrait_01.png",
+                "./assets/sprites/statusbars/character/portrait/broken/brokenPortrait_02.png",
+                "./assets/sprites/statusbars/character/portrait/broken/brokenPortrait_03.png",
+                "./assets/sprites/statusbars/character/portrait/broken/brokenPortrait_04.png",
+                "./assets/sprites/statusbars/character/portrait/broken/brokenPortrait_05.png",
+                "./assets/sprites/statusbars/character/portrait/broken/brokenPortrait_06.png",
+                "./assets/sprites/statusbars/character/portrait/broken/brokenPortrait_07.png",
+                "./assets/sprites/statusbars/character/portrait/broken/brokenPortrait_08.png"
+            ]
+        },
+        "healthbar_border": {
+            "normal": [
+                "./assets/sprites/statusbars/character/healthBar/border/lifeBar_border.png"
+            ],
+            "white": [
+                "./assets/sprites/statusbars/character/healthBar/border/border_white.png",
+                "./assets/sprites/dummySprite/nullTexture.png"
+            ],
+            "broken": [
+                "./assets/sprites/statusbars/character/healthBar/border/lifeBar_broken1.png",
+                "./assets/sprites/statusbars/character/healthBar/border/lifeBar_broken2.png",
+                "./assets/sprites/statusbars/character/healthBar/border/lifeBar_broken3.png"
+            ]
+        },
+        "healthbar_orange": {
+            "full": [
+                "./assets/sprites/statusbars/character/healthBar/orangeLife/lifeBar_orange1.png"
+            ],
+            "half": [
+                "./assets/sprites/statusbars/character/healthBar/orangeLife/lifeBar_orange2.png"
+            ],
+            "one": [
+                "./assets/sprites/statusbars/character/healthBar/orangeLife/lifeBar_orange3.png"
+            ]
+        },
+        "healthbar_blood": {
+            "amount": [
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_amount/life_00.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_amount/life_10.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_amount/life_20.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_amount/life_30.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_amount/life_40.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_amount/life_50.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_amount/life_60.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_amount/life_70.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_amount/life_80.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_amount/life_90.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_amount/life_100.png"
+            ],
+            "edge_1": [
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_edge/1/HP_edge1_1.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_edge/1/HP_edge1_2.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_edge/1/HP_edge1_3.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_edge/1/HP_edge1_4.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_edge/1/HP_edge1_5.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_edge/1/HP_edge1_6.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_edge/1/HP_edge1_7.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_edge/1/HP_edge1_8.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_edge/1/HP_edge1_9.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_edge/1/HP_edge1_10.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_edge/1/HP_edge1_12.png"
+            ],
+            "edge_2": [
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_edge/2/HP_edge2_1.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_edge/2/HP_edge2_2.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_edge/2/HP_edge2_3.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_edge/2/HP_edge2_4.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_edge/2/HP_edge2_5.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_edge/2/HP_edge2_6.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_edge/2/HP_edge2_7.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_edge/2/HP_edge2_8.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_edge/2/HP_edge2_9.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_edge/2/HP_edge2_10.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_edge/2/HP_edge2_11.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_edge/2/HP_edge2_12.png"
+            ],
+            "drip": [
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_drip/BloodFx1.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_drip/BloodFx2.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_drip/BloodFx3.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_drip/BloodFx4.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_drip/BloodFx5.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_drip/BloodFx6.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_drip/BloodFx7.png",
+                "./assets/sprites/statusbars/character/healthBar/healthBlood/blood_drip/BloodFx8.png"
+            ]
+        },
+        "blood_edge": {
+            "HP_edge_1": [
+                "./assets/sprites/statusbars/character/healthBar/HP_edge/1/HP_edge1_1.png",
+                "./assets/sprites/statusbars/character/healthBar/HP_edge/1/HP_edge1_2.png",
+                "./assets/sprites/statusbars/character/healthBar/HP_edge/1/HP_edge1_3.png",
+                "./assets/sprites/statusbars/character/healthBar/HP_edge/1/HP_edge1_4.png",
+                "./assets/sprites/statusbars/character/healthBar/HP_edge/1/HP_edge1_5.png",
+                "./assets/sprites/statusbars/character/healthBar/HP_edge/1/HP_edge1_6.png",
+                "./assets/sprites/statusbars/character/healthBar/HP_edge/1/HP_edge1_7.png",
+                "./assets/sprites/statusbars/character/healthBar/HP_edge/1/HP_edge1_8.png",
+                "./assets/sprites/statusbars/character/healthBar/HP_edge/1/HP_edge1_9.png",
+                "./assets/sprites/statusbars/character/healthBar/HP_edge/1/HP_edge1_10.png",
+                "./assets/sprites/statusbars/character/healthBar/HP_edge/1/HP_edge1_12.png"
+            ],
+            "HP_edge_2": [
+                "./assets/sprites/statusbars/character/healthBar/HP_edge/2/HP_edge2_1.png",
+                "./assets/sprites/statusbars/character/healthBar/HP_edge/2/HP_edge2_2.png",
+                "./assets/sprites/statusbars/character/healthBar/HP_edge/2/HP_edge2_3.png",
+                "./assets/sprites/statusbars/character/healthBar/HP_edge/2/HP_edge2_4.png",
+                "./assets/sprites/statusbars/character/healthBar/HP_edge/2/HP_edge2_5.png",
+                "./assets/sprites/statusbars/character/healthBar/HP_edge/2/HP_edge2_6.png",
+                "./assets/sprites/statusbars/character/healthBar/HP_edge/2/HP_edge2_7.png",
+                "./assets/sprites/statusbars/character/healthBar/HP_edge/2/HP_edge2_8.png",
+                "./assets/sprites/statusbars/character/healthBar/HP_edge/2/HP_edge2_9.png",
+                "./assets/sprites/statusbars/character/healthBar/HP_edge/2/HP_edge2_10.png",
+                "./assets/sprites/statusbars/character/healthBar/HP_edge/2/HP_edge2_11.png",
+                "./assets/sprites/statusbars/character/healthBar/HP_edge/2/HP_edge2_12.png"
+            ]
+        },
+        "fx": {
+            "hit_splash": [
+                "./assets/sprites/statusbars/character/healthBar/fx/hit_plash/BloodFx1.png",
+                "./assets/sprites/statusbars/character/healthBar/fx/hit_plash/BloodFx2.png",
+                "./assets/sprites/statusbars/character/healthBar/fx/hit_plash/BloodFx3.png",
+                "./assets/sprites/statusbars/character/healthBar/fx/hit_plash/BloodFx4.png",
+                "./assets/sprites/statusbars/character/healthBar/fx/hit_plash/BloodFx5.png",
+                "./assets/sprites/statusbars/character/healthBar/fx/hit_plash/BloodFx6.png"
+            ],
+            "break_shatter": [
+                "./assets/sprites/statusbars/character/healthBar/fx/break_shatter/ShatterFX1.png",
+                "./assets/sprites/statusbars/character/healthBar/fx/break_shatter/ShatterFX2.png",
+                "./assets/sprites/statusbars/character/healthBar/fx/break_shatter/ShatterFX3.png",
+                "./assets/sprites/statusbars/character/healthBar/fx/break_shatter/ShatterFX4.png",
+                "./assets/sprites/statusbars/character/healthBar/fx/break_shatter/ShatterFX5.png",
+                "./assets/sprites/statusbars/character/healthBar/fx/break_shatter/ShatterFX6.png",
+                "./assets/sprites/statusbars/character/healthBar/fx/break_shatter/ShatterFX7.png"
+            ],
+            "break_splash": [
+                "./assets/sprites/statusbars/character/healthBar/fx/break_plash/BloodSplash1.png",
+                "./assets/sprites/statusbars/character/healthBar/fx/break_plash/BloodSplash2.png",
+                "./assets/sprites/statusbars/character/healthBar/fx/break_plash/BloodSplash3.png",
+                "./assets/sprites/statusbars/character/healthBar/fx/break_plash/BloodSplash4.png",
+                "./assets/sprites/statusbars/character/healthBar/fx/break_plash/BloodSplash5.png"
+            ]
+        }
+    },
+    "null": [
+        "./assets/sprites/dummySprite/nullTexture.png"
+    ]
 }

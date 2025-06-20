@@ -3,33 +3,28 @@ class Game {
         this.canvas = canvas;
         this.ctx = this.canvas.getContext('2d');
         this.keyboard = keyboard;
-        this.gameState = 'menu';
-        this.scenes = {
-            menu: new MenuScene(this),
-            playing: new GameScene(this),
-            gameOver: new GameOverScene(this)
-        };
-        this.currentScene = this.scenes.menu;
-        this.currentScene.init();
-        this.run();
-        this.draw();
+
+        this.loopId = null;
+        this.setState('menu');
+        this.gameLoop();
     }
 
     setState(state) {
-        this.gameState = state;
-        this.currentScene = this.scenes[state];
+        if (this.currentScene?.destroy) this.currentScene.destroy();
+        switch (state) {
+            case 'menu': this.currentScene = new MenuScene(this); break;
+            case 'playing': this.currentScene = new GameScene(this); break;
+            case 'gameOver': this.currentScene = new GameOverScene(this); break;
+        }
         this.currentScene.init();
     }
 
-    run() {
-        setInterval(() => {
-            this.currentScene.update();
-        }, 1000 / 100);
-    }
-
-    draw() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.currentScene.render(this.ctx);
-        requestAnimationFrame(() => this.draw());
+    gameLoop() {
+        const step = (ts) => {
+            this.currentScene.update(ts);
+            this.currentScene.render(this.ctx);
+            this.loopId = requestAnimationFrame(step);
+        };
+        this.loopId = requestAnimationFrame(step);
     }
 }

@@ -12,7 +12,17 @@ class DrawableObject {
     status = '';
     mainInterval;
     moveInterval;
-    animationInterval;    // currunt temporare intervalID for clearInterval
+    animationInterval;
+
+    hitVibration() {
+        this.x -= 3;
+        this.y += 3;
+
+        setTimeout(() => {
+            this.x += 3;
+            this.y -= 3;
+        }, 200);
+    }
 
     playSpriteOnce(images, animationSpeed, onComplete, actionI = -1) {
         clearInterval(this.animationInterval);
@@ -40,6 +50,13 @@ class DrawableObject {
         }
     }
 
+    playSprite(images, animationS) {
+        clearInterval(this.animationInterval);
+        this.animationInterval = setInterval(() => {
+            this.playAnimation(images);
+        }, animationS);
+    }
+
     playAnimation(images) {
         let i = this.curentImage % images.length;
         let path = images[i];
@@ -47,11 +64,8 @@ class DrawableObject {
         this.curentImage++;
     }
 
-    playSprite(images, animationS) {
-        clearInterval(this.animationInterval);    // Vorheriges Intervall entfernen
-        this.animationInterval = setInterval(() => {
-            this.playAnimation(images);
-        }, animationS);
+    setImage(src) {
+        this.img = this.imageCache[src];
     }
 
     /**
@@ -102,6 +116,7 @@ class DrawableObject {
                 curentImage: this.curentImage,
                 imageIndex: this.imageIndex,
                 status: this.status,
+                objekt: this,
                 error: error.message
             });
             // FIXME: remove debugger

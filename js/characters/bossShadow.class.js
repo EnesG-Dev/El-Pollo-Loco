@@ -2,14 +2,11 @@ class BossShadow extends MovableObject {
     height = 100;
     width = 100;
     objectGround = 75;
-
     speed = 5;
-
 
     constructor(owner) {
         super().loadImage(imgPaths.boss.shadow[0])
         this.loadImageSprites(imgPaths.boss);
-        // this.x = owner.x;
         this.owner = owner;
 
         this.applyGravity();
@@ -19,10 +16,9 @@ class BossShadow extends MovableObject {
     }
 
     moveAction() {
-        clearInterval(this.moveInterval);    // Vorheriges Intervall entfernen
+        clearInterval(this.moveInterval);
         this.moveInterval = setInterval(() => {
             this.x = this.owner.x + 30;
         }, 1000 / 60);
     }
-
 }

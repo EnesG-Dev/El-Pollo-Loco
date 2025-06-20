@@ -3,7 +3,7 @@ class MovableObject extends DrawableObject {
     speed = 0.15;
     otherDirection = false;
 
-    speedY = 0;         // Sprung
+    speedY = 0;         // Sprung ≈ Höhe
     acceleration = 0.5; // Beschleunigung
     objectGround = 0;
 
@@ -11,6 +11,7 @@ class MovableObject extends DrawableObject {
     lastHit = 0;
     lastAttack = 0;
     lastJump = 0;
+    HURT_DURATION_SECONDS = 1;
 
     constructor() {
         super();
@@ -21,21 +22,26 @@ class MovableObject extends DrawableObject {
         this.world = world;
     }
 
-    hit(demage) {
-        if (!this.isHurt() || this.lastHit == 0) {
-            this.energy -= demage;
-            if (this.energy < 0) {
-                this.energy = 0;
-            } else {
-                this.lastHit = new Date().getTime();
-            }
+    hit(damage) {
+        let now = Date.now();
+
+        if (this.isHurt(now) || this.energy <= 0) return;
+
+        this.energy -= damage;
+        if (this.energy <= 0) {
+            this.energy = 0;
+        } else {
+            this.lastHit = now;
+        }
+
+        if (this instanceof Character) {
+            this.world.statusBar.update();
         }
     }
 
-    isHurt() {
-        let timePassed = new Date().getTime() - this.lastHit;
-        timePassed = timePassed / 1000; // time in sec
-        return timePassed < 0.4;
+    isHurt(currentTime = Date.now()) {
+        let timePassedInSeconds = (currentTime - this.lastHit) / 1000;
+        return timePassedInSeconds < this.HURT_DURATION_SECONDS;
     }
 
     /**
@@ -44,7 +50,7 @@ class MovableObject extends DrawableObject {
     * @returns {boolean} - Returns `true` if the energy is zero, otherwise `false`.
     */
     isDead() {
-        return this.energy === 0;
+        return this.energy <= 0;
     }
 
     applyGravity() {
@@ -62,7 +68,7 @@ class MovableObject extends DrawableObject {
                 this.y = groundLevel + this.objectGround; // Korrigiere die Position
                 this.speedY = 0; // Setze die vertikale Geschwindigkeit auf 0
             }
-            
+
         }, 1000 / 60);
     }
 
@@ -75,22 +81,22 @@ class MovableObject extends DrawableObject {
     }
 
     getGroundLevel(x, y) {
-        const config = this.world.level.configs.find(cfg => 
+        const config = this.world.level.configs.find(cfg =>
             x >= cfg.minX && x < cfg.maxX &&
             (cfg.minY === undefined || cfg.maxY === undefined || (y >= cfg.minY && y < cfg.maxY))
         );
-        
+
         if (!config) {
             console.error('no lvl entries', x, y);
         }
-        
+
         if (config.type === "ramp") {
             return this.getRampLevel(x, config.minX, config.maxX, config.startLevel, config.endLevel);
         } else {
             return config.groundLevel;
         }
     }
-    
+
     getRampLevel(x, startX, endX, startY, endY) {
         // Berechne Steigung (m)
         const m = (endY - startY) / (endX - startX);

@@ -16,6 +16,8 @@ class Character extends MovableObject {
         this.setMoveInterval();
         this.setAnimationInterval();
         this.x = 3300;
+
+        this.readyToHurt = true;
     }
 
     setMoveInterval() {
@@ -50,7 +52,6 @@ class Character extends MovableObject {
 
             }
 
-            // this.world.camera_x = -this.x + 100;
             this.world.camera.update(this.x, this.world.bossEnemy.x);
         }, 1000 / 60);
     }
@@ -66,10 +67,15 @@ class Character extends MovableObject {
                 }
 
                 // HURT
-            } else if (this.isHurt()) {
+            } else if (this.isHurt() && this.readyToHurt) {
                 if (this.status !== 'hurt') {
                     this.status = 'hurt';
+                    this.readyToHurt = false;
                     this.playSpriteOnce(this.IMAGES_HURT, 80);
+
+                    setTimeout(() => {
+                        this.readyToHurt = true;
+                    }, 1000);
                 }
 
                 // JUMP    
@@ -98,7 +104,7 @@ class Character extends MovableObject {
                     this.playSpriteOnce(this.IMAGES_LAND, 70);
 
                 // WALK
-            } else if ((this.world.keyboard.RIGHT || this.world.keyboard.LEFT) && this.isAboveGround) {
+            } else if ((this.world.keyboard.RIGHT || this.world.keyboard.LEFT) && this.isAboveGround && (!this.isHurt() || this.status !== 'hurt')) {
                 if (this.status !== 'walk') {
                     this.status = 'walk';
                     this.playSprite(this.IMAGES_WALK, 50);
@@ -121,9 +127,15 @@ class Character extends MovableObject {
     clearAll() {
         clearInterval(this.mainInterval);
         clearInterval(this.moveInterval);
-        clearInterval(this.animationInterval);
+        // clearInterval(this.animationInterval);
         console.log('clear');
         console.log('Status:', this.status);
+    }
+
+    // TODO: test continue
+    playContinue() {
+        this.setMoveInterval();
+        this.setAnimationInterval();
     }
 
     /**

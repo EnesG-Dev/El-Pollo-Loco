@@ -5,14 +5,17 @@ class MenuScene {
 
     // TODO: finish MenuScene
     init() {
-        document.addEventListener('keydown', this.startGameListener = (event) => {
-            if (event.code === 'Space') {
-                this.game.setState('playing');
-            }
-        });
+        this.onKeyDown = (e) => {
+            if (e.code === 'Space') this.game.setState('playing');
+        };
+        document.addEventListener('keydown', this.onKeyDown);
     }
 
-    update() {}
+    destroy() {
+        document.removeEventListener('keydown', this.onKeyDown);
+    }
+
+    update() { }
 
     render(ctx) {
         ctx.fillStyle = 'black';

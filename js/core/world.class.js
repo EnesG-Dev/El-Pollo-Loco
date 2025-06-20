@@ -7,11 +7,11 @@ class World {
         this.level = level;
         this.bossEnemy = this.level.enemies[this.level.enemies.length -1];
         this.character = new Character(this);
-        this.healthBar = new StatusBar();
-        
+
+        this.statusBar = new StatusBar(0, -10, this.character);
+
         this.camera = new Camera();
         
-
         this.tempObjects = [];
     }
 
@@ -24,6 +24,12 @@ class World {
 
     update() {
         COLLISION_MANAGER.checkCollisions();
+
+        if (!this.character.isDead()) {
+            // console.log(this.character.energy);
+            
+            
+        }
         this.updateGameObjects();
 
     }
@@ -46,11 +52,13 @@ class World {
         // Kamera zurücksetzen
         this.ctx.translate(-this.camera.getX(), 0);
         // UI-Elemente oder feste Objekte hinzufügen
-        this.addToMap(this.healthBar);
+        
+        // this.addToMap(this.healthBar);
+        this.statusBar.render(ctx);
+
         // Verschieben für die Kamera
         this.ctx.translate(this.camera.getX(), 0);
 
-        // this.addObjectsToMap(this.shadows);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.tempObjects);
         this.addToMap(this.character);
@@ -96,9 +104,7 @@ class World {
         this.ctx.restore();
     }
 
-    // TODO: start gameOver
     isGameOver() {
-        // Beispiel: Spiel ist vorbei, wenn die Gesundheit 0 ist
-        return this.healthBar.value <= 0; // Annahme: StatusBar hat eine value-Eigenschaft
+        return this.character.energy === 0 || this.bossEnemy.energy === 0;
     }
 }
