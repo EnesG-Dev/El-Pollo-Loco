@@ -21,4 +21,6 @@ class BossShadow extends MovableObject {
             this.x = this.owner.x + 30;
         }, 1000 / 60);
     }
+
+    update(){}
 }

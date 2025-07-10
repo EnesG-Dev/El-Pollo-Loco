@@ -6,7 +6,7 @@ class GameOverScene {
     // TODO: finish GameOverScene
     init() {
         this.onKeyDown = (e) => {
-            if (e.code === 'Space') this.game.setState('menu');
+            if (e.code === 'Space') this.game.setState('playing');
         };
         document.addEventListener('keydown', this.onKeyDown);
     }

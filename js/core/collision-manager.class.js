@@ -23,7 +23,7 @@ class CollisionManager {
      */
     checkCollisions() {
         for (let i = 0; i < this.objects.length; i++) {
-            
+
             for (let j = i + 1; j < this.objects.length; j++) {
                 const objA = this.objects[i];
                 const objB = this.objects[j];

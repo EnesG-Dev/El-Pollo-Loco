@@ -2,7 +2,7 @@ class Character extends MovableObject {
     height = 150;
     width = 150;
     speed = 4;
-    walking_sound = new Audio('/audio/walk.mp3')
+    walking_sound = new Audio('/assets/audio/character/walk.mp3')
 
     constructor(world) {
         super().loadImage(imgPaths.character.idle[0]);
@@ -13,6 +13,7 @@ class Character extends MovableObject {
         this.hitBoxSword = new HitBox(105, 25, 35, 90, this, 95, 'sword');
 
         this.applyGravity();
+        
         this.setMoveInterval();
         this.setAnimationInterval();
         this.x = 0;
@@ -40,14 +41,14 @@ class Character extends MovableObject {
                     this.walking_sound.play();
 
                     // wall blocks move left
-                    if (this.x >= 630 && this.x <= 640 && this.y > 170) {}
-                    else if (this.x >= 1100 && this.x <= 1110 && this.y > 120) {}
-                    else if (this.x >= 2840 && this.x <= 2850 && this.y > 183) {}
+                    if (this.x >= 630 && this.x <= 640 && this.y > 170) { }
+                    else if (this.x >= 1100 && this.x <= 1110 && this.y > 120) { }
+                    else if (this.x >= 2840 && this.x <= 2850 && this.y > 183) { }
 
                     else this.moveLeft(true);
                 }
 
-                if (this.world.keyboard.UP && !this.isAboveGround()) {
+                if (this.world.keyboard.SPACE && !this.isAboveGround()) {
                     this.jump();
                 }
 
@@ -63,8 +64,7 @@ class Character extends MovableObject {
             // DEAD
             if (this.isDead() && !this.isAboveGround()) {
                 if (this.status !== 'die') {
-                    this.status = 'die';
-                    this.playSpriteOnce(this.IMAGES_DEAD, 100, () => this.status = 'die');
+                    this.statusDead();
                 }
 
                 // HURT
@@ -81,28 +81,28 @@ class Character extends MovableObject {
 
                 // JUMP    
             } else if (this.isAboveGround(10) && this.status !== 'attack') {
-                    
-                    if (this.speedY > 5 && this.status !== 'jumping') {
+
+                if (this.speedY > 5 && this.status !== 'jumping') {
+                    this.status = 'jumping';
+
+                    this.playSpriteOnce(this.IMAGES_JUMP, 80, () => {
                         this.status = 'jumping';
+                        this.playSprite(this.IMAGES_JUMPING, 80);
+                    });
+                }
 
-                        this.playSpriteOnce(this.IMAGES_JUMP, 80, () => {
-                            this.status = 'jumping';
-                            this.playSprite(this.IMAGES_JUMPING, 80);
-                        });
-                    }
-                    
-                    if (this.speedY < 5 && this.status !== 'fall') {
+                if (this.speedY < 5 && this.status !== 'fall') {
+                    this.status = 'fall';
+
+                    this.playSpriteOnce(this.IMAGES_FALL, 120, () => {
                         this.status = 'fall';
+                        this.playSprite(this.IMAGES_FALLING, 120);
+                    });
+                }
 
-                        this.playSpriteOnce(this.IMAGES_FALL, 120, () => {
-                            this.status = 'fall';
-                            this.playSprite(this.IMAGES_FALLING, 120);
-                        });
-                    }
-                    
             } else if (!this.isAboveGround() && this.status == 'fall') {
-                    this.status = 'land';
-                    this.playSpriteOnce(this.IMAGES_LAND, 70);
+                this.status = 'land';
+                this.playSpriteOnce(this.IMAGES_LAND, 70);
 
                 // WALK
             } else if ((this.world.keyboard.RIGHT || this.world.keyboard.LEFT) && this.isAboveGround && (!this.isHurt() || this.status !== 'hurt')) {
@@ -125,14 +125,6 @@ class Character extends MovableObject {
         this.playSpriteOnce(this.IMAGES_ATTACK1, 60, () => this.addAttackArea(), 5);
     }
 
-    clearAll() {
-        clearInterval(this.mainInterval);
-        clearInterval(this.moveInterval);
-        // clearInterval(this.animationInterval);
-        console.log('clear');
-        console.log('Status:', this.status);
-    }
-
     // TODO: test continue
     playContinue() {
         this.setMoveInterval();
@@ -145,7 +137,7 @@ class Character extends MovableObject {
     jump() {
         let timePassed = new Date().getTime() - this.lastJump;
         timePassed = timePassed / 1000;
-        if (timePassed > 1) {            
+        if (timePassed > 1) {
             this.speedY = 15;
             this.lastJump = new Date().getTime();
         }
@@ -154,5 +146,11 @@ class Character extends MovableObject {
     addAttackArea() {
         this.hitBoxSword.addToCollisionList();
         this.hitBoxSword.removeFromCollisionList(300);
+    }
+
+    statusDead() {
+        this.status = 'die';
+        this.hitBox.removeFromCollisionList();
+        this.playSpriteOnce(this.IMAGES_DEATH, 100, () => this.status = 'die');
     }
 }

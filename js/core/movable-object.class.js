@@ -22,6 +22,12 @@ class MovableObject extends DrawableObject {
         this.world = world;
     }
 
+    clearAll() {
+        clearInterval(this.mainInterval);
+        clearInterval(this.moveInterval);
+        clearInterval(this.animationInterval);
+    }
+
     hit(damage) {
         let now = Date.now();
 
@@ -30,6 +36,7 @@ class MovableObject extends DrawableObject {
         this.energy -= damage;
         if (this.energy <= 0) {
             this.energy = 0;
+            this.statusDead();
         } else {
             this.lastHit = now;
         }
@@ -37,6 +44,22 @@ class MovableObject extends DrawableObject {
         if (this instanceof Character) {
             this.world.statusBar.update();
         }
+    }
+
+    statusDead() {
+        this.status = 'die';
+        this.hitBox.removeFromCollisionList();
+        this.playSpriteOnce(this.IMAGES_DEATH, 150, () => {
+            this.status = 'die';
+            this.deleteThis();
+        });
+    }
+
+    deleteThis() {
+        this.world.level.enemies = this.world.level.enemies.filter(enemy => enemy !== this);
+        clearInterval(this.moveInterval);
+        clearInterval(this.animationInterval);
+        // TODO: spawn Coin
     }
 
     isHurt(currentTime = Date.now()) {

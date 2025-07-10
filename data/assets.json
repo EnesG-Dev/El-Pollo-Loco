@@ -63,7 +63,7 @@
             "./assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Hurt/FX/Hurt6.png",
             "./assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Idle/Idle6.png"
         ],
-        "dead": [
+        "death": [
             "./assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death1.png",
             "./assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death2.png",
             "./assets/sprites/00_JoannaD'ArcIII_v1/Sprites/Death/Death3.png",

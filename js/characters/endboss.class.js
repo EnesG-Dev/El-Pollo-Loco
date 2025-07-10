@@ -1,4 +1,5 @@
 class Endboss extends MovableObject {
+    // BUG: weil der Boss stirb stopt die animation zu früh > fehler in der gameScene
     height = 150;
     width = 150;
     x = 3500;
@@ -14,7 +15,6 @@ class Endboss extends MovableObject {
         this.shadow = new BossShadow(this);
 
         this.applyGravity();
-        this.checkStatus();
     }
 
     init(world) {
@@ -22,51 +22,30 @@ class Endboss extends MovableObject {
         this.world.tempObjects.push(this.shadow);
     }
 
-    checkStatus() {
-        this.mainInterval = setInterval(() => {
+    update() {
 
-            // DEAD
-            if (this.isDead() && !this.isHurt()) {
-                if (this.status !== 'die') {
-                    this.statusDead();
-                }
-
-                // HURT
-            } else if (this.isHurt()) {
-                if (this.status !== 'hurt') {
-                    this.status = 'hurt';
-                    this.playSpriteOnce(this.IMAGES_HURT, 150);
-                }
-
-                // ATTACK
-
-
-                // IDLE
-            } else {
-                if (this.status == '') {
-                    this.status = 'idle';
-                    this.playSprite(this.IMAGES_IDLE, 150)
-                }
+        // DEAD
+        if (this.isDead() && !this.isHurt()) {
+            if (this.status !== 'die') {
+                this.statusDead();
             }
 
-        }, 1000 / 30);
+            // HURT
+        } else if (this.isHurt()) {
+            if (this.status !== 'hurt') {
+                this.status = 'hurt';
+                this.playSpriteOnce(this.IMAGES_HURT, 150);
+            }
+
+            // ATTACK
+
+
+            // IDLE
+        } else {
+            if (this.status == '') {
+                this.status = 'idle';
+                this.playSprite(this.IMAGES_IDLE, 150)
+            }
+        }
     }
-
-    statusDead() {      // doppel
-        this.status = 'die';
-
-        this.hitBox.removeFromCollisionList();
-        this.playSpriteOnce(this.IMAGES_DEATH, 150, () => {
-            this.status = 'die';
-            // this.deleteThis();
-        });
-    }
-
-    // TODO: spawn Coin
-    deleteThis() {
-        this.world.level.enemies = this.world.level.enemies.filter(enemy => enemy !== this);
-        clearInterval(this.moveInterval);
-        clearInterval(this.animationInterval);
-    }
-
 }

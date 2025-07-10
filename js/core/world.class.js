@@ -5,13 +5,13 @@ class World {
         this.canvas = canvas;
         this.keyboard = keyboard;
         this.level = level;
-        this.bossEnemy = this.level.enemies[this.level.enemies.length -1];
+        this.bossEnemy = this.level.enemies[this.level.enemies.length - 1];
         this.character = new Character(this);
 
         this.statusBar = new StatusBar(0, -10, this.character);
 
         this.camera = new Camera();
-        
+
         this.tempObjects = [];
     }
 
@@ -22,28 +22,35 @@ class World {
         this.tempObjects.forEach(obj => obj.init(this));
     }
 
+    clearObjects() {
+        this.level.backgroundObjects.forEach(obj => obj.clearAll(this));
+        this.level.clouds.forEach(obj => obj.clearAll(this));
+        this.level.enemies.forEach(obj => obj.clearAll(this));
+        this.tempObjects.forEach(obj => obj.clearAll(this));
+    }
+
     update() {
         COLLISION_MANAGER.checkCollisions();
-
+        this.level.enemies.forEach(obj => obj.update());
         if (!this.character.isDead()) {
             // console.log(this.character.energy);
-            
-            
+
+
         }
         this.updateGameObjects();
 
     }
-    
+
     updateGameObjects() {
         COLLISION_MANAGER.objects.forEach(o => o.updatePosition())
     }
-    
+
     render(ctx) {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    
+
         // Verschieben für die Kamera
         this.ctx.translate(this.camera.getX(), 0);
-    
+
         // Hintergrund und Objekte hinzufügen
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.clouds);
@@ -52,7 +59,7 @@ class World {
         // Kamera zurücksetzen
         this.ctx.translate(-this.camera.getX(), 0);
         // UI-Elemente oder feste Objekte hinzufügen
-        
+
         // this.addToMap(this.healthBar);
         this.statusBar.render(ctx);
 
@@ -67,10 +74,10 @@ class World {
 
         // Kamera zurücksetzen
         this.ctx.translate(-this.camera.getX(), 0);
-    
+
         // UI-Elemente oder feste Objekte hinzufügen
         // this.addToMap(this.healthBar);
-    
+
     }
 
     addObjectsToMap(objects) {

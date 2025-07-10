@@ -19,8 +19,8 @@ class GameScene {
 
         if (this.world.isGameOver()) {
             this.gameOverTriggered = true;
+            this.world.clearObjects();
             COLLISION_MANAGER.objects = [];
-            this.world.character.clearAll();
             setTimeout(() => {
                 // this.world.character.playContinue();
                 this.game.setState('gameOver');

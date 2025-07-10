@@ -5,6 +5,7 @@ class Phantom extends MovableObject {
 
     energy = 100;
     speed = 1;
+    speed = 0.3;
 
     attackReady = true;
     moveToLeft = true;
@@ -16,56 +17,51 @@ class Phantom extends MovableObject {
         this.spawnPosition = x;
         this.x = x;
         this.y = y;
-        
+
         this.energy = 10;
 
         // Charakter-HitBox
         this.hitBox = new HitBox(70, 80, 60, 80, this, -20, 'enemy');
         this.attackHitBox = new HitBox(130, 60, 50, 100, this, 90, 'attackArea');
-
-
-        this.checkStatus();
     }
 
-    checkStatus() {
-        this.mainInterval = setInterval(() => {            
+    update() {
 
-            // DEAD
-            if (this.isDead() && !this.isHurt()) {
-                if (this.status !== 'die') {
-                    this.statusDead();
-                }
-
-                // HURT
-            } else if (this.isHurt()) {
-                if (this.status !== 'hurt') {
-                    this.status = 'hurt';
-                    this.playSpriteOnce(this.IMAGES_HURT, 150);
-                }
-
-                // ATTACK
-            } else if ((this.isCharacterNearby() && this.attackReady) || this.status == 'attack') {
-                if (this.status !== 'attack') {
-                    this.turnToCharecter();
-                    this.attack();
-                }
-
-                // IDLE
-            } else {
-                if (this.status == '') {
-                    this.status = 'idle';
-                    this.playSprite(this.IMAGES_IDLE, 150)
-                }
-                if (this.status == 'idle') {
-                    this.movePhantom();
-                }
+        // DEAD
+        if (this.isDead() && !this.isHurt()) {
+            if (this.status !== 'die') {
+                this.statusDead();
             }
 
-        }, 1000 / 30);
+            // HURT
+        } else if (this.isHurt()) {
+            if (this.status !== 'hurt') {
+                this.status = 'hurt';
+                this.playSpriteOnce(this.IMAGES_HURT, 150);
+            }
+
+            // ATTACK
+        } else if ((this.isCharacterNearby() && this.attackReady) || this.status == 'attack') {
+            if (this.status !== 'attack') {
+                this.turnToCharecter();
+                this.attack();
+            }
+
+            // IDLE
+        } else {
+            if (this.status == '') {
+                this.status = 'idle';
+                this.playSprite(this.IMAGES_IDLE, 150)
+            }
+            if (this.status == 'idle') {
+                this.movePhantom();
+            }
+        }
+
     }
 
     turnToCharecter() {
-        
+
         if (this.world.character.x < this.x) {
             this.moveToLeft = true;
             this.otherDirection = true;
@@ -95,7 +91,7 @@ class Phantom extends MovableObject {
         if (this.world && (this.world.character.y + 100) >= (this.y + 50) && (this.world.character.y + 100) <= (this.y + 200)) {
             if (this.otherDirection) {
                 return this.world.character.x >= (this.x - 60) && this.world.character.x < (this.x + 140);
-            } else return this.world.character.x >= (this.x - 80) && this.world.character.x < (this.x + 130); 
+            } else return this.world.character.x >= (this.x - 80) && this.world.character.x < (this.x + 130);
         }
     }
 
@@ -111,26 +107,10 @@ class Phantom extends MovableObject {
             this.attackReady = true;
         }, 1500);
     }
-    
+
     addAttackArea() {
         this.attackHitBox.alignmentCorrection();
         this.attackHitBox.addToCollisionList();
         this.attackHitBox.removeFromCollisionList(300);
-    }
-
-    statusDead() {
-        this.status = 'die';
-
-        this.hitBox.removeFromCollisionList();
-        this.playSpriteOnce(this.IMAGES_DEATH, 150, () => {
-            this.status = 'die';
-            this.deleteThis();
-        });
-    }
-
-    deleteThis() {
-        this.world.level.enemies = this.world.level.enemies.filter(enemy => enemy !== this);
-        clearInterval(this.moveInterval);
-        clearInterval(this.animationInterval);
     }
 }
