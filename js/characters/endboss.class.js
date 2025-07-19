@@ -23,9 +23,31 @@ class Endboss extends MovableObject {
     }
 
     update() {
+        this.shadow.update();
 
-        // DEAD
-        if (this.isDead() && !this.isHurt()) {
+        // SLEEP
+        if (this.status == 'rest' || this.status == 'resting') {
+            if (this.status !== 'resting') {
+                this.status = 'resting';
+                this.playSpriteOnce(this.IMAGES_REST, 200, () => {
+                    this.status = 'resting';
+                    this.playSprite(this.IMAGES_SLEEPING, 200);
+                });
+            }
+
+            // SPIN
+        } else if (this.status == 'spin' || this.status == 'spining') {
+            if (this.status !== 'spining') {
+                this.status = 'spining';
+
+                this.playSpriteOnce(this.IMAGES_STANDUP, 100, () => {
+                    this.status = 'spining';
+                    this.playSpriteOnce(this.IMAGES_SPIN, 100);
+                });
+            }
+
+            // DEAD
+        } else if (this.isDead() && !this.isHurt()) {
             if (this.status !== 'die') {
                 this.statusDead();
             }
