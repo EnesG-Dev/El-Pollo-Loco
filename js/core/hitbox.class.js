@@ -1,5 +1,4 @@
 class HitBox {
-
     constructor(offsetX, offsetY, w, h, owner = undefined, mirrorCorrectionX = 0, type = 'default') {
         this.owner = owner;
 
@@ -23,6 +22,11 @@ class HitBox {
             } else {                
                 this.owner.hit(10);
             }
+        }
+
+        if (this.type === 'cast' && other.type === 'enemy') {          
+            this.owner.detonate();
+            other.owner.hit(30);
         }
 
         if (this.type === 'sword' && other.type === 'enemy') {

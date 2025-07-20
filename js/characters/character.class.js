@@ -13,7 +13,7 @@ class Character extends MovableObject {
         this.hitBoxSword = new HitBox(105, 25, 35, 90, this, 95, 'sword');
 
         this.applyGravity();
-        
+
         this.setMoveInterval();
         this.setAnimationInterval();
         this.x = 0;
@@ -26,6 +26,11 @@ class Character extends MovableObject {
         // moveInterval
         this.moveInterval = setInterval(() => {
             if (!this.isDead()) {
+
+                // TODO: organize prioritys
+                if (this.world.keyboard.B && this.status !== 'attack') {
+                    this.status = 'lightCast';
+                }
 
                 if (this.world.keyboard.C && this.status !== 'attack') {
                     this.status = 'attack';
@@ -51,18 +56,44 @@ class Character extends MovableObject {
                 if (this.world.keyboard.SPACE && !this.isAboveGround()) {
                     this.jump();
                 }
-
             }
 
             this.world.camera.update(this.x, this.world.bossEnemy.x);
         }, 1000 / 60);
     }
 
+    lightCast() {
+        this.status = 'casting';
+        this.attackReady = false;
+
+        this.playSpriteOnce(this.IMAGES_LIGHT_CUT, 65, () => {
+            this.spawnProjectile();
+        }, 22);
+    }
+
+    spawnProjectile() {
+        this.world.tempObjects.push(new LightCut(this.world, this, this.IMAGES_HOLY_SLASH));
+    }
+
     setAnimationInterval() {
         setInterval(() => {
 
-            // DEAD
-            if (this.isDead() && !this.isAboveGround()) {
+            // TEST
+            if (this.status == 'lightCast' || this.status == 'casting') {
+                if (this.status !== 'casting') {
+
+                    this.lightCast();
+
+                    // this.playSpriteOnce(this.IMAGES_LIGHT_CUT, 65);
+
+                    // this.playSpriteOnce(this.IMAGES_LIGHT_CUT, 100, () => {
+                    //     this.status = 'casting';
+                    //     this.playSpriteOnce(this.IMAGES_HOLY_SLASH, 100);
+                    // });
+                }
+
+                // DEAD
+            } else if (this.isDead() && !this.isAboveGround()) {
                 if (this.status !== 'die') {
                     this.statusDead();
                 }
