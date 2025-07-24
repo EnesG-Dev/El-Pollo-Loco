@@ -23,6 +23,8 @@ class StatusBar {
 
         this.orangeLife = new AnimatedEffect(imgPaths.status_bar.healthbar_orange, 89, 33, 520, 40, this);
         this.orangeLife.setImage(this.orangeLife.IMAGES_HALF[0]);
+
+        this.manaBar = new ManaBar(imgPaths.status_bar.mana_bar, 80, 42, 250, 60, this);
     }
 
     update() {
@@ -51,6 +53,8 @@ class StatusBar {
         this.healthBar.render(ctx);
         this.bloodFx.draw(ctx);
         this.breakeShatterFx.draw(ctx);
+
+        this.manaBar.render(ctx);
     }
 
     hitEffects() {

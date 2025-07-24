@@ -2,6 +2,7 @@ class Character extends MovableObject {
     height = 150;
     width = 150;
     speed = 4;
+    mana = 3;
     walking_sound = new Audio('/assets/audio/character/walk.mp3')
 
     constructor(world) {
@@ -28,7 +29,7 @@ class Character extends MovableObject {
             if (!this.isDead()) {
 
                 // TODO: organize prioritys
-                if (this.world.keyboard.B && this.status !== 'attack') {
+                if (this.world.keyboard.B && this.status !== 'casting') {
                     this.status = 'lightCast';
                 }
 
@@ -64,11 +65,15 @@ class Character extends MovableObject {
 
     lightCast() {
         this.status = 'casting';
-        this.attackReady = false;
-
-        this.playSpriteOnce(this.IMAGES_LIGHT_CUT, 65, () => {
-            this.spawnProjectile();
-        }, 22);
+        
+        if (this.mana > 0) {
+            
+            this.playSpriteOnce(this.IMAGES_LIGHT_CUT, 65, () => {
+                this.mana -= 1;
+                this.world.statusBar.manaBar.setMana(this.mana);
+                this.spawnProjectile();
+            }, 22);
+        } else {console.log('you havent enoght mana!');}
     }
 
     spawnProjectile() {

@@ -444,6 +444,20 @@
                 "./assets/sprites/statusbars/character/portrait/broken/brokenPortrait_08.png"
             ]
         },
+        "mana_bar": {
+            "border": [
+                "./assets/sprites/statusbars/character/manaBar/manabar_border.png"
+            ],
+            "amount": [
+                "./assets/sprites/dummySprite/nullTexture.png",
+                "./assets/sprites/statusbars/character/manaBar/mana_1.png",
+                "./assets/sprites/statusbars/character/manaBar/mana_2.png",
+                "./assets/sprites/statusbars/character/manaBar/mana_3.png",
+                "./assets/sprites/statusbars/character/manaBar/mana_4.png",
+                "./assets/sprites/statusbars/character/manaBar/mana_5.png",
+                "./assets/sprites/statusbars/character/manaBar/mana_6.png"
+            ]
+        },
         "healthbar_border": {
             "normal": [
                 "./assets/sprites/statusbars/character/healthBar/border/lifeBar_border.png"
