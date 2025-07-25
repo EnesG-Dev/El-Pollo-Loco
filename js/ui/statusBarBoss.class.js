@@ -1,6 +1,4 @@
 class StatusBarBoss {
-    orangeSizes = [1, 50, 100, 150, 200, 260, 310, 370, 420, 470];
-
     // TODO: add mirro function for bossenemy
     constructor(x, y, owner) {
         this.x = x;
@@ -17,12 +15,11 @@ class StatusBarBoss {
         this.statusBarElements = [
             this.portrait = new Portrait(this, imgPaths.status_bar.boss, 307),
             this.healthBarBorder = new HealthBarBorder(this, imgPaths.status_bar.healthbar_border),
-            this.healthBar = new HealthBar(this, imgPaths.status_bar.healthbar_blood),
+            this.healthBar = new HealthBar(this, imgPaths.status_bar.healthbar_blood, true),
 
             this.bloodFx = new AnimatedEffect(imgPaths.status_bar.fx, 78, 15, 80, 80, this),
-            this.breakeShatterFx = new AnimatedEffect(imgPaths.status_bar.fx, 90, 15, 80, 80, this),
+            this.breakeShatterFx = new AnimatedEffect(imgPaths.status_bar.fx, 240, 15, 80, 80, this),
 
-            this.orangeLife = new AnimatedEffect(imgPaths.status_bar.healthbar_orange, 89, 33, 520, 40, this),
             // this.manaBar = new ManaBar(imgPaths.status_bar.mana_bar, 80, 42, 250, 60, this, 182)
         ];
     }
@@ -49,7 +46,7 @@ class StatusBarBoss {
 
             this.setHealthConfig();
 
-            this.bloodFx.x = this.x + 70;
+            this.bloodFx.x = this.x + 220;
             this.bloodFx.playSpriteOnce(this.bloodFx.IMAGES_BREAK_SPLASH, 150);
             this.breakeShatterFx.playSpriteOnce(this.bloodFx.IMAGES_BREAK_SHATTER, 150);
 
@@ -62,7 +59,6 @@ class StatusBarBoss {
     render(ctx) {
         this.portrait.draw(ctx);
         this.healthBarBorder.render(ctx);
-        this.orangeLife.draw(ctx);
         this.healthBar.render(ctx);
         this.bloodFx.draw(ctx);
         this.breakeShatterFx.draw(ctx);
@@ -71,8 +67,6 @@ class StatusBarBoss {
     hitEffects() {
         this.healthBarBorder.hitEffects();
         this.healthBar.hitEffects();
-        this.orangeLife.hitVibration();
-        this.bloodFx.hitVibration();
         this.bloodFx.hitVibration();
     }
 
@@ -85,13 +79,11 @@ class StatusBarBoss {
             healthPosition = 0;
         }
 
-        this.bloodFx.x = this.x + 60 + (18.5 * this.lastPosition);
+        this.bloodFx.x = this.x + 283.5 - (18.5 * this.lastPosition);
 
         this.bloodFx.playSpriteOnce(this.bloodFx.IMAGES_HIT_SPLASH, 100);
 
         this.lastPosition = healthPosition;
-
-        this.orangeFunktion(this.orangeSizes[healthPosition])
 
         this.healthBar.setHealth(healthPosition);
         this.healthBar.positionHealthEdge(healthPosition);
@@ -99,13 +91,5 @@ class StatusBarBoss {
         if (targetHealth === 0) {
             this.isGameOver = false;
         }
-    }
-
-    orangeFunktion(target) {
-        let orangeInterval = setInterval(() => {
-            if (this.orangeLife.width >= target) {
-                this.orangeLife.width -= 4;
-            } else clearInterval(orangeInterval);
-        }, 20);
     }
 }

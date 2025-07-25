@@ -49,12 +49,11 @@ class StatusBar {
     render(ctx) {
         this.portrait.draw(ctx);
         this.healthBarBorder.render(ctx);
+        this.manaBar.render(ctx);
         this.orangeLife.draw(ctx);
         this.healthBar.render(ctx);
         this.bloodFx.draw(ctx);
         this.breakeShatterFx.draw(ctx);
-
-        this.manaBar.render(ctx);
     }
 
     hitEffects() {

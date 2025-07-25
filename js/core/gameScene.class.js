@@ -23,7 +23,9 @@ class GameScene {
             COLLISION_MANAGER.objects = [];
             setTimeout(() => {
                 // this.world.character.playContinue();
-                this.game.setState('gameOver');
+                // this.game.setState('gameOver');
+                console.log('spiel vorbei!');
+                
             }, 10000);
         }
     }

@@ -602,7 +602,8 @@
                 "./assets/sprites/statusbars/character/healthBar/fx/break_plash/BloodSplash2.png",
                 "./assets/sprites/statusbars/character/healthBar/fx/break_plash/BloodSplash3.png",
                 "./assets/sprites/statusbars/character/healthBar/fx/break_plash/BloodSplash4.png",
-                "./assets/sprites/statusbars/character/healthBar/fx/break_plash/BloodSplash5.png"
+                "./assets/sprites/statusbars/character/healthBar/fx/break_plash/BloodSplash5.png",
+                "./assets/sprites/dummySprite/nullTexture.png"
             ]
         }
     },

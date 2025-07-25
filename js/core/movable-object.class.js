@@ -36,8 +36,11 @@ class MovableObject extends DrawableObject {
             this.lastHit = now;
         }
 
-        if (this instanceof Character || this instanceof Endboss) {
+        if (this instanceof Character) {
             this.world.statusBar.update();
+        }
+        
+        if (this instanceof Endboss) {
             this.world.statusBarBoss.update();
         }
     }
