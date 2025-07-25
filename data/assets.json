@@ -429,6 +429,21 @@
         ]
     },
     "status_bar": {
+        "boss": {
+            "normal": [
+                "./assets/sprites/statusbars/boss/portrait/boss_portrait.png"
+            ],
+            "broken": [
+                "./assets/sprites/statusbars/boss/portrait/broken/br1.png",
+                "./assets/sprites/statusbars/boss/portrait/broken/br2.png",
+                "./assets/sprites/statusbars/boss/portrait/broken/br3.png",
+                "./assets/sprites/statusbars/boss/portrait/broken/br4.png",
+                "./assets/sprites/statusbars/boss/portrait/broken/br5.png",
+                "./assets/sprites/statusbars/boss/portrait/broken/br6.png",
+                "./assets/sprites/statusbars/boss/portrait/broken/br7.png",
+                "./assets/sprites/statusbars/boss/portrait/broken/br8.png"
+            ]
+        },
         "portrait": {
             "normal": [
                 "./assets/sprites/statusbars/character/portrait/portrait_00.png"

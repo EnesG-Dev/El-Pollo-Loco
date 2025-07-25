@@ -13,6 +13,11 @@ class DrawableObject {
     mainInterval;
     moveInterval;
     animationInterval;
+    otherDirection = false;
+
+    init(world) {
+        this.world = world;
+    }
 
     hitVibration() {
         this.x -= 3;
@@ -107,7 +112,15 @@ class DrawableObject {
 
     draw(ctx) {
         try {
+            if (this.otherDirection && this.world) {
+                this.mirrorOn(ctx);
+            }
+
             ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+
+            if (this.otherDirection && this.world) {
+                this.mirrorOff(ctx);
+            }
         } catch (error) {
             console.error("Fehler beim Zeichnen des Objekts:", {
                 img: this.img,
@@ -132,5 +145,23 @@ class DrawableObject {
             ctx.rect(this.x, this.y, this.width, this.height);
             ctx.stroke();
         }
+    }
+
+    // #######################################################
+
+    mirrorOn(ctx) {
+        ctx.save();
+        ctx.translate(this.width, 0);
+        ctx.scale(-1, 1);
+        // this.world.ctx.save();
+        // this.world.ctx.translate(this.width, 0);
+        // this.world.ctx.scale(-1, 1);
+        this.x = this.x * -1;
+    }
+
+    mirrorOff(ctx) {
+        this.x = this.x * -1;
+        // this.world.ctx.restore();
+        ctx.restore();
     }
 }

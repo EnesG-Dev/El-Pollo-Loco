@@ -24,7 +24,7 @@ class GameScene {
             setTimeout(() => {
                 // this.world.character.playContinue();
                 this.game.setState('gameOver');
-            }, 5000);
+            }, 10000);
         }
     }
 

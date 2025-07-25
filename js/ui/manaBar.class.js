@@ -1,5 +1,5 @@
 class ManaBar extends DrawableObject {
-    constructor(path, x, y, w, h, owner) {
+    constructor(path, x, y, w, h, owner, mirro = 0) {
         super().loadImage(path.border[0])
         this.loadImageSprites(path);
         this.x = owner.x + x;
@@ -7,7 +7,7 @@ class ManaBar extends DrawableObject {
         this.width = w;
         this.height = h;
 
-        this.manaLine = new AnimatedEffect(path, 0, 0, 250, 60, this);
+        this.manaLine = new AnimatedEffect(path, 0, 0, 250, 60, this, mirro);
 
         this.manaLine.loadImage(this.IMAGES_AMOUNT[3])
     }

@@ -1,7 +1,6 @@
 class MovableObject extends DrawableObject {
 
     speed = 0.15;
-    otherDirection = false;
 
     speedY = 0;         // Sprung ≈ Höhe
     acceleration = 0.5; // Beschleunigung
@@ -16,10 +15,6 @@ class MovableObject extends DrawableObject {
     constructor() {
         super();
         this.world = null;
-    }
-
-    init(world) {
-        this.world = world;
     }
 
     clearAll() {
@@ -41,8 +36,9 @@ class MovableObject extends DrawableObject {
             this.lastHit = now;
         }
 
-        if (this instanceof Character) {
+        if (this instanceof Character || this instanceof Endboss) {
             this.world.statusBar.update();
+            this.world.statusBarBoss.update();
         }
     }
 

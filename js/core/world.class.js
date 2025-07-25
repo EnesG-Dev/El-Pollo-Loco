@@ -9,6 +9,7 @@ class World {
         this.character = new Character(this);
 
         this.statusBar = new StatusBar(0, -10, this.character);
+        this.statusBarBoss = new StatusBarBoss(310, -10, this.bossEnemy);
 
         this.camera = new Camera();
 
@@ -20,6 +21,7 @@ class World {
         this.level.clouds.forEach(obj => obj.init(this));
         this.level.enemies.forEach(obj => obj.init(this));
         this.tempObjects.forEach(obj => obj.init(this));
+        this.statusBarBoss.init(this);
     }
 
     clearObjects() {
@@ -62,6 +64,7 @@ class World {
 
         // this.addToMap(this.healthBar);
         this.statusBar.render(ctx);
+        this.statusBarBoss.render(ctx);
 
         // Verschieben für die Kamera
         this.ctx.translate(this.camera.getX(), 0);
@@ -85,18 +88,18 @@ class World {
     }
 
     addToMap(mo) {
-        if (mo.otherDirection) {
-            this.mirrorOn(mo);
-        }
+        // if (mo.otherDirection) {
+        //     this.mirrorOn(mo);
+        // }
 
         mo.draw(this.ctx);
         if (devMode) {
             mo.drawFrame(this.ctx);
         }
 
-        if (mo.otherDirection) {
-            this.mirrorOff(mo);
-        }
+        // if (mo.otherDirection) {
+        //     this.mirrorOff(mo);
+        // }
     }
 
     mirrorOn(mo) {
