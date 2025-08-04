@@ -9,6 +9,7 @@ class Character extends MovableObject {
         super().loadImage(imgPaths.character.idle[0]);
         this.loadImageSprites(imgPaths.character);
 
+        this.widthDe = this.width;
         this.world = world;
         this.hitBox = new HitBox(50, 25, 50, 100, this, 0, 'character');
         this.hitBoxSword = new HitBox(105, 25, 35, 90, this, 95, 'sword');

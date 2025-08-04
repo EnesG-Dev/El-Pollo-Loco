@@ -2,6 +2,7 @@ class Projectile extends MovableObject {
 
     height = 80;
     width = 80;
+    widthDe = this.width;
     offsetY = (this.height + 50) / 2;
     offsetX = (this.width - 20) / 2;
 

@@ -2,6 +2,7 @@ class Endboss extends MovableObject {
     // BUG: weil der Boss stirb stopt die animation zu früh > fehler in der gameScene
     height = 150;
     width = 150;
+    widthDe = 150;
     x = 3500;
     y = 150;
     objectGround = 10;
@@ -25,8 +26,31 @@ class Endboss extends MovableObject {
     update() {
         this.shadow.update();
 
-        // SLEEP
-        if (this.status == 'rest' || this.status == 'resting') {
+        // one image
+        if (this.status == 'test' || this.status == 'testing') {
+            if (this.status !== 'testing') {
+                this.status = 'testing';
+                this.width = 200;
+                this.playSpriteOnce(this.IMAGES_TEST, 200, () => {
+                    this.status = 'testing';
+                });
+            }
+
+            // ATTACK 1 - combo_atk_slash1
+        } else if (this.status == 'attack_1' || this.status == 'attack') {
+            if (this.status !== 'attack') {
+                this.status = 'attack';
+                
+                // this.playSprite(this.IMAGES_COMBO_ATK_SLASH1, 100);
+                this.playSpriteOnce(this.IMAGES_COMBO_ATK_SLASH1, 100, () => {
+
+                    console.log('done');
+                    
+                }, -1, 200);
+            }
+
+            // SLEEP
+        } else if (this.status == 'rest' || this.status == 'resting') {
             if (this.status !== 'resting') {
                 this.status = 'resting';
                 this.playSpriteOnce(this.IMAGES_REST, 200, () => {

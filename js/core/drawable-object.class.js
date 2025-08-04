@@ -3,6 +3,7 @@ class DrawableObject {
     y = 60;
     height = 150;
     width = 100;
+    widthDe;
     img;
     imgSprites = [];
     imageCache = {};
@@ -17,6 +18,7 @@ class DrawableObject {
 
     init(world) {
         this.world = world;
+        this.widthDe = this.width;
     }
 
     hitVibration() {
@@ -29,12 +31,12 @@ class DrawableObject {
         }, 200);
     }
 
-    playSpriteOnce(images, animationSpeed, onComplete, actionI = -1) {
+    playSpriteOnce(images, animationSpeed, onComplete, actionI = -1, width = this.widthDe) {
         clearInterval(this.animationInterval);
         this.imageIndex = -1;
 
         this.animationInterval = setInterval(() => {
-            this.playIndexAnimation(images);
+            this.playIndexAnimation(images, width);
 
             if (this.imageIndex == actionI) {
                 onComplete && onComplete();
@@ -43,10 +45,11 @@ class DrawableObject {
         }, animationSpeed);
     }
 
-    playIndexAnimation(images) {
+    playIndexAnimation(images, width = this.widthDe) {
         this.imageIndex++
         let path = images[this.imageIndex];
         this.img = this.imageCache[path];
+        this.width = width;
 
         if (this.imageIndex == images.length - 1) {
             clearInterval(this.animationInterval);
@@ -55,9 +58,10 @@ class DrawableObject {
         }
     }
 
-    playSprite(images, animationS) {
+    playSprite(images, animationS, width = this.widthDe) {
         clearInterval(this.animationInterval);
         this.animationInterval = setInterval(() => {
+            this.width = width;
             this.playAnimation(images);
         }, animationS);
     }

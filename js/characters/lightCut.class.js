@@ -2,6 +2,7 @@ class LightCut extends MovableObject {
 
     height = 70;
     width = 100;
+    widthDe = this.width;
     energy = 10;
     speed = 8;
     isCollided = false;
