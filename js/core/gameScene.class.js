@@ -18,8 +18,8 @@ class GameScene {
         this.world.update();
 
         if (this.world.isGameOver()) {
-            this.gameOverTriggered = true;
-            this.world.clearObjects();
+            // this.gameOverTriggered = true;
+            // this.world.clearObjects();
             COLLISION_MANAGER.objects = [];
             setTimeout(() => {
                 // this.world.character.playContinue();

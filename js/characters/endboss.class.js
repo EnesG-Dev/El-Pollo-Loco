@@ -3,11 +3,16 @@ class Endboss extends MovableObject {
     height = 150;
     width = 150;
     widthDe = 150;
-    x = 3500;
+    x = 3600;
     y = 150;
     objectGround = 10;
 
-    speed = 0.4;
+    otherDirection = true;
+
+    bossFightAreaX = 2900;
+    wakeUpBossAreaX = 3200;
+
+    speed = 0.5;
 
     constructor() {
         super().loadImage(imgPaths.boss.idle[0])
@@ -21,10 +26,56 @@ class Endboss extends MovableObject {
     init(world) {
         this.world = world;
         this.world.tempObjects.push(this.shadow);
+        this.player = this.world.character;
+        this.status = 'rest';
+    }
+
+    isPlayerNearby() {
+        if (this.otherDirection) {
+            return this.player.x >= (this.x - 60) && this.player.x < (this.x + 140);
+        } else return this.player.x >= (this.x - 80) && this.player.x < (this.x + 130);
+    }
+
+    inFightArea() {
+        return this.player.x > this.bossFightAreaX && this.x > this.bossFightAreaX;
+    }
+
+    isReady() {
+        return this.status == 'idle' || this.status == 'moving';
+    }
+
+    checkAction() {
+        if (this.status == 'resting' && this.world.character.x > this.wakeUpBossAreaX) {
+            this.status = 'spin';
+            // stop player movment
+        } else if (this.isReady() && this.isPlayerNearby()) {
+            this.status = 'attack_0';
+        } else if (this.isReady() && this.inFightArea() && !this.isPlayerNearby()) {
+            this.moveAnimation();
+            if (this.player.x < this.x) {
+                this.moveLeft(true);
+            } else {
+                this.moveRight();
+            }
+        } else if (this.status == 'moving') {
+            this.status = '';
+        }
+    }
+
+    moveAnimation() {
+        console.log(this.status);
+        
+        if (this.status == 'idle' && this.status !== 'moving') {
+            this.status = 'moving';
+            console.log(this.status);
+            
+            this.playSprite(this.IMAGES_MOVING, 150)
+        }
     }
 
     update() {
         this.shadow.update();
+        this.checkAction();
 
         // one image
         if (this.status == 'test' || this.status == 'testing') {
@@ -36,16 +87,68 @@ class Endboss extends MovableObject {
                 });
             }
 
+            // ATTACK 0 - combo_atk
+        } else if (this.status == 'attack_0' || this.status == 'attack') {
+            if (this.status !== 'attack') {
+                this.status = 'attack';
+
+                // this.playSprite(this.IMAGES_COMBO_ATK_SLASH1, 100);
+                this.playSpriteOnce(this.IMAGES_COMBO_ATK_SLASH1, 120, () => {
+                    console.log('1 is done');
+
+                    this.status = 'attack';
+                    this.playSpriteOnce(this.IMAGES_COMBO_ATK_SLASH2, 120, () => {
+                        console.log('2 is done');
+
+                        this.status = 'attack';
+                        // this.playSpriteOnce(this.IMAGES_COMBO_ATK_SLASH3, 100, () => {
+                        //     console.log('3 is done');
+
+
+                        // }, -1, 300);
+                        this.playSpriteOnce(this.IMAGES_COMBO_ATK_SLASH3, 120, null, -1, 300);
+                    }, -1, 200);
+                }, -1, 200);
+            }
+
+            // ATTACK 3 - combo_atk_slash3
+        } else if (this.status == 'attack_3' || this.status == 'attack') {
+            if (this.status !== 'attack') {
+                this.status = 'attack';
+
+                // this.playSprite(this.IMAGES_COMBO_ATK_SLASH1, 100);
+                this.playSpriteOnce(this.IMAGES_COMBO_ATK_SLASH3, 100, () => {
+
+                    console.log('3 is done');
+
+
+                }, -1, 300);
+            }
+
+            // ATTACK 2 - combo_atk_slash2
+        } else if (this.status == 'attack_2' || this.status == 'attack') {
+            if (this.status !== 'attack') {
+                this.status = 'attack';
+
+                // this.playSprite(this.IMAGES_COMBO_ATK_SLASH1, 100);
+                this.playSpriteOnce(this.IMAGES_COMBO_ATK_SLASH2, 100, () => {
+
+                    console.log('2 is done');
+
+
+                }, -1, 200);
+            }
+
             // ATTACK 1 - combo_atk_slash1
         } else if (this.status == 'attack_1' || this.status == 'attack') {
             if (this.status !== 'attack') {
                 this.status = 'attack';
-                
+
                 // this.playSprite(this.IMAGES_COMBO_ATK_SLASH1, 100);
                 this.playSpriteOnce(this.IMAGES_COMBO_ATK_SLASH1, 100, () => {
 
-                    console.log('done');
-                    
+                    console.log('1 is done');
+
                 }, -1, 200);
             }
 

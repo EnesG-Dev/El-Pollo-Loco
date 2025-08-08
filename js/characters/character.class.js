@@ -19,7 +19,7 @@ class Character extends MovableObject {
         this.setMoveInterval();
         this.setAnimationInterval();
         this.x = 0;
-        this.x = 3300;
+        this.x = 3100;
 
         this.readyToHurt = true;
     }
