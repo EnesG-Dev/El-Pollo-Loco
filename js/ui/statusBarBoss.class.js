@@ -4,6 +4,7 @@ class StatusBarBoss {
         this.x = x;
         this.y = y;
         this.width = 200;
+        this.widthDe = 200;
         this.height = 20;
 
         this.lastPosition = 10
@@ -38,11 +39,11 @@ class StatusBarBoss {
     }
 
     update() {
-        if (!this.owner.isDead()) {
+        if (!this.owner.isDead()) { // Boss is alive
             this.setHealthConfig();
             this.hitEffects();
         } else {
-            this.isGameOver = true;
+            // this.isGameOver = true;
 
             this.setHealthConfig();
 
@@ -88,8 +89,8 @@ class StatusBarBoss {
         this.healthBar.setHealth(healthPosition);
         this.healthBar.positionHealthEdge(healthPosition);
 
-        if (targetHealth === 0) {
-            this.isGameOver = false;
-        }
+        // if (targetHealth === 0) {
+        //     this.isGameOver = false;
+        // }
     }
 }

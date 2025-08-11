@@ -6,6 +6,8 @@ class HealthBarBorder extends DrawableObject {
         this.x = statusBar.x + 79;
         this.y = statusBar.y + 33;
         this.width = 250;
+        this.widthDe = 250;
+
         this.height = 40;
 
         this.whiteBorder = new AnimatedEffect(path, 0, 0, 250, 40, this);

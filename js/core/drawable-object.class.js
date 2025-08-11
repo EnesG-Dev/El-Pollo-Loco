@@ -4,6 +4,7 @@ class DrawableObject {
     height = 150;
     width = 100;
     widthDe;
+    heightDe;
     img;
     imgSprites = [];
     imageCache = {};
@@ -31,7 +32,7 @@ class DrawableObject {
         }, 200);
     }
 
-    playSpriteOnce(images, animationSpeed, onComplete, actionI = -1, width = this.widthDe) {
+    playSpriteOnce(images, animationSpeed, onComplete, actionI = -1, width) {
         clearInterval(this.animationInterval);
         this.imageIndex = -1;
 
@@ -45,7 +46,10 @@ class DrawableObject {
         }, animationSpeed);
     }
 
-    playIndexAnimation(images, width = this.widthDe) {
+    playIndexAnimation(images, width) {
+        if (width === undefined) {
+            width = (this.widthDe !== undefined) ? this.widthDe : this.width;
+        }
         this.imageIndex++
         let path = images[this.imageIndex];
         this.img = this.imageCache[path];
@@ -58,10 +62,19 @@ class DrawableObject {
         }
     }
 
-    playSprite(images, animationS, width = this.widthDe) {
+    playSprite(images, animationS, width, height) {
+        // Falls kein width-Parameter angegeben wurde:
+        if (width === undefined) {
+            width = (this.widthDe !== undefined) ? this.widthDe : this.width;
+        }
+        if (height === undefined) {
+            height = (this.heightDe !== undefined) ? this.heightDe : this.height;
+        }
+
         clearInterval(this.animationInterval);
         this.animationInterval = setInterval(() => {
             this.width = width;
+            this.height = height;
             this.playAnimation(images);
         }, animationS);
     }

@@ -1,6 +1,7 @@
 class BossShadow extends MovableObject {
     height = 100;
     width = 100;
+    widthDe = 100;
     objectGround = 75;
     speed = 0;
 

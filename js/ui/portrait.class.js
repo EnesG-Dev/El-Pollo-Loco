@@ -6,6 +6,7 @@ class Portrait extends DrawableObject {
         this.x = statusBar.x + mirro;
         this.y = statusBar.y;
         this.width = 100;
+        this.widthDe = 100;
         this.height = 120;
         
         this.otherDirection = true;

@@ -6,6 +6,8 @@ class HealthBar extends DrawableObject {
         this.x = statusBar.x + 79;
         this.y = statusBar.y + 33;
         this.width = 250;
+        this.widthDe = 250;
+
         this.height = 40;
         this.isBossEnemy = isBossEnemy;
 
@@ -33,15 +35,13 @@ class HealthBar extends DrawableObject {
 
             this.loadImage(imgPaths.null[0]);
 
-            this.width = 50;
-            this.height = 50;
             if (this.isBossEnemy) {
                 this.x += 195;
             } else {
                 this.x += 5;
             }
             this.y += 10;
-            this.playSprite(this.IMAGES_DRIP, 150);
+            this.playSprite(this.IMAGES_DRIP, 150, 50, 50);
         }
     }
 
