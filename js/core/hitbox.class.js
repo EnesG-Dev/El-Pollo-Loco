@@ -34,7 +34,7 @@ class HitBox {
         }
 
         if (this.type === 'attackArea' && other.type === 'character') {
-            other.owner.hit(20);
+            other.owner.hit(10);
         }
 
         if (this.type === 'projectile' && other.type === 'character') {

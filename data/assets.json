@@ -416,42 +416,39 @@
             "./assets/sprites/03_enemies/boss_salamanderWitch/Moving/Moving7.png",
             "./assets/sprites/03_enemies/boss_salamanderWitch/Moving/Moving8.png"
         ],
-        "test": [
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_1.png"
+        "combo_atk_slash1_left": [
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_1_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_2_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_3_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_4_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_5_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_6_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_7_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_8_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_9_left.png"
         ],
-        "combo_atk_slash1": [
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_1.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_2.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_3.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_4.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_5.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_6.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_7.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_8.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_9.png"
+        "combo_atk_slash2_left": [
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash2/Slash2_1_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash2/Slash2_2_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash2/Slash2_3_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash2/Slash2_4_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash2/Slash2_5_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash2/Slash2_6_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash2/Slash2_7_left.png"
         ],
-        "combo_atk_slash2": [
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash2/Slash2_1.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash2/Slash2_2.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash2/Slash2_3.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash2/Slash2_4.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash2/Slash2_5.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash2/Slash2_6.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash2/Slash2_7.png"
-        ],
-        "combo_atk_slash3": [
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_1.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_2.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_3.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_4.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_5.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_6.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_7.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_8.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_9.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_10.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_11.png",
-            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_12.png"
+        "combo_atk_slash3_left": [
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_1_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_2_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_3_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_4_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_5_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_6_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_7_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_8_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_9_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_10_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_11_left.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_12_left.png"
         ],
         "hurt": [
             "./assets/sprites/03_enemies/boss_salamanderWitch/Hurt/Hurt1.png",
@@ -491,6 +488,42 @@
             "./assets/sprites/03_enemies/boss_salamanderWitch/Death/Die28.png",
             "./assets/sprites/03_enemies/boss_salamanderWitch/Death/Die29.png",
             "./assets/sprites/03_enemies/boss_salamanderWitch/Death/Die30.png"
+        ]
+    },
+    "bossAttacks": {
+        "combo_atk_slash1_right": [
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_1_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_2_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_3_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_4_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_5_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_6_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_7_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_8_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash1/Slash1_9_right.png"
+        ],
+        "combo_atk_slash2_right": [
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash2/Slash2_1_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash2/Slash2_2_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash2/Slash2_3_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash2/Slash2_4_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash2/Slash2_5_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash2/Slash2_6_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash2/Slash2_7_right.png"
+        ],
+        "combo_atk_slash3_right": [
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_1_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_2_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_3_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_4_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_5_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_6_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_7_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_8_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_9_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_10_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_11_right.png",
+            "./assets/sprites/03_enemies/boss_salamanderWitch/Attacks/Slash3/Slash3_12_right.png"
         ]
     },
     "status_bar": {
