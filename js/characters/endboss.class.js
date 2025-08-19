@@ -22,7 +22,6 @@ class Endboss extends MovableObject {
         this.hitBoxAttack3 = new HitBox(130, 50, 140, 90, this, 240, 'attackArea');
         this.shadow = new BossShadow(this);
 
-
         this.applyGravity();
     }
 
@@ -116,7 +115,7 @@ class Endboss extends MovableObject {
             this.hitBoxAttack2.removeFromCollisionList(200);
         }, 400);
     }
-    
+
     addHitboxArea3() {
         setTimeout(() => {
             this.hitBoxAttack3.addToCollisionList();

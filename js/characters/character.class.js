@@ -99,21 +99,18 @@ class Character extends MovableObject {
                 }
 
                 // DEAD
-            } else if (this.isDead() && !this.isAboveGround()) {
+            } else if (this.isDead() && !this.isAboveGround() && !this.isHurt()) {
                 if (this.status !== 'die') {
                     this.statusDead();
                 }
 
                 // HURT
-            } else if (this.isHurt() && this.readyToHurt) {
-                if (this.status !== 'hurt') {
+            } else if (this.isHurt() || !this.readyToHurt) {
+                if (this.status !== 'hurt' && this.readyToHurt) {
                     this.status = 'hurt';
                     this.readyToHurt = false;
-                    this.playSpriteOnce(this.IMAGES_HURT, 80);
 
-                    setTimeout(() => {
-                        this.readyToHurt = true;
-                    }, 1000);
+                    this.playSpriteOnce(this.IMAGES_HURT, 100, () => this.readyToHurt = true);
                 }
 
                 // JUMP    

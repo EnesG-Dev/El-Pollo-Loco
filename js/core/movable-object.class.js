@@ -10,7 +10,7 @@ class MovableObject extends DrawableObject {
     lastHit = 0;
     lastAttack = 0;
     lastJump = 0;
-    HURT_DURATION_SECONDS = 1;
+    HURT_DURATION_SECONDS = 0.5;
 
     constructor() {
         super();
