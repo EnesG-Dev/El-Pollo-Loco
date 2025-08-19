@@ -3,6 +3,7 @@ class Character extends MovableObject {
     width = 150;
     speed = 4;
     mana = 3;
+    stopMoving = false;
     walking_sound = new Audio('/assets/audio/character/walk.mp3')
 
     constructor(world) {
@@ -39,12 +40,12 @@ class Character extends MovableObject {
                     this.attack1();
                 }
 
-                if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+                if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x && !this.stopMoving) {
                     this.moveRight();
                     this.walking_sound.play();
                 }
 
-                if (this.world.keyboard.LEFT && this.x > -100) {
+                if (this.world.keyboard.LEFT && this.x > -100 && !this.stopMoving) {
                     this.walking_sound.play();
 
                     // wall blocks move left
@@ -139,7 +140,7 @@ class Character extends MovableObject {
                 this.playSpriteOnce(this.IMAGES_LAND, 70);
 
                 // WALK
-            } else if ((this.world.keyboard.RIGHT || this.world.keyboard.LEFT) && this.isAboveGround && (!this.isHurt() || this.status !== 'hurt')) {
+            } else if ((this.world.keyboard.RIGHT || this.world.keyboard.LEFT) && this.isAboveGround && (!this.isHurt() || this.status !== 'hurt') && !this.stopMoving) {
                 if (this.status !== 'walk') {
                     this.status = 'walk';
                     this.playSprite(this.IMAGES_WALK, 50);

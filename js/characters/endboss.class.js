@@ -46,10 +46,16 @@ class Endboss extends MovableObject {
         return this.status == 'idle' || this.status == 'moving';
     }
 
+    stopMovingCharacter() {
+        this.world.character.stopMoving = true;
+        setTimeout(() => {
+            this.world.character.stopMoving = false;
+        }, 2000);
+    }
     checkAction() {
         if (this.status == 'resting' && this.world.character.x > this.wakeUpBossAreaX) {
             this.status = 'spin';
-            // stop player movment
+            this.stopMovingCharacter();
         } else if (this.isReady() && this.isPlayerNearby()) {
             this.status = 'attack';
         } else if (this.isReady() && this.inFightArea() && !this.isPlayerNearby()) {
@@ -72,7 +78,7 @@ class Endboss extends MovableObject {
         }
     }
 
-    attack() {
+    firstAttack() {
         if (this.status !== 'attacking') {
             this.status = 'attacking';
 
@@ -129,7 +135,7 @@ class Endboss extends MovableObject {
 
         // ATTACK Combo
         if (this.status !== 'hurt' && this.status === 'attack') {
-            this.attack();
+            this.firstAttack();
 
             // SLEEP
         } else if (this.status == 'rest' || this.status == 'resting') {
