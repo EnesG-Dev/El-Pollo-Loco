@@ -52,10 +52,16 @@ class Endboss extends MovableObject {
             this.world.character.stopMoving = false;
         }, 2000);
     }
+
+    viewStatusBar() {
+        this.world.statusBarBoss.viewStatusBar();
+    }
+
     checkAction() {
         if (this.status == 'resting' && this.world.character.x > this.wakeUpBossAreaX) {
             this.status = 'spin';
             this.stopMovingCharacter();
+            this.viewStatusBar();
         } else if (this.isReady() && this.isPlayerNearby()) {
             this.status = 'attack';
         } else if (this.isReady() && this.inFightArea() && !this.isPlayerNearby()) {

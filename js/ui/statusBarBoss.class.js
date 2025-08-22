@@ -1,5 +1,4 @@
 class StatusBarBoss {
-    // TODO: add mirro function for bossenemy
     constructor(x, y, owner) {
         this.x = x;
         this.y = y;
@@ -20,9 +19,40 @@ class StatusBarBoss {
 
             this.bloodFx = new AnimatedEffect(imgPaths.status_bar.fx, 78, 15, 80, 80, this),
             this.breakeShatterFx = new AnimatedEffect(imgPaths.status_bar.fx, 240, 15, 80, 80, this),
-
-            // this.manaBar = new ManaBar(imgPaths.status_bar.mana_bar, 80, 42, 250, 60, this, 182)
         ];
+
+        this.hideStatusBar();
+    }
+
+    testViewLoopalt() {
+        let statusBarElements = [this.portrait, this.healthBar, this.healthBarBorder];
+        let hidePosition = this.portrait.x + 300;
+
+        let testInterval = setInterval(() => {
+            if (this.portrait.x !== hidePosition) {
+                statusBarElements.forEach(el => el.x += 10)
+            } else {
+                clearInterval(testInterval);
+            }
+        }, 50);
+    }
+    hideStatusBar() {
+        let statusBarElements = [this.portrait, this.healthBar, this.healthBarBorder];
+        statusBarElements.forEach(el => el.x += 300)
+    }
+
+    viewStatusBar() {
+        const elements = [this.portrait, this.healthBar, this.healthBarBorder];
+        const endPositon = this.portrait.x - 300;
+
+        const animate = () => {
+            if (this.portrait.x !== endPositon) {
+                elements.forEach(el => el.x -= 5);
+                requestAnimationFrame(animate);
+            }
+        };
+
+        requestAnimationFrame(animate);
     }
 
     init(world) {
@@ -39,12 +69,10 @@ class StatusBarBoss {
     }
 
     update() {
-        if (!this.owner.isDead()) { // Boss is alive
+        if (!this.owner.isDead()) {
             this.setHealthConfig();
             this.hitEffects();
         } else {
-            // this.isGameOver = true;
-
             this.setHealthConfig();
 
             this.bloodFx.x = this.x + 220;
@@ -70,8 +98,6 @@ class StatusBarBoss {
         this.healthBar.hitEffects();
         this.bloodFx.hitVibration();
     }
-
-    // TODO: health effect: whitout vibration, whitout boolFx!
 
     setHealthConfig() {
         let targetHealth = this.owner.energy;
