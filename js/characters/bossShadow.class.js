@@ -18,4 +18,10 @@ class BossShadow extends MovableObject {
     update() {
         this.x = this.owner.x + 30;
     }
+    
+    deleteThis() {
+        this.world.tempObjects = this.world.tempObjects.filter(enemy => enemy !== this);
+        clearInterval(this.moveInterval);
+        clearInterval(this.animationInterval);
+    }
 }

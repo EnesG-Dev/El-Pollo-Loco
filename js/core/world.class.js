@@ -69,8 +69,8 @@ class World {
         // Verschieben für die Kamera
         this.ctx.translate(this.camera.getX(), 0);
 
-        this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.tempObjects);
+        this.addObjectsToMap(this.level.enemies);
         this.addToMap(this.character);
 
         this.addObjectsToMap(COLLISION_MANAGER.objects);

@@ -188,4 +188,13 @@ class Endboss extends MovableObject {
             }
         }
     }
+
+    statusDead() {
+        this.status = 'die';
+        this.hitBox.removeFromCollisionList();
+        this.shadow.deleteThis();
+        this.playSpriteOnce(this.IMAGES_DEATH, 150, () => {
+            this.status = 'die';            
+        }, -1, 200);
+    }
 }
