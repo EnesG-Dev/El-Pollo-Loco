@@ -4,6 +4,7 @@ class Character extends MovableObject {
     speed = 4;
     mana = 3;
     stopMoving = false;
+    lastMovement = 0;
     walking_sound = new Audio('/assets/audio/character/walk.mp3')
 
     constructor(world) {
@@ -67,15 +68,15 @@ class Character extends MovableObject {
 
     lightCast() {
         this.status = 'casting';
-        
+
         if (this.mana > 0) {
-            
+
             this.playSpriteOnce(this.IMAGES_LIGHT_CUT, 65, () => {
                 this.mana -= 1;
                 this.world.statusBar.manaBar.setMana(this.mana);
                 this.spawnProjectile();
             }, 22);
-        } else {console.log('you havent enoght mana!');}
+        } else { console.log('you havent enoght mana!'); }
     }
 
     spawnProjectile() {
@@ -146,14 +147,34 @@ class Character extends MovableObject {
                     this.playSprite(this.IMAGES_WALK, 50);
                 }
 
+                // REST
+            } else if (this.isTimeToRest() || this.status === 'resting') {
+                if (this.status !== 'resting') {
+                    this.status = 'resting';
+                    this.playSpriteOnce(this.IMAGES_REST, 200, () => {
+                        this.status = 'resting';
+                        this.playSprite(this.IMAGES_SLEEP, 200);
+                    });
+                }
+
                 // IDLE
             } else if (this.status === '' || this.status === 'walk') {
                 this.status = 'idle';
-
+                this.setLastMovement();
                 this.playSprite(this.IMAGES_IDLE, 250);
             }
 
         }, 1000 / 60);
+    }
+
+    setLastMovement() {
+        this.lastMovement = Date.now();
+    }
+
+    isTimeToRest() {
+        let currentTime = Date.now();
+        let timePassedInSeconds = (currentTime - this.lastMovement) / 1000;
+        return this.status === 'idle' && timePassedInSeconds >= 10;
     }
 
     attack1() {
