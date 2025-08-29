@@ -3,6 +3,7 @@ class Character extends MovableObject {
     width = 150;
     speed = 4;
     mana = 3;
+    score = 0;
     stopMoving = false;
     lastMovement = 0;
     walking_sound = new Audio('/assets/audio/character/walk.mp3')
@@ -197,6 +198,11 @@ class Character extends MovableObject {
             this.speedY = 15;
             this.lastJump = new Date().getTime();
         }
+    }
+
+    updateScore(points) {
+        this.score += points;
+        console.log(this.score);
     }
 
     addAttackArea() {

@@ -13,7 +13,20 @@ class World {
 
         this.camera = new Camera();
 
-        this.tempObjects = [];
+        this.tempObjects = [
+            new Item(3050, 310),
+            new Item(3150, 310),
+            new Item(3250, 310),
+            new Item(3350, 310),
+            new Item(3450, 310),
+
+      
+            new Item(3000, 155),
+            new Item(3100, 155),
+            new Item(3200, 155),
+            new Item(3300, 155),
+            new Item(3400, 155)
+        ];
     }
 
     initObjects() {

@@ -41,6 +41,11 @@ class HitBox {
             other.owner.hit(40);
             this.owner.detonate();
         }
+      
+        if (this.type === 'item' && other.type === 'character') {
+            other.owner.updateScore(10);
+            this.owner.takeItem();
+        }
     }
 
     isTopDemage(other) {

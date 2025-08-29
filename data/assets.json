@@ -705,6 +705,22 @@
             ]
         }
     },
+    "items": {
+        "coin": [
+            "./assets/sprites/items/yellow_coin/coin1.png",
+            "./assets/sprites/items/yellow_coin/coin2.png",
+            "./assets/sprites/items/yellow_coin/coin3.png",
+            "./assets/sprites/items/yellow_coin/coin4.png",
+            "./assets/sprites/items/yellow_coin/coin5.png",
+            "./assets/sprites/items/yellow_coin/coin6.png"
+        ],
+        "star": [
+            "./assets/sprites/items/star/star_1.png",
+            "./assets/sprites/items/star/star_2.png",
+            "./assets/sprites/items/star/star_3.png",
+            "./assets/sprites/items/star/star_4.png"
+        ]
+    },
     "null": [
         "./assets/sprites/dummySprite/nullTexture.png"
     ]
