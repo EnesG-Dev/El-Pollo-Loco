@@ -7,26 +7,13 @@ class World {
         this.level = level;
         this.bossEnemy = this.level.enemies[this.level.enemies.length - 1];
         this.character = new Character(this);
+        this.tempObjects = level.coins;
 
         this.statusBar = new StatusBar(0, -10, this.character);
         this.statusBarBoss = new StatusBarBoss(310, -10, this.bossEnemy);
 
         this.camera = new Camera();
 
-        this.tempObjects = [
-            new Item(3050, 310),
-            new Item(3150, 310),
-            new Item(3250, 310),
-            new Item(3350, 310),
-            new Item(3450, 310),
-
-      
-            new Item(3000, 155),
-            new Item(3100, 155),
-            new Item(3200, 155),
-            new Item(3300, 155),
-            new Item(3400, 155)
-        ];
     }
 
     initObjects() {

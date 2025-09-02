@@ -23,13 +23,17 @@ class HitBox {
                 this.owner.hit(10);
             }
         }
+       
+        if (this.type === 'character' && other.type === 'boss') {          
+            this.owner.hit(10);
+        }
 
-        if (this.type === 'cast' && other.type === 'enemy') {          
+        if (this.type === 'cast' && (other.type === 'enemy' || other.type === 'boss')) {          
             this.owner.detonate();
             other.owner.hit(30);
         }
 
-        if (this.type === 'sword' && other.type === 'enemy') {
+        if (this.type === 'sword' && (other.type === 'enemy' || other.type === 'boss')) {
             other.owner.hit(20);
         }
 

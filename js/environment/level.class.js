@@ -3,12 +3,13 @@ class Level {
     backgroundObjects = [];
     level_end_x = 3880;
 
-    constructor(background, map, clouds, enemies, lvlConfig) {
+    constructor(background, map, clouds, enemies, lvlConfig, coins) {
         this.backgroundPaths = background[0];
         this.map = map;
         this.clouds = clouds;
         this.enemies = enemies;
         this.configs = lvlConfig;
+        this.coins = coins;
 
         this.backgroundLoop();
     }

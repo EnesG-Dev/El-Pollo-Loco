@@ -16,7 +16,7 @@ class Endboss extends MovableObject {
     constructor() {
         super().loadImage(imgPaths.boss.idle[0])
         this.loadImageSprites(imgPaths.boss);
-        this.hitBox = new HitBox(50, 25, 50, 110, this, 0, 'enemy')
+        this.hitBox = new HitBox(50, 25, 50, 110, this, 0, 'boss')
         this.hitBoxAttack1 = new HitBox(120, 10, 60, 90, this, 150, 'attackArea');
         this.hitBoxAttack2 = new HitBox(110, 40, 60, 90, this, 130, 'attackArea');
         this.hitBoxAttack3 = new HitBox(130, 50, 140, 90, this, 240, 'attackArea');
@@ -34,8 +34,8 @@ class Endboss extends MovableObject {
 
     isPlayerNearby() {
         if (this.otherDirection) {
-            return this.player.x >= (this.x - 60) && this.player.x < (this.x + 140);
-        } else return this.player.x >= (this.x - 80) && this.player.x < (this.x + 130);
+            return this.player.x >= (this.x - 130) && this.player.x < (this.x + 40);
+        } else return this.player.x >= (this.x - 0) && this.player.x < (this.x + 130);
     }
 
     inFightArea() {
@@ -176,9 +176,6 @@ class Endboss extends MovableObject {
                 this.status = 'hurt';
                 this.playSpriteOnce(this.IMAGES_HURT, 150);
             }
-
-            // ATTACK
-
 
             // IDLE
         } else {

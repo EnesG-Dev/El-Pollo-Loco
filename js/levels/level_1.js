@@ -118,6 +118,35 @@ function createLevel() {
                 endLevel: 170
             },
             { minX: -200, maxX: 105, groundLevel: 225, type: "static" }
+        ],
+        [
+            new Item(430, 25),
+            new Item(480, 100),
+            new Item(380, 100),
+            new Item(870, 200),
+            new Item(770, 150),
+            new Item(670, 200),
+            new Item(1600, 100),
+            new Item(1600, 250),
+            new Item(1650, 175),
+            new Item(1550, 175),
+            new Item(1900, 60),
+            new Item(1860, 180),
+            new Item(2000, 180),
+            new Item(2600, 250),
+            new Item(2500, 200),
+            new Item(2400, 250),
+            new Item(2850, 100),
+            new Item(3050, 310),
+            new Item(3150, 310),
+            new Item(3250, 310),
+            new Item(3350, 310),
+            new Item(3450, 310),
+            new Item(3000, 155),
+            new Item(3100, 155),
+            new Item(3200, 155),
+            new Item(3300, 155),
+            new Item(3400, 155)
         ]
     );
 }
