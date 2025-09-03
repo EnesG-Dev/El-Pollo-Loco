@@ -77,7 +77,17 @@ class Character extends MovableObject {
                 this.world.statusBar.manaBar.setMana(this.mana);
                 this.spawnProjectile();
             }, 22);
-        } else { console.log('you havent enoght mana!'); }
+        } else {
+            console.log('you havent enoght mana!');
+            this.status = '';
+        }
+    }
+
+    updateMana() {
+        if (this.mana < 5) {    
+            this.mana += 1;
+            this.world.statusBar.manaBar.setMana(this.mana);
+        }
     }
 
     spawnProjectile() {

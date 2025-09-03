@@ -1,5 +1,5 @@
-class Item extends DrawableObject {
-    width = 50;
+class Gem extends DrawableObject {
+    width = 25;
     height = 50;
 
     constructor(x, y) {
@@ -7,23 +7,23 @@ class Item extends DrawableObject {
         this.loadImageSprites(imgPaths.items);
         this.x = x;
         this.y = y;
-        this.hitBox = new HitBox(0, 0, 50, 50, this, 0, 'item')
-        this.playSprite(this.IMAGES_COIN, 100);
+        this.hitBox = new HitBox(0, 0, 50, 50, this, 0, 'gem')
+        this.playSprite(this.IMAGES_GEM, 100);
     }
 
     takeItem() {
         this.hitBox.removeFromCollisionList();
         this.moveUp();
-        this.playSpriteOnce(this.IMAGES_STAR, 100, () => {
+        this.playSpriteOnce(this.IMAGES_STARS, 100, () => {
             clearInterval(this.moveInterval);
             clearInterval(this.animationInterval);
             this.world.tempObjects = this.world.tempObjects.filter(ob => ob !== this);
-        });
+        }, -1, 100, 100);
     }
 
     moveUp() {
         this.moveInterval = setInterval(() => {
-            this.y -= 5;
-        }, 20);
+            this.y -= 10;
+        }, 30);
     }
 }

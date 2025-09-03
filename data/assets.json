@@ -719,6 +719,27 @@
             "./assets/sprites/items/star/star_2.png",
             "./assets/sprites/items/star/star_3.png",
             "./assets/sprites/items/star/star_4.png"
+        ],
+        "gem": [
+            "./assets/sprites/items/gem/gem_1.png",
+            "./assets/sprites/items/gem/gem_2.png",
+            "./assets/sprites/items/gem/gem_3.png",
+            "./assets/sprites/items/gem/gem_4.png",
+            "./assets/sprites/items/gem/gem_5.png",
+            "./assets/sprites/items/gem/gem_6.png",
+            "./assets/sprites/items/gem/gem_7.png",
+            "./assets/sprites/items/gem/gem_8.png",
+            "./assets/sprites/items/gem/gem_9.png",
+            "./assets/sprites/items/gem/gem_10.png",
+            "./assets/sprites/items/gem/gem_11.png",
+            "./assets/sprites/items/gem/gem_12.png"
+        ],
+        "stars": [
+            "./assets/sprites/items/stars/stars_1.png",
+            "./assets/sprites/items/stars/stars_2.png",
+            "./assets/sprites/items/stars/stars_3.png",
+            "./assets/sprites/items/stars/stars_4.png",
+            "./assets/sprites/items/stars/stars_5.png"
         ]
     },
     "null": [

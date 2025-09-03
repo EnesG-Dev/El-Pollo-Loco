@@ -168,7 +168,7 @@ class DrawableObject {
     }
 
     drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Witch || this instanceof Endboss || this instanceof Projectile || this instanceof Phantom || this instanceof Projectile || this instanceof BossShadow || this instanceof Item) {
+        if (this instanceof Character || this instanceof Witch || this instanceof Endboss || this instanceof Projectile || this instanceof Phantom || this instanceof Projectile || this instanceof BossShadow || this instanceof Coin || this instanceof Gem) {
             ctx.beginPath();
             ctx.lineWidth = '5';
             ctx.strokeStyle = 'blue';

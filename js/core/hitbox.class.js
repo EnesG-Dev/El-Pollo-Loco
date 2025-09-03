@@ -46,8 +46,13 @@ class HitBox {
             this.owner.detonate();
         }
       
-        if (this.type === 'item' && other.type === 'character') {
+        if (this.type === 'coin' && other.type === 'character') {
             other.owner.updateScore(10);
+            this.owner.takeItem();
+        }
+        
+        if (this.type === 'gem' && other.type === 'character') {
+            other.owner.updateMana();
             this.owner.takeItem();
         }
     }

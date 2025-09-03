@@ -14,6 +14,10 @@ class World {
 
         this.camera = new Camera();
 
+        this.tempObjects.push(new Gem(2300, 200));
+        this.tempObjects.push(new Gem(2350, 200));
+        this.tempObjects.push(new Gem(2400, 200));
+        this.tempObjects.push(new Gem(2450, 200));
     }
 
     initObjects() {
