@@ -84,7 +84,7 @@ class Character extends MovableObject {
     }
 
     updateMana() {
-        if (this.mana < 5) {    
+        if (this.mana < 6) {    
             this.mana += 1;
             this.world.statusBar.manaBar.setMana(this.mana);
         }
