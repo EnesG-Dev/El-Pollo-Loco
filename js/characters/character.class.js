@@ -2,7 +2,7 @@ class Character extends MovableObject {
     height = 150;
     width = 150;
     speed = 4;
-    mana = 3;
+    mana = 1;
     score = 0;
     stopMoving = false;
     lastMovement = 0;
@@ -87,8 +87,8 @@ class Character extends MovableObject {
     updateMana() {
         if (this.mana < 6) {
             this.mana += 1;
-            this.world.statusBar.manaBar.setMana(this.mana);
         }
+        this.world.statusBar.manaBar.setMana(this.mana);
     }
 
     spawnProjectile() {

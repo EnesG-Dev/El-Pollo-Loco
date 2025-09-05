@@ -575,6 +575,21 @@
                 "./assets/sprites/statusbars/character/manaBar/status/mana_4.png",
                 "./assets/sprites/statusbars/character/manaBar/status/mana_5.png",
                 "./assets/sprites/statusbars/character/manaBar/status/mana_6.png"
+            ],
+            "fill": [
+                "./assets/sprites/statusbars/character/manaBar/Fill/Fill_1.png",
+                "./assets/sprites/statusbars/character/manaBar/Fill/Fill_2.png",
+                "./assets/sprites/statusbars/character/manaBar/Fill/Fill_3.png",
+                "./assets/sprites/statusbars/character/manaBar/Fill/Fill_4.png",
+                "./assets/sprites/statusbars/character/manaBar/Fill/Fill_5.png",
+                "./assets/sprites/statusbars/character/manaBar/Fill/Fill_6.png"
+            ],
+            "recover": [
+                "./assets/sprites/statusbars/character/manaBar/Recover/Recovering_1.png",
+                "./assets/sprites/statusbars/character/manaBar/Recover/Recovering_2.png",
+                "./assets/sprites/statusbars/character/manaBar/Recover/Recovering_3.png",
+                "./assets/sprites/statusbars/character/manaBar/Recover/Recovering_4.png",
+                "./assets/sprites/statusbars/character/manaBar/Recover/Recovering_5.png"
             ]
         },
         "healthbar_border": {
