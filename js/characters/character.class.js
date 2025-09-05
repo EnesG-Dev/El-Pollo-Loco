@@ -71,20 +71,21 @@ class Character extends MovableObject {
         this.status = 'casting';
 
         if (this.mana > 0) {
-
             this.playSpriteOnce(this.IMAGES_LIGHT_CUT, 65, () => {
                 this.mana -= 1;
                 this.world.statusBar.manaBar.setMana(this.mana);
                 this.spawnProjectile();
             }, 22);
         } else {
-            console.log('you havent enoght mana!');
-            this.status = '';
+            this.playSpriteOnce(this.IMAGES_LIGHT_CUT, 65, () => {
+                this.world.statusBar.manaBar.emptyEffect();
+                this.status = '';
+            }, 10);
         }
     }
 
     updateMana() {
-        if (this.mana < 6) {    
+        if (this.mana < 6) {
             this.mana += 1;
             this.world.statusBar.manaBar.setMana(this.mana);
         }

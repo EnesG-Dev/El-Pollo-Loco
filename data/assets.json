@@ -559,16 +559,22 @@
         },
         "mana_bar": {
             "border": [
-                "./assets/sprites/statusbars/character/manaBar/manabar_border.png"
+                "./assets/sprites/statusbars/character/manaBar/border/manabar_border.png"
             ],
-            "amount": [
+            "border_white": [
+                "./assets/sprites/statusbars/character/manaBar/border/border_white.png",
                 "./assets/sprites/dummySprite/nullTexture.png",
-                "./assets/sprites/statusbars/character/manaBar/mana_1.png",
-                "./assets/sprites/statusbars/character/manaBar/mana_2.png",
-                "./assets/sprites/statusbars/character/manaBar/mana_3.png",
-                "./assets/sprites/statusbars/character/manaBar/mana_4.png",
-                "./assets/sprites/statusbars/character/manaBar/mana_5.png",
-                "./assets/sprites/statusbars/character/manaBar/mana_6.png"
+                "./assets/sprites/statusbars/character/manaBar/border/border_white.png",
+                "./assets/sprites/dummySprite/nullTexture.png"
+            ],
+            "status": [
+                "./assets/sprites/dummySprite/nullTexture.png",
+                "./assets/sprites/statusbars/character/manaBar/status/mana_1.png",
+                "./assets/sprites/statusbars/character/manaBar/status/mana_2.png",
+                "./assets/sprites/statusbars/character/manaBar/status/mana_3.png",
+                "./assets/sprites/statusbars/character/manaBar/status/mana_4.png",
+                "./assets/sprites/statusbars/character/manaBar/status/mana_5.png",
+                "./assets/sprites/statusbars/character/manaBar/status/mana_6.png"
             ]
         },
         "healthbar_border": {
