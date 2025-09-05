@@ -48,7 +48,7 @@ class MovableObject extends DrawableObject {
     statusDead() {
         this.status = 'die';
         this.hitBox.removeFromCollisionList();
-        this.playSpriteOnce(this.IMAGES_DEATH, 150, () => {
+        this.playSpriteOnce(this.IMAGES_DEATH, 100, () => {
             this.status = 'die';
             this.deleteThis();
         });
@@ -58,7 +58,7 @@ class MovableObject extends DrawableObject {
         this.world.level.enemies = this.world.level.enemies.filter(enemy => enemy !== this);
         clearInterval(this.moveInterval);
         clearInterval(this.animationInterval);
-        // TODO: spawn Coin
+        this.world.tempObjects.push(new Gem(this.x + 100, this.y + 100, this.world));
     }
 
     isHurt(currentTime = Date.now()) {

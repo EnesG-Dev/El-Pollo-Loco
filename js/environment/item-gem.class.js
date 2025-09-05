@@ -2,12 +2,13 @@ class Gem extends DrawableObject {
     width = 25;
     height = 50;
 
-    constructor(x, y) {
+    constructor(x, y, world) {
         super().loadImage(imgPaths.null[0]);
         this.loadImageSprites(imgPaths.items);
         this.x = x;
         this.y = y;
-        this.hitBox = new HitBox(0, 0, 50, 50, this, 0, 'gem')
+        this.world = world;
+        this.hitBox = new HitBox(0, 0, 25, 50, this, 0, 'gem')
         this.playSprite(this.IMAGES_GEM, 100);
     }
 
