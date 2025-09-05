@@ -18,6 +18,9 @@ class World {
         this.tempObjects.push(new Gem(2350, 200));
         this.tempObjects.push(new Gem(2400, 200));
         this.tempObjects.push(new Gem(2450, 200));
+
+        this.spike1 = new HitBox(700, 360, 150, 50);
+        this.spike2 = new HitBox(2480, 410, 150, 50);
     }
 
     initObjects() {

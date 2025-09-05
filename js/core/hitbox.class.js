@@ -2,6 +2,10 @@ class HitBox {
     constructor(offsetX, offsetY, w, h, owner = undefined, mirrorCorrectionX = 0, type = 'default') {
         this.owner = owner;
 
+        if (owner == undefined) {
+            this.x = offsetX;
+            this.y = offsetY;
+        }
         this.offsetX = offsetX;
         this.offsetY = offsetY;
         this.width = w;
@@ -15,20 +19,20 @@ class HitBox {
     }
 
     onCollision(other) {
-        if (this.type === 'character' && other.type === 'enemy') {          
+        if (this.type === 'character' && other.type === 'enemy') {
             if (this.isTopDemage(other)) {
                 this.owner.speedY = 10;
                 other.owner.hit(100);
-            } else {                
+            } else {
                 this.owner.hit(10);
             }
         }
-       
-        if (this.type === 'character' && other.type === 'boss') {          
+
+        if (this.type === 'character' && other.type === 'boss') {
             this.owner.hit(10);
         }
 
-        if (this.type === 'cast' && (other.type === 'enemy' || other.type === 'boss')) {          
+        if (this.type === 'cast' && (other.type === 'enemy' || other.type === 'boss')) {
             this.owner.detonate();
             other.owner.hit(30);
         }
@@ -45,15 +49,20 @@ class HitBox {
             other.owner.hit(40);
             this.owner.detonate();
         }
-      
+
         if (this.type === 'coin' && other.type === 'character') {
             other.owner.updateScore(10);
             this.owner.takeItem();
         }
-        
+
         if (this.type === 'gem' && other.type === 'character') {
             other.owner.updateMana();
             this.owner.takeItem();
+        }
+
+        if (this.type === 'default' && other.type === 'character') {
+            other.owner.hit(10);
+            other.owner.speedY = 10;
         }
     }
 
@@ -80,14 +89,17 @@ class HitBox {
     }
 
     updatePosition() {
-        this.alignmentCorrection();
+        if (this.owner !== undefined) {
 
-        if (this.owner) {
-            this.x = this.owner.x + this.offsetX;
-            this.y = this.owner.y + this.offsetY;
-        } else {
-            this.x = this.offsetX;
-            this.y = this.offsetY;
+            this.alignmentCorrection();
+
+            if (this.owner) {
+                this.x = this.owner.x + this.offsetX;
+                this.y = this.owner.y + this.offsetY;
+            } else {
+                this.x = this.offsetX;
+                this.y = this.offsetY;
+            }
         }
     }
 
