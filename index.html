@@ -61,10 +61,27 @@
 <body onload="init()">
     <h1>Legend of Eilish</h1>
 
-    <canvas id="canvas" width="720" height="480"></canvas>
-    <div class="character-images">
-        <img src="./assets/images/background/witch8.png">
-        <img src="./assets/images/background/hero3.png">
+    <div class="game-container">
+        <canvas id="canvas" width="720" height="480"></canvas>
+        
+        <div class="character-container">
+            <div class="character character-left">
+                <img src="./assets/images/background/witch.png" alt="Hexe">
+            </div>
+            <div class="character character-right">
+                <img src="./assets/images/background/hero.png" alt="Held">
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button>Start Game</button>
+        <button>Pause</button>
+        <button>Sound</button>
+    </div>
+
+    <div class="instructions">
+        <p>Bewege deinen Charakter mit den Pfeiltasten, sammle Münzen und vermeide die Feinde!</p>
     </div>
 </body>
 </html>
