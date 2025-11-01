@@ -1,6 +1,7 @@
 class Character extends MovableObject {
     height = 150;
     width = 150;
+    y = 200;
     speed = 4;
     mana = 1;
     score = 0;
@@ -21,8 +22,8 @@ class Character extends MovableObject {
 
         this.setMoveInterval();
         this.setAnimationInterval();
-        this.x = 0;
         this.x = 3100;
+        this.x = 0;
 
         this.readyToHurt = true;
     }
@@ -33,7 +34,7 @@ class Character extends MovableObject {
             if (!this.isDead()) {
 
                 // TODO: organize prioritys
-                if (this.world.keyboard.B && this.status !== 'casting') {
+                if (this.world.keyboard.V && this.status !== 'casting') {
                     this.status = 'lightCast';
                 }
 

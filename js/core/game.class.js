@@ -9,6 +9,15 @@ class Game {
         this.gameLoop();
     }
 
+    get isRunning() {
+        return GAME.currentScene instanceof GameScene;
+    }
+
+    playNewGame() {
+        this.setState('playing');
+        // document.getElementById('sceneLayout').style.display = 'none';
+    }
+
     setState(state) {
         if (this.currentScene?.destroy) this.currentScene.destroy();
         switch (state) {

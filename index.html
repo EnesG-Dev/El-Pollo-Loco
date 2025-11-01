@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" translate="no">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Game</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-title" content="MyWebSite" />
 
-    <link rel="icon" type="image/png" href="./assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="./assets/favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
     <link rel="icon" type="image/svg+xml" href="./assets/favicon/favicon.svg" />
     <link rel="shortcut icon" href="./assets/favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/favicon/apple-touch-icon.png"
+    />
     <link rel="manifest" href="./assets/favicon/site.webmanifest" />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Legend of Eilish</title>
 
     <script src="./js/core/game.class.js"></script>
 
@@ -51,37 +61,61 @@
     <script src="./js/ui/animated-effect.class.js"></script>
     <script src="./js/ui/manaBar.class.js"></script>
 
-
-
     <script src="./js/levels/level_1.js"></script>
 
     <script src="game.js"></script>
+  </head>
 
-</head>
-<body onload="init()">
-    <h1>Legend of Eilish</h1>
+  <body onload="init()">
+    <header>
+      <h1 class="desktop-h1">Legend of Eilish</h1>
+    </header>
 
-    <div class="game-container">
-        <canvas id="canvas" width="720" height="480"></canvas>
-        
-        <div class="character-container">
-            <div class="character character-left">
-                <img src="./assets/images/background/witch.png" alt="Hexe">
-            </div>
-            <div class="character character-right">
-                <img src="./assets/images/background/hero.png" alt="Held">
-            </div>
+    <main>
+      <div class="game-screen" id="gameScreen" role="region" aria-label="game area">
+        <section class="game-area" style="position: relative;">
+          <canvas id="canvas" aria-label="Game-Canvas"></canvas>
+          <section id="sceneLayout" aria-label="start menu"></section>
+        </section>
+      </div>
+
+      <div class="character-container">
+        <div class="character character-left">
+          <img src="./assets/images/background/witch.png" alt="Hexe" />
         </div>
-    </div>
+        <div class="character character-right">
+          <img src="./assets/images/background/hero.png" alt="Held" />
+        </div>
+      </div>
+    </main>
 
-    <div class="controls">
-        <button>Start Game</button>
-        <button>Pause</button>
-        <button>Sound</button>
-    </div>
-
-    <div class="instructions">
-        <p>Bewege deinen Charakter mit den Pfeiltasten, sammle Münzen und vermeide die Feinde!</p>
-    </div>
-</body>
+    <section class="instructions">
+      <p>
+        Bewege deinen Charakter mit den Pfeiltasten, sammle Münzen und vermeide
+        die Feinde!
+      </p>
+      <ul>
+        <li>
+          <img src="./assets/images/icons/left_white.png" alt="left" />
+          move left
+        </li>
+        <li>
+          <img src="./assets/images/icons/right_white.png" alt="right" />
+          move right
+        </li>
+        <li>
+          <img src="./assets/images/icons/c_white.png" alt="c" />
+          sword attack
+        </li>
+        <li>
+          <img src="./assets/images/icons/v_white.png" alt="v" />
+          energy attack
+        </li>
+        <li>
+          <img src="./assets/images/icons/space_white.png" alt="space" />
+          jump
+        </li>
+      </ul>
+    </section>
+  </body>
 </html>

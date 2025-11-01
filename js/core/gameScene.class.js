@@ -10,6 +10,12 @@ class GameScene {
         this.world = new World(this.game.canvas, this.game.keyboard, level);
         this.world.initObjects();
         this.gameOverTriggered = false;
+
+        const sceneLayout = document.getElementById('sceneLayout');
+        sceneLayout.innerHTML = this.controlTemp();
+        sceneLayout.style.background = 'none';
+
+        this.setupControlButtons();
     }
 
     update() {
@@ -25,7 +31,7 @@ class GameScene {
                 // this.world.character.playContinue();
                 // this.game.setState('gameOver');
                 console.log('spiel vorbei!');
-                
+
             }, 10000);
         }
     }
@@ -34,5 +40,57 @@ class GameScene {
         if (this.world) {
             this.world.render(ctx);
         }
+    }
+
+    touchAction(action) {
+        this.game.keyboard[action] = true;
+    }
+    touchStop(action) {
+        this.game.keyboard[action] = false;
+    }
+
+    setupControlButtons() {
+        document.querySelectorAll('.control-btn').forEach(btn => {
+            const action = btn.dataset.action;
+            if (!action) return;
+            
+            btn.onpointerdown = () => this.touchAction(action);
+            btn.onpointerup = () => this.touchStop(action);
+        });
+    }
+
+    controlTemp() {
+        return /*html*/`
+            <div id="controlLayout" class="mobile-controls">
+                <div class="top-bar">
+                    <button class="control-btn" aria-label="fullscreen" onpointerdown="toggleFullscreen()">
+                        <img src="./assets/images/icons/fullscreen.png" alt="fullscreen icon"/>
+                    </button>
+                </div>
+
+                <div class="bottom-bar">
+                    <div class="left-side-btns">
+                        <button class="control-btn" data-action="LEFT" aria-label="move left">
+                            <img src="./assets/images/icons/left_white.png" alt="move left icon"/>
+                        </button>
+                        <button class="control-btn" data-action="RIGHT" aria-label="move right" >
+                            <img src="./assets/images/icons/right_white.png" alt="move right icon"/>
+                        </button>
+                    </div>
+
+                    <div class="right-side-btns">
+                        <button class="control-btn" data-action="V" aria-label="energy attack">
+                            <img src="./assets/images/icons/energy.png" alt="energy icon"/>
+                        </button>
+                        <button class="control-btn" data-action="C" aria-label="sword attack">
+                            <img src="./assets/images/icons/sword.png" alt="sword icon"/>
+                        </button>
+                        <button class="control-btn" data-action="SPACE" aria-label="jump">
+                            <img src="./assets/images/icons/jump.png" alt="jump icon"/>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
     }
 }
