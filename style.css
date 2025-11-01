@@ -325,6 +325,17 @@ ul li {
   width: 8vw;
 }
 
+.control-btn, .control-btn img {
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  user-select: none;
+  touch-action: none;
+}
+
+button img {
+  pointer-events: none;
+}
+
 @media (max-width: 1024px) {
   .character {
     display: none;
