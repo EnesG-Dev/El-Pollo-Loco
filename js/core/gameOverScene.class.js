@@ -24,4 +24,19 @@ class GameOverScene {
         ctx.font = '30px Arial';
         ctx.fillText('Game Over - Space zum Neustart', 100, 100);
     }
+
+    updateOverlay() {
+        this.checkButtons();
+    }
+
+    checkButtons() {
+        const fullscreenBtn = document.getElementById('fullscreenBtnImg');
+        if (document.fullscreenElement) {
+            fullscreenBtn.src = "./assets/images/icons/fullscreen_exit.png";
+            fullscreenBtn.alt = "fullscreen exit icon";
+        } else {
+            fullscreenBtn.src = "./assets/images/icons/fullscreen.png";
+            fullscreenBtn.alt = "fullscreen icon";
+        }
+    }
 }

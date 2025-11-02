@@ -9,13 +9,13 @@ class Game {
         this.gameLoop();
     }
 
+    // nicht in benutzung
     get isRunning() {
         return GAME.currentScene instanceof GameScene;
     }
 
     playNewGame() {
         this.setState('playing');
-        // document.getElementById('sceneLayout').style.display = 'none';
     }
 
     setState(state) {

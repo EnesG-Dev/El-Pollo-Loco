@@ -139,7 +139,7 @@ function resizeCanvas() {
 
 function scaleSize(canvas, scale) {
 
-      const gameScreen = document.getElementById('gameScreen');
+    const gameScreen = document.getElementById('gameScreen');
 
 
     canvas.width = GAME_WIDTH;
@@ -159,23 +159,27 @@ function isTouchDevise() {
 }
 
 function toggleFullscreen() {
-  const gameScreen = document.getElementById('gameScreen');
-  
-  if (!document.fullscreenElement) {
-    if (gameScreen.requestFullscreen) {
-      gameScreen.requestFullscreen();
-    } else if (gameScreen.webkitRequestFullscreen) {
-      gameScreen.webkitRequestFullscreen();
-    } else if (gameScreen.msRequestFullscreen) {
-      gameScreen.msRequestFullscreen();
+    const gameScreen = document.getElementById('gameScreen');
+
+    if (!document.fullscreenElement) {
+        if (gameScreen.requestFullscreen) {
+            gameScreen.requestFullscreen();
+        } else if (gameScreen.webkitRequestFullscreen) {
+            gameScreen.webkitRequestFullscreen();
+        } else if (gameScreen.msRequestFullscreen) {
+            gameScreen.msRequestFullscreen();
+        }
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
     }
-  } else {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
-    }
-  }
 }
+
+document.addEventListener("fullscreenchange", () => {
+    GAME.currentScene.updateOverlay();
+});

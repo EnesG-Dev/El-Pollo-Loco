@@ -11,15 +11,10 @@ class MenuScene {
     init() {
         const sceneLayout = document.getElementById('sceneLayout');
         sceneLayout.innerHTML = this.menuTemp();
+        this.updateOverlay();
     }
 
-    update() {
-        if (document.fullscreenElement) {
-            this.background = this.backgroundMobile;
-        } else {
-            this.background = this.backgroundDesktop;
-        }
-    }
+    update() {}
 
     render(ctx) {
         ctx.drawImage(
@@ -27,6 +22,28 @@ class MenuScene {
             this.game.canvas.width,
             this.game.canvas.height
         );
+    }
+
+    updateOverlay() {
+        this.checkBackground();
+        this.checkButtons();
+    }
+
+    checkBackground() {
+        if (document.fullscreenElement) {
+            this.background = this.backgroundMobile;
+        } else {
+            this.background = this.backgroundDesktop;
+        }
+    }
+
+    checkButtons() {
+        const fullscreenBtn = document.getElementById('fullscreenBtn');
+        if (document.fullscreenElement) {
+            fullscreenBtn.innerText = "Vollbild verlassen";
+        } else {
+            fullscreenBtn.innerText = "Vollbild";
+        }
     }
 
     menuTemp() {
@@ -45,7 +62,7 @@ class MenuScene {
                 Sound ON
                 </button>
 
-                <button class="menu-btn" onpointerdown="toggleFullscreen()" type="button" aria-label="fullscreen">
+                <button id="fullscreenBtn" class="menu-btn" onpointerdown="toggleFullscreen()" type="button" aria-label="fullscreen">
                 Vollbild
                 </button>
             </form>

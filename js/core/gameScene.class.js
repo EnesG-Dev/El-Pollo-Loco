@@ -16,6 +16,7 @@ class GameScene {
         sceneLayout.style.background = 'none';
 
         this.setupControlButtons();
+        this.updateOverlay();
     }
 
     update() {
@@ -42,6 +43,21 @@ class GameScene {
         }
     }
 
+    updateOverlay() {
+        this.checkButtons();
+    }
+
+    checkButtons() {
+        const fullscreenBtn = document.getElementById('fullscreenBtnImg');
+        if (document.fullscreenElement) {
+            fullscreenBtn.src = "./assets/images/icons/fullscreen_exit.png";
+            fullscreenBtn.alt = "fullscreen exit icon";
+        } else {
+            fullscreenBtn.src = "./assets/images/icons/fullscreen.png";
+            fullscreenBtn.alt = "fullscreen icon";
+        }
+    }
+
     touchAction(action) {
         this.game.keyboard[action] = true;
     }
@@ -64,7 +80,7 @@ class GameScene {
             <div id="controlLayout" class="mobile-controls">
                 <div class="top-bar">
                     <button class="control-btn" aria-label="fullscreen" onpointerdown="toggleFullscreen()">
-                        <img src="./assets/images/icons/fullscreen.png" alt="fullscreen icon"/>
+                        <img id="fullscreenBtnImg" src="./assets/images/icons/fullscreen.png" alt="fullscreen icon"/>
                     </button>
                 </div>
 
