@@ -50,7 +50,7 @@ class MenuScene {
         return /*html*/`
             <h2 class="mobile-h2">Legend of Eilish</h2>
 
-            <form id="startForm" onsubmit="GAME.playNewGame(); return false;">
+            <form id="startForm" onsubmit="GAME.newGame(); return false;">
                 
                 <input id="playerName" type="text" placeholder="Spieler" maxlength="15"/>
 
@@ -58,8 +58,8 @@ class MenuScene {
                 Spiel starten
                 </button>
 
-                <button class="menu-btn" id="soundBtn" type="button" aria-pressed="false" aria-label="Sound on/off">
-                Sound ON
+                <button class="menu-btn" id="soundBtn" type="button" onpointerdown="GAME.toggleSound()" aria-pressed="false" aria-label="Sound on/off">
+                Sound OFF
                 </button>
 
                 <button id="fullscreenBtn" class="menu-btn" onpointerdown="toggleFullscreen()" type="button" aria-label="fullscreen">

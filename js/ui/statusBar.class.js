@@ -12,8 +12,6 @@ class StatusBar {
         this.owner = owner;
         this.currentHealth = owner.energy;
 
-        this.isGameOver = false;
-
         this.portrait = new Portrait(this, imgPaths.status_bar.portrait);
         this.healthBarBorder = new HealthBarBorder(this, imgPaths.status_bar.healthbar_border);
         this.healthBar = new HealthBar(this, imgPaths.status_bar.healthbar_blood);
@@ -32,7 +30,6 @@ class StatusBar {
             this.setHealthConfig();
             this.hitEffects();
         } else {
-            this.isGameOver = true;
 
             this.setHealthConfig();
 
@@ -64,8 +61,6 @@ class StatusBar {
         this.bloodFx.hitVibration();
     }
 
-    // TODO: health effect: whitout vibration, whitout boolFx!
-
     setHealthConfig() {
         let targetHealth = this.owner.energy;
         let healthPosition = targetHealth / 10;
@@ -84,9 +79,6 @@ class StatusBar {
         this.healthBar.setHealth(healthPosition);
         this.healthBar.positionHealthEdge(healthPosition);
 
-        if (targetHealth === 0) {
-            this.isGameOver = false;
-        }
     }
 
     orangeFunktion(target) {
@@ -95,5 +87,9 @@ class StatusBar {
                 this.orangeLife.width -= 4;
             } else clearInterval(orangeInterval);
         }, 20);
+    }
+
+    clear() {
+        this.healthBar.clearIntervals();
     }
 }

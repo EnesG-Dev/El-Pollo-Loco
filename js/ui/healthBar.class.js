@@ -21,15 +21,20 @@ class HealthBar extends DrawableObject {
         this.healthEdge_2.playSprite(this.healthEdge_1.IMAGES_EDGE_2, 150);
     }
 
-    mirrorCerrectionBoss() {
-        if (this.isBossEnemy) {
-            this.x = 0;
+    render(ctx) {
+        this.draw(ctx);
+
+        if (this.healthCounter >= 1 && this.healthCounter <= 9) {
+            this.healthEdge_1.draw(ctx);
+            this.healthEdge_2.draw(ctx);
+        } else if (this.healthCounter < 1) {
+            setTimeout(() => {
+                this.switchToBloodDrop();
+            }, 300);
         }
     }
 
-    playTestOfBlood() {
-        // FIXME: death variable einheitlich an einem Ort verwalten!!! UND GameOver einleiten...
-
+    switchToBloodDrop() {
         if (!this.death) {
             this.death = true;
 
@@ -42,19 +47,6 @@ class HealthBar extends DrawableObject {
             }
             this.y += 10;
             this.playSprite(this.IMAGES_DRIP, 150, 50, 50);
-        }
-    }
-
-    render(ctx) {
-        this.draw(ctx);
-
-        if (this.healthCounter >= 1 && this.healthCounter <= 9) {
-            this.healthEdge_1.draw(ctx);
-            this.healthEdge_2.draw(ctx);
-        } else if (this.healthCounter < 1) {
-            setTimeout(() => {
-                this.playTestOfBlood();
-            }, 300);
         }
     }
 
@@ -77,5 +69,11 @@ class HealthBar extends DrawableObject {
             this.healthEdge_1.x = this.x + 7 + (healthPosition * 18.5)
             this.healthEdge_2.x = this.x + 7 + (healthPosition * 18.5)
         }
+    }
+
+    clearIntervals() {
+        this.healthEdge_1.clearAll();
+        this.healthEdge_2.clearAll();
+        this.clearAll();
     }
 }

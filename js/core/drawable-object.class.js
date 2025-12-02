@@ -22,6 +22,12 @@ class DrawableObject {
         this.widthDe = this.width;
     }
 
+    clearAll() {
+        clearInterval(this.mainInterval);
+        clearInterval(this.moveInterval);
+        clearInterval(this.animationInterval);
+    }
+
     hitVibration() {
         this.x -= 3;
         this.y += 3;
@@ -177,21 +183,15 @@ class DrawableObject {
         }
     }
 
-    // #######################################################
-
     mirrorOn(ctx) {
         ctx.save();
         ctx.translate(this.width, 0);
         ctx.scale(-1, 1);
-        // this.world.ctx.save();
-        // this.world.ctx.translate(this.width, 0);
-        // this.world.ctx.scale(-1, 1);
         this.x = this.x * -1;
     }
 
     mirrorOff(ctx) {
         this.x = this.x * -1;
-        // this.world.ctx.restore();
         ctx.restore();
     }
 }

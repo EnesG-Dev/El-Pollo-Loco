@@ -51,4 +51,6 @@ class BossAttackArea extends DrawableObject {
         this.world.tempObjects = this.world.tempObjects.filter(projectile => projectile !== this);
         clearInterval(this.animationInterval);
     }
+
+    update() { }
 }

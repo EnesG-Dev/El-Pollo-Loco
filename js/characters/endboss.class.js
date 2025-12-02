@@ -4,14 +4,11 @@ class Endboss extends MovableObject {
     widthDe = 150;
     x = 3600;
     y = 150;
+    speed = 0.5;
     objectGround = 10;
-
     otherDirection = true;
-
     bossFightAreaX = 2900;
     wakeUpBossAreaX = 3200;
-
-    speed = 0.5;
 
     constructor() {
         super().loadImage(imgPaths.boss.idle[0])
@@ -33,9 +30,11 @@ class Endboss extends MovableObject {
     }
 
     isPlayerNearby() {
-        if (this.otherDirection) {
-            return this.player.x >= (this.x - 130) && this.player.x < (this.x + 40);
-        } else return this.player.x >= (this.x - 0) && this.player.x < (this.x + 130);
+        if (!this.world.isGameOver()) {
+            if (this.otherDirection) {
+                return this.player.x >= (this.x - 130) && this.player.x < (this.x + 40);
+            } else return this.player.x >= (this.x - 0) && this.player.x < (this.x + 130);
+        } return false;
     }
 
     inFightArea() {
@@ -79,7 +78,6 @@ class Endboss extends MovableObject {
     moveAnimation() {
         if (this.status == 'idle' && this.status !== 'moving') {
             this.status = 'moving';
-
             this.playSprite(this.IMAGES_MOVING, 150)
         }
     }
@@ -139,11 +137,8 @@ class Endboss extends MovableObject {
         this.shadow.update();
         this.checkAction();
 
-        // ATTACK Combo
         if (this.status !== 'hurt' && this.status === 'attack') {
             this.firstAttack();
-
-            // SLEEP
         } else if (this.status == 'rest' || this.status == 'resting') {
             if (this.status !== 'resting') {
                 this.status = 'resting';
@@ -152,8 +147,6 @@ class Endboss extends MovableObject {
                     this.playSprite(this.IMAGES_SLEEPING, 200);
                 });
             }
-
-            // SPIN
         } else if (this.status == 'spin' || this.status == 'spining') {
             if (this.status !== 'spining') {
                 this.status = 'spining';
@@ -163,21 +156,15 @@ class Endboss extends MovableObject {
                     this.playSpriteOnce(this.IMAGES_SPIN, 100);
                 });
             }
-
-            // DEAD
         } else if (this.isDead() && !this.isHurt()) {
             if (this.status !== 'die') {
                 this.statusDead();
             }
-
-            // HURT
         } else if (this.isHurt()) {
             if (this.status !== 'hurt') {
                 this.status = 'hurt';
                 this.playSpriteOnce(this.IMAGES_HURT, 150);
             }
-
-            // IDLE
         } else {
             if (this.status == '') {
                 this.status = 'idle';
@@ -191,7 +178,7 @@ class Endboss extends MovableObject {
         this.hitBox.removeFromCollisionList();
         this.shadow.deleteThis();
         this.playSpriteOnce(this.IMAGES_DEATH, 150, () => {
-            this.status = 'die';            
+            this.status = 'die';
         }, -1, 200);
     }
 }

@@ -1,0 +1,16 @@
+{
+    "music": {
+        "menu": "./assets/audio/music/music_menu.wav",
+        "game": "./assets/audio/music/music_game.mp3",
+        "boss": "./assets/audio/music/music_boss.wav"
+    },
+    "character": {
+        "lightCutThrow": "./assets/audio/character/lightcut_throw.wav",
+        "lightCutDetonate": "./assets/audio/character/lightcut_detonate.wav",
+        "jump": "./assets/audio/character/jump.wav",
+        "walk": "./assets/audio/character/walk.mp3",
+        "hurt": "./assets/audio/character/dummy.wav",
+        "death": "./assets/audio/character/death.wav",
+        "swordSwing": "./assets/audio/character/sword_swing.wav"
+    }
+}

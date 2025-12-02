@@ -26,4 +26,6 @@ class Coin extends DrawableObject {
             this.y -= 5;
         }, 20);
     }
+
+    update() {}
 }

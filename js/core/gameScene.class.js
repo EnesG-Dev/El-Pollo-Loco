@@ -2,45 +2,71 @@ class GameScene {
     constructor(game) {
         this.game = game;
         this.world = null;
-        this.gameOverTriggered = false;
+        this.gameOverGrace = false;
+        this.gameOverEndTime = 0;
     }
 
     init() {
         const level = createLevel();
         this.world = new World(this.game.canvas, this.game.keyboard, level);
         this.world.initObjects();
-        this.gameOverTriggered = false;
-
-        const sceneLayout = document.getElementById('sceneLayout');
-        sceneLayout.innerHTML = this.controlTemp();
-        sceneLayout.style.background = 'none';
+        this.setSceneLayout();
 
         this.setupControlButtons();
         this.updateOverlay();
     }
 
     update() {
-        if (!this.world || this.gameOverTriggered) return;
+        if (!this.world) return;
 
-        this.world.update();
+        if (this.gameOverGrace) {
+            if (Date.now() < this.gameOverEndTime) {
+                this.world.update();
+            }
+            return;
+        }
 
         if (this.world.isGameOver()) {
-            // this.gameOverTriggered = true;
-            // this.world.clearObjects();
-            COLLISION_MANAGER.objects = [];
-            setTimeout(() => {
-                // this.world.character.playContinue();
-                // this.game.setState('gameOver');
-                console.log('spiel vorbei!');
-
-            }, 10000);
+            this.triggerGameOverGrace();
+        } else {
+            this.world.update();
         }
+    }
+
+    triggerGameOverGrace() {
+        this.gameOverGrace = true;
+        this.gameOverEndTime = Date.now() + 2000;
+        COLLISION_MANAGER.objects = [];
+        this.setGameResult();
+        this.switchEndScene();
+    }
+    
+    setGameResult() {
+        if (this.world.character.energy === 0) {
+            this.game.gameResult = 'failed';
+        } else this.game.gameResult = 'win';
+    }
+    
+    switchEndScene() {
+        setTimeout(() => {
+            this.world.clearWorld();
+            COLLISION_MANAGER.objects = [];
+
+            // this.game.setState('gameOver');
+            // game leichter machen > boss langsammer
+        }, 5000);
     }
 
     render(ctx) {
         if (this.world) {
             this.world.render(ctx);
         }
+    }
+
+    setSceneLayout() {
+        const sceneLayout = document.getElementById('sceneLayout');
+        sceneLayout.innerHTML = this.controlTemp();
+        sceneLayout.style.background = 'none';
     }
 
     updateOverlay() {
@@ -69,7 +95,7 @@ class GameScene {
         document.querySelectorAll('.control-btn').forEach(btn => {
             const action = btn.dataset.action;
             if (!action) return;
-            
+
             btn.onpointerdown = () => this.touchAction(action);
             btn.onpointerup = () => this.touchStop(action);
         });

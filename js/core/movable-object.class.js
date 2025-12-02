@@ -17,12 +17,6 @@ class MovableObject extends DrawableObject {
         this.world = null;
     }
 
-    clearAll() {
-        clearInterval(this.mainInterval);
-        clearInterval(this.moveInterval);
-        clearInterval(this.animationInterval);
-    }
-
     hit(damage) {
         let now = Date.now();
 

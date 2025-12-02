@@ -6,7 +6,7 @@ class Projectile extends MovableObject {
     offsetY = (this.height + 50) / 2;
     offsetX = (this.width - 20) / 2;
 
-    speed = 5;
+    speed = 3;
     isCollided = false;
 
     constructor(world, x = 100, y = 100) {
@@ -18,15 +18,11 @@ class Projectile extends MovableObject {
         this.hitBox = new HitBox(12, 25, 50, 25, this, 0, 'projectile');
 
         this.playSprite(this.IMAGES_BULLET, 150);
-        this.moveAction();
     }
 
-    moveAction() {
-        clearInterval(this.moveInterval);
-        this.moveInterval = setInterval(() => {
-            this.moveLeft();
-            this.outOfMap();
-        }, 1000 / 60);
+    update() {
+        this.moveLeft();
+        this.outOfMap();
     }
 
     outOfMap() {

@@ -9,9 +9,7 @@ class BossShadow extends MovableObject {
         super().loadImage(imgPaths.boss.shadow[0])
         this.loadImageSprites(imgPaths.boss);
         this.owner = owner;
-
         this.applyGravity();
-
         this.playSprite(this.IMAGES_SHADOW, 150);
     }
 
@@ -21,7 +19,6 @@ class BossShadow extends MovableObject {
     
     deleteThis() {
         this.world.tempObjects = this.world.tempObjects.filter(enemy => enemy !== this);
-        clearInterval(this.moveInterval);
         clearInterval(this.animationInterval);
     }
 }

@@ -10,8 +10,6 @@ class StatusBarBoss {
         this.owner = owner;
         this.currentHealth = owner.energy;
 
-        this.isGameOver = false;
-
         this.statusBarElements = [
             this.portrait = new Portrait(this, imgPaths.status_bar.boss, 307),
             this.healthBarBorder = new HealthBarBorder(this, imgPaths.status_bar.healthbar_border),
@@ -114,9 +112,9 @@ class StatusBarBoss {
 
         this.healthBar.setHealth(healthPosition);
         this.healthBar.positionHealthEdge(healthPosition);
+    }
 
-        // if (targetHealth === 0) {
-        //     this.isGameOver = false;
-        // }
+    clear() {
+        this.healthBar.clearIntervals();
     }
 }

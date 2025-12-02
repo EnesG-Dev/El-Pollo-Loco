@@ -27,4 +27,6 @@ class Gem extends DrawableObject {
             this.y -= 10;
         }, 30);
     }
+
+    update() {}
 }

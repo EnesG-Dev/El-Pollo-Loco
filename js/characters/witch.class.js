@@ -1,11 +1,8 @@
 class Witch extends MovableObject {
-
     height = 220;
     width = 220;
-
-    energy = 100;
+    energy = 40;
     speed = 0.4;
-
     attackReady = true;
 
     constructor(x, y) {
@@ -14,35 +11,23 @@ class Witch extends MovableObject {
 
         this.x = x;
         this.y = y;
-
-        this.energy = 40;
-
         this.hitBox = new HitBox(100, 90, 50, 100, this, 0, 'enemy');
-
     }
 
     update() {
-
-        // DEAD
         if (this.isDead() && !this.isHurt()) {
             if (this.status !== 'die') {
                 this.statusDead();
             }
-
-            // HURT
         } else if (this.isHurt()) {
             if (this.status !== 'hurt') {
                 this.status = 'hurt';
                 this.playSpriteOnce(this.IMAGES_HURT, 150);
             }
-
-            // ATTACK
         } else if ((this.isCharacterNearby() && this.attackReady) || this.status == 'attack') {
             if (this.status !== 'attack') {
                 this.attack();
             }
-
-            // IDLE
         } else {
             if (this.status == '') {
                 this.status = 'idle';
@@ -52,9 +37,9 @@ class Witch extends MovableObject {
     }
 
     isCharacterNearby() {
-        if (this.world) {
+        if (!this.world.isGameOver()) {
             return this.world.character.x >= (this.x - 450) && this.world.character.x < (this.x + 100);
-        }
+        } return false;
     }
 
     attack() {
