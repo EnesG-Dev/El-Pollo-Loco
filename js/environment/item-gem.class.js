@@ -14,6 +14,7 @@ class Gem extends DrawableObject {
 
     takeItem() {
         this.hitBox.removeFromCollisionList();
+        AUDIO_MANAGER.playEffectSound('effects_gem');
         this.moveUp();
         this.playSpriteOnce(this.IMAGES_STARS, 100, () => {
             clearInterval(this.moveInterval);

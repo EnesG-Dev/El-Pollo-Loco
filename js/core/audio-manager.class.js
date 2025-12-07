@@ -51,6 +51,10 @@ class AudioManager {
     }
 
     playMusic(soundName) {
+        if (this.activeMusic) {
+            this.activeMusic.pause();
+        }
+
         const sound = this.sounds[soundName];
         sound.loop = true;
         sound.volume = 0.1;
@@ -64,10 +68,43 @@ class AudioManager {
         // sound.currentTime = 0; 
         sound.play();
     }
+    
+    playEffectSound(soundName) {
+        const sound = this.sounds[soundName];
+
+        sound.currentTime = 0; 
+        sound.play();
+    }
 
     muteAll(muted) {
         for (const soundName in this.sounds) {
             this.sounds[soundName].muted = muted;
         }
+    }
+
+
+
+
+    playCastingSound() {
+        const sound = this.sounds['character_lightCutLoading'];
+        sound.currentTime = 0;
+        sound.loop = true;
+        sound.play();
+    }
+
+    stopCastingSound() {
+        const sound = this.sounds['character_lightCutLoading'];
+        sound.pause();
+    }
+
+    playManaAttackSound() {
+        const sound = this.sounds['character_lightCutThrow'];
+        sound.currentTime = 0;
+        sound.play();
+    }
+    
+    stopManaAttackSound() {
+        const sound = this.sounds['character_lightCutThrow'];
+        sound.pause();
     }
 }

@@ -13,6 +13,7 @@ class Coin extends DrawableObject {
 
     takeItem() {
         this.hitBox.removeFromCollisionList();
+        AUDIO_MANAGER.playEffectSound('effects_coin');
         this.moveUp();
         this.playSpriteOnce(this.IMAGES_STAR, 100, () => {
             clearInterval(this.moveInterval);

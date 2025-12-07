@@ -4,6 +4,7 @@ class Character extends MovableObject {
     y = 200;
     speed = 4;
     mana = 1;
+    mana = 5;   // löschen
     score = 0;
     stopMoving = false;
     lastMovement = 0;
@@ -20,8 +21,8 @@ class Character extends MovableObject {
         this.applyGravity();
 
         this.setMoveInterval();
-        this.x = 0;
         this.x = 3100;
+        this.x = 0;
 
         this.readyToHurt = true;
     }
@@ -56,7 +57,7 @@ class Character extends MovableObject {
 
                 if (this.world.keyboard.SPACE && !this.isAboveGround()) {
                     this.jump();
-                    AUDIO_MANAGER.playSound('character_jump');
+                    AUDIO_MANAGER.playEffectSound('character_jump');
                 }
             } else {
                 this.stopMoving = true;
@@ -77,13 +78,17 @@ class Character extends MovableObject {
         this.status = 'casting';
 
         if (this.mana > 0) {
+            AUDIO_MANAGER.playCastingSound();
             this.playSpriteOnce(this.IMAGES_LIGHT_CUT, 65, () => {
                 this.mana -= 1;
+                AUDIO_MANAGER.stopCastingSound();
                 this.world.statusBar.manaBar.setMana(this.mana);
                 this.spawnProjectile();
             }, 22);
         } else {
+            AUDIO_MANAGER.playCastingSound();
             this.playSpriteOnce(this.IMAGES_LIGHT_CUT, 65, () => {
+                AUDIO_MANAGER.stopCastingSound();
                 this.world.statusBar.manaBar.emptyEffect();
                 this.status = '';
             }, 10);
@@ -99,10 +104,10 @@ class Character extends MovableObject {
 
     spawnProjectile() {
         this.world.tempObjects.push(new LightCut(this.world, this, this.IMAGES_HOLY_SLASH));
+        AUDIO_MANAGER.playManaAttackSound();
     }
 
     update() {
-
         // DEAD
         if (this.isDead() && !this.isAboveGround() && !this.isHurt()) {
             if (this.status !== 'die') {
@@ -115,6 +120,7 @@ class Character extends MovableObject {
                 this.status = 'hurt';
                 this.readyToHurt = false;
                 // oder mit timeout machen auf readyToHurt true setzen
+                AUDIO_MANAGER.playEffectSound('character_hurt');
                 this.playSpriteOnce(this.IMAGES_HURT, 100, () => this.readyToHurt = true);
             }
 
@@ -185,6 +191,7 @@ class Character extends MovableObject {
     }
 
     attack1() {
+        AUDIO_MANAGER.playEffectSound('character_swordSwing');
         this.playSpriteOnce(this.IMAGES_ATTACK1, 60, () => this.addAttackArea(), 5);
     }
 
@@ -214,6 +221,7 @@ class Character extends MovableObject {
 
     statusDead() {
         this.status = 'die';
+        AUDIO_MANAGER.playSound('character_death');
         this.hitBox.removeFromCollisionList();
         this.playSpriteOnce(this.IMAGES_DEATH, 100, () => this.status = 'die');
     }

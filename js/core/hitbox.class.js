@@ -21,6 +21,7 @@ class HitBox {
     onCollision(other) {
         if (this.type === 'character' && other.type === 'enemy') {
             if (this.isTopDemage(other)) {
+                AUDIO_MANAGER.playEffectSound('effects_headJump');
                 this.owner.speedY = 10;
                 other.owner.hit(100);
             } else {
@@ -33,11 +34,13 @@ class HitBox {
         }
 
         if (this.type === 'cast' && (other.type === 'enemy' || other.type === 'boss')) {
+            AUDIO_MANAGER.playEffectSound('enemy_hurt');
             this.owner.detonate();
             other.owner.hit(30);
         }
 
         if (this.type === 'sword' && (other.type === 'enemy' || other.type === 'boss')) {
+            AUDIO_MANAGER.playEffectSound('enemy_hurt');
             other.owner.hit(20);
         }
 

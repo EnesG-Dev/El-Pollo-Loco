@@ -34,6 +34,7 @@ class LightCut extends MovableObject {
         this.isCollided = true;
         this.hitBox.removeFromCollisionList();
 
+        AUDIO_MANAGER.stopManaAttackSound();
         this.playSpriteOnce(this.IMAGES_LIGHT_HIT, 50, () => {
             this.deleteThis();
         })

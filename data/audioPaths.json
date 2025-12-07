@@ -5,12 +5,24 @@
         "boss": "./assets/audio/music/music_boss.wav"
     },
     "character": {
+        "lightCutLoading": "./assets/audio/character/energyLoading.wav",
         "lightCutThrow": "./assets/audio/character/lightcut_throw.wav",
-        "lightCutDetonate": "./assets/audio/character/lightcut_detonate.wav",
-        "jump": "./assets/audio/character/jump.wav",
+        "jump": "./assets/audio/character/jump.mov",
         "walk": "./assets/audio/character/walk.mp3",
-        "hurt": "./assets/audio/character/dummy.wav",
+        "hurt": "./assets/audio/character/hurt.wav",
         "death": "./assets/audio/character/death.wav",
         "swordSwing": "./assets/audio/character/sword_swing.wav"
+    },
+    "effects": {
+        "coin": "./assets/audio/sfx/coin_recieved.mp3",
+        "gem": "./assets/audio/sfx/gem_recieved.mov",
+        "headJump": "./assets/audio/sfx/head_jump.wav",
+        "startGame": "./assets/audio/sfx/start_game.wav"
+    },
+    "enemy": {
+        "hurt": "./assets/audio/enemies/enemy_hurt.wav"
+    },
+    "dummy": {
+        "dummy": "./assets/audio/dummy/dummy.wav"
     }
 }

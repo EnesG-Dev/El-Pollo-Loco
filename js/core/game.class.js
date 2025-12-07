@@ -56,6 +56,7 @@ class Game {
 
     newGame() {
         this.saveName();
+        AUDIO_MANAGER.playEffectSound('effects_startGame');
         this.setState('playing');
     }
 

@@ -45,8 +45,13 @@ class Endboss extends MovableObject {
         return this.status == 'idle' || this.status == 'moving';
     }
 
+    playBossMusic() {
+        AUDIO_MANAGER.playMusic('music_boss');
+    }
+
     stopMovingCharacter() {
         this.world.character.stopMoving = true;
+        this.playBossMusic();
         setTimeout(() => {
             this.world.character.stopMoving = false;
         }, 2000);
