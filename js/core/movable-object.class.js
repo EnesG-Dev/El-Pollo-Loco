@@ -95,6 +95,7 @@ class MovableObject extends DrawableObject {
         }
         return this.y + this.objectGround < groundLevel - minHeight;
     }
+    // TODO: throwableObject wird nicht gebraucht - löschen
 
     getGroundLevel(x, y) {
         const config = this.world.level.configs.find(cfg =>

@@ -55,7 +55,7 @@ class Character extends MovableObject {
                     else this.moveLeft(true);
                 }
 
-                if (this.world.keyboard.SPACE && !this.isAboveGround()) {
+                if (this.world.keyboard.SPACE && (!this.isAboveGround() || this.isOnRamp())) {
                     this.jump();
                     AUDIO_MANAGER.playEffectSound('character_jump');
                 }
@@ -67,6 +67,17 @@ class Character extends MovableObject {
             this.world.camera.update(this.x, this.world.bossEnemy.x);
         }, 1000 / 60);
     }
+
+isOnRamp(tolerance = 3) {
+    const groundLevel = this.getGroundLevel(this.x, this.y);
+    const config = this.world.level.configs.find(
+        cfg => this.x >= cfg.minX && this.x <= cfg.maxX
+    );
+    if (!config || config.type !== 'ramp') return false;
+    
+    const feetY = this.y + this.objectGround;
+    return Math.abs(feetY - groundLevel) <= tolerance;
+}
 
     walkSound() {
         if (!this.isAboveGround()) {
