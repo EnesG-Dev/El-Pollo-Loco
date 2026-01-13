@@ -7,8 +7,10 @@ class Game {
         this.loopId = null;
         this.setState('menu');
         this.gameLoop();
+        this.playerName = null;
+        this.playerScore = 0;
 
-        this.gameResult = null;
+        this.gameResult = null; // 'win' || 'failed'
         this.mute = true;
     }
 
@@ -47,18 +49,27 @@ class Game {
         }
     }
 
-
-    //########################################
-    // nicht in benutzung
-    get isRunning() {
-        return GAME.currentScene instanceof GameScene;
-    }
-
     newGame() {
         this.saveName();
         AUDIO_MANAGER.playEffectSound('effects_startGame');
         this.setState('playing');
     }
+    
+    saveScore() {
+        players.push(this.playerName);
+        scores.push(this.playerScore);
+
+        setArray("players", players);
+        setArray("scores", scores);
+    }
+
+    saveName() {
+        const name = document.getElementById('playerName').value || 'Spieler';
+        this.playerName = name;
+    }
+
+
+
 
     turnToMenu() {
         // reset world > menu
@@ -70,61 +81,10 @@ class Game {
         this.setState('playing');
     }
 
-    saveName() {
-        const name = document.getElementById('playerName').value || 'Spieler';
-        this.playerName = name;
+    //########################################
+    // nicht in benutzung
+    get isRunning() {
+        return GAME.currentScene instanceof GameScene;
     }
-
-    playerName = null;
-
-
-
-    _score = 10;
-
-    set score(value) {
-        this._score = value;
-    }
-
+    //########################################
 }
-// manage sound
-// manage player
-// manage scores
-// clear interval / timeouts of scenes
-
-let players = [];
-let scores = [];
-loadScores();
-function loadScores() {
-    console.log(players, scores);
-    players = getArray("players");
-    scores = getArray("scores");
-    console.log(players, scores);
-}
-
-// wird erst ausgeführt wenn gameOver oder winn!
-function saveScore() {
-    players.push(testPlayer);
-    scores.push(testScore);
-
-    setArray("players", players);
-    setArray("scores", scores);
-}
-
-function saveName() {
-    let inputPlayerName = document.getElementById('playerName').value;
-    player = inputPlayerName || 'Player';
-}
-
-function setArray(key, array) {
-    localStorage.setItem(key, JSON.stringify(array));
-}
-
-function getArray(key) {
-    return JSON.parse(localStorage.getItem(key)) || [];
-}
-
-
-
-
-
-

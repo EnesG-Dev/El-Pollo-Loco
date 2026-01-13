@@ -54,7 +54,7 @@ class HitBox {
         }
 
         if (this.type === 'coin' && other.type === 'character') {
-            other.owner.updateScore(10);
+            other.owner.updateScore(100);
             this.owner.takeItem();
         }
 

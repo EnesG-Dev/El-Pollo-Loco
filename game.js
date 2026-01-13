@@ -6,6 +6,8 @@ const keyboard = new Keyboard();
 const COLLISION_MANAGER = new CollisionManager();
 const AUDIO_MANAGER = new AudioManager();
 let GAME;
+let players = [];
+let scores = [];
 
 async function init() {
     await AUDIO_MANAGER.init();
@@ -16,8 +18,21 @@ async function init() {
     const game = new Game(canvas, keyboard);
     GAME = game;
 
-
+    loadStorage();
     resizeCanvas();
+}
+
+function setArray(key, array) {
+    localStorage.setItem(key, JSON.stringify(array));
+}
+
+function getArray(key) {
+    return JSON.parse(localStorage.getItem(key)) || [];
+}
+
+function loadStorage() {
+    players = getArray("players");
+    scores = getArray("scores");
 }
 
 function resizeCanvas() {

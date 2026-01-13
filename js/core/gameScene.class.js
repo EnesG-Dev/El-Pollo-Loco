@@ -45,6 +45,9 @@ class GameScene {
         if (this.world.character.energy === 0) {
             this.game.gameResult = 'failed';
         } else this.game.gameResult = 'win';
+
+        this.game.playerScore = this.world.score;
+        this.game.saveScore();
     }
     
     switchEndScene() {

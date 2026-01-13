@@ -16,6 +16,7 @@ class World {
 
         this.spike1 = new HitBox(700, 360, 150, 50);
         this.spike2 = new HitBox(2480, 410, 150, 50);
+        this.score = 0;
     }
 
     initObjects() {
