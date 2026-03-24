@@ -40,7 +40,7 @@ class GameScene {
         this.setGameResult();
         this.switchEndScene();
     }
-    
+
     setGameResult() {
         if (this.world.character.energy === 0) {
             this.game.gameResult = 'failed';
@@ -49,7 +49,7 @@ class GameScene {
         this.game.playerScore = this.world.score;
         this.game.saveScore();
     }
-    
+
     switchEndScene() {
         setTimeout(() => {
             this.world.clearWorld();
@@ -85,6 +85,19 @@ class GameScene {
             fullscreenBtn.src = "./assets/images/icons/fullscreen.png";
             fullscreenBtn.alt = "fullscreen icon";
         }
+
+        this.displaySoundStatus();
+    }
+
+    displaySoundStatus(mute = this.game.mute) {
+        const soundBtn = document.getElementById('soundBtn');
+        if (mute) {
+            soundBtn.src = "./assets/images/icons/mute.png";
+            soundBtn.setAttribute("aria-pressed", "true");
+        } else {
+            soundBtn.src = "./assets/images/icons/sound.png";
+            soundBtn.setAttribute("aria-pressed", "false");
+        }
     }
 
     touchAction(action) {
@@ -108,8 +121,14 @@ class GameScene {
         return /*html*/`
             <div id="controlLayout" class="mobile-controls">
                 <div class="top-bar">
+                    <button class="control-btn" aria-label="info" onpointerdown="toggleInfoScreen()">
+                        <img id="infoBtnImg" src="./assets/images/icons/info.png" alt="info icon"/>
+                    </button>
                     <button class="control-btn" aria-label="fullscreen" onpointerdown="toggleFullscreen()">
                         <img id="fullscreenBtnImg" src="./assets/images/icons/fullscreen.png" alt="fullscreen icon"/>
+                    </button>
+                    <button class="control-btn" aria-label="mute" onpointerdown="GAME.toggleSound()">
+                        <img id="soundBtn" src="./assets/images/icons/mute.png" aria-pressed="true" alt="mute icon"/>
                     </button>
                 </div>
 

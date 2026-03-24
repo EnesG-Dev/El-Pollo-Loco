@@ -303,12 +303,21 @@ ul li {
   padding: 5px;
 }
 
+.top-bar .control-btn {
+  margin: 5px;
+}
+
 .control-btn:active {
   background: #b5b5b580;
 }
 
 .control-btn:focus {
   outline: none;
+}
+
+.top-bar .control-btn img {
+  width: 3.5vw;
+  max-width: 35px;
 }
 
 .control-btn img {

@@ -3,15 +3,14 @@ class Game {
         this.canvas = canvas;
         this.ctx = this.canvas.getContext('2d');
         this.keyboard = keyboard;
+        this.mute = true;
+        this.playerName = null;
+        this.playerScore = 0;
+        this.gameResult = null; // 'win' || 'failed'
 
         this.loopId = null;
         this.setState('menu');
         this.gameLoop();
-        this.playerName = null;
-        this.playerScore = 0;
-
-        this.gameResult = null; // 'win' || 'failed'
-        this.mute = true;
     }
 
     setState(state) {
@@ -37,13 +36,11 @@ class Game {
         const soundBtn = document.getElementById('soundBtn');
         if (!this.mute) {
             this.mute = true;
-            soundBtn.innerText = "Sound OFF";
-            soundBtn.setAttribute("aria-pressed", "true");
+            this.currentScene.displaySoundStatus();
             AUDIO_MANAGER.muteAll(true);
         } else {
             this.mute = false;
-            soundBtn.innerText = "Sound ON";
-            soundBtn.setAttribute("aria-pressed", "false");
+            this.currentScene.displaySoundStatus();
             AUDIO_MANAGER.startSoundOnUserInteraction();
             AUDIO_MANAGER.muteAll(false);
         }

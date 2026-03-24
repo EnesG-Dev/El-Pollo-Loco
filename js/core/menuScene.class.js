@@ -38,11 +38,27 @@ class MenuScene {
     }
 
     checkButtons() {
+        this.displayScreenStatus();
+        this.displaySoundStatus();
+    }
+    
+    displayScreenStatus() {
         const fullscreenBtn = document.getElementById('fullscreenBtn');
         if (document.fullscreenElement) {
             fullscreenBtn.innerText = "Vollbild verlassen";
         } else {
             fullscreenBtn.innerText = "Vollbild";
+        }
+    }
+
+    displaySoundStatus(mute = this.game.mute) {
+        const soundBtn = document.getElementById('soundBtn');
+        if (mute) {
+            soundBtn.innerText = "Sound OFF";
+            soundBtn.setAttribute("aria-pressed", "true");
+        } else {
+            soundBtn.innerText = "Sound ON";
+            soundBtn.setAttribute("aria-pressed", "false");
         }
     }
 
@@ -58,7 +74,7 @@ class MenuScene {
                 Spiel starten
                 </button>
 
-                <button class="menu-btn" id="soundBtn" type="button" onpointerdown="GAME.toggleSound()" aria-pressed="false" aria-label="Sound on/off">
+                <button class="menu-btn" id="soundBtn" type="button" onpointerdown="GAME.toggleSound()" aria-pressed="false" aria-label="Sound on">
                 Sound OFF
                 </button>
 
