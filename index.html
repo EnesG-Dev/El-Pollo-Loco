@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" translate="no">
   <head>
     <meta charset="UTF-8" />
@@ -73,12 +73,18 @@
     </header>
 
     <main>
-      <div class="game-screen" id="gameScreen" role="region" aria-label="game area">
-        <section class="game-area" style="position: relative;">
+      <div
+        class="game-screen"
+        id="gameScreen"
+        role="region"
+        aria-label="game area"
+      >
+        <section class="game-area" style="position: relative">
           <canvas id="canvas" aria-label="Game-Canvas"></canvas>
           <section id="sceneLayout" aria-label="start menu"></section>
           <div id="rotateWarning">
-            <img src="./assets/images/icons/turnDevice.png" alt="turn device"/>
+            <!--- Wird eventuel bei sceenenwechsel gelöscht --->
+            <img src="./assets/images/icons/turnDevice.png" alt="turn device" />
             Bitte Gerät quer halten!
           </div>
         </section>
@@ -97,8 +103,9 @@
     <section class="instructions">
       <p>
         Bewege deinen Charakter mit den Pfeiltasten, sammle Münzen und vermeide
-        die Feinde oder besiege sie indem du dein Schwert (C) oder deine Energieattacke
-        (V) einsetzt. Oder einfach auf sie springst. Aber vorsicht! Die böse Hexe ist nicht so einfach zu besiegen.
+        die Feinde oder besiege sie indem du dein Schwert (C) oder deine
+        Energieattacke (V) einsetzt. Oder einfach auf sie springst. Aber
+        vorsicht! Die böse Hexe ist nicht so einfach zu besiegen.
       </p>
       <ul>
         <li>

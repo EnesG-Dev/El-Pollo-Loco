@@ -121,7 +121,8 @@ class GameScene {
         return /*html*/`
             <div id="controlLayout" class="mobile-controls">
                 <div class="top-bar">
-                    <button class="control-btn" aria-label="info" onpointerdown="toggleInfoScreen()">
+                    <button class="control-btn" aria-label="info" onpointerdown="toggleInfoScreen()"
+                        onclick="document.getElementById('infoDialog').classList.add('open')">
                         <img id="infoBtnImg" src="./assets/images/icons/info.png" alt="info icon"/>
                     </button>
                     <button class="control-btn" aria-label="fullscreen" onpointerdown="toggleFullscreen()">
@@ -154,6 +155,43 @@ class GameScene {
                         </button>
                     </div>
                 </div>
+
+                <div
+                class="dialog-overlay"
+                id="infoDialog"
+                onclick="if (event.target === this) this.classList.remove('open');"
+                >
+                    <div class="dialog instructions">
+                        <p>
+                        Bewege deinen Charakter mit den Pfeiltasten, sammle Münzen und
+                        vermeide die Feinde oder besiege sie indem du dein Schwert (C)
+                        oder deine Energieattacke (V) einsetzt.
+                        </p>
+                        <ul>
+                        <li>
+                            <img src="./assets/images/icons/left_white.png" alt="left" />
+                            links bewegen
+                        </li>
+                        <li>
+                            <img src="./assets/images/icons/right_white.png" alt="right" />
+                            rechts bewegen
+                        </li>
+                        <li>
+                            <img src="./assets/images/icons/c_white.png" alt="c" />
+                            Schwertangriff
+                        </li>
+                        <li>
+                            <img src="./assets/images/icons/v_white.png" alt="v" />
+                            Energieattacke
+                        </li>
+                        <li>
+                            <img src="./assets/images/icons/space_white.png" alt="space" />
+                            springen
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         `;
     }

@@ -221,6 +221,35 @@ ul li {
   text-align: left;
 }
 
+.dialog-overlay {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog-overlay.open {
+  display: flex;
+}
+
+.dialog {
+  width: 90%;
+  padding: 1.5rem;
+  max-height: 70%;
+  overflow-y: auto;
+  max-height: 70%;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.dialog::-webkit-scrollbar {
+  display: none;
+}
+
 /* CSS Impressum*/
 .impressum-btn {
   display: inline-flex;
