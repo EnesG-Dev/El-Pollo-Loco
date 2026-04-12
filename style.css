@@ -5,6 +5,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "pressStart2p";
+  src: url("./assets/fonts/pressStart/PressStart2P-Regular.ttf")
+    format("truetype");
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -79,8 +86,11 @@ canvas {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.5);
   color: white;
+}
+
+.layout-background {
+  background: rgba(0, 0, 0, 0.5);
 }
 
 #startForm {
@@ -310,13 +320,18 @@ ul li {
   height: 50%;
   align-items: flex-start;
 }
+
 .bottom-bar {
-  display: none;
+  display: flex;
   justify-content: space-between;
   height: 50%;
   align-items: flex-end;
   padding-bottom: 15px;
   padding-left: 15px;
+}
+
+.toutch-controls {
+  display: none;
 }
 
 .left-side-btns {
@@ -334,6 +349,7 @@ ul li {
 
 .top-bar .control-btn {
   margin: 5px;
+  display: flex;
 }
 
 .control-btn:active {
@@ -364,6 +380,35 @@ ul li {
 
 button img {
   pointer-events: none;
+}
+
+.gameover-btns {
+  justify-content: center;
+  gap: 40px;
+  padding-bottom: 6%;
+}
+
+.score-board {
+  position: absolute;
+  top: 32%;
+  left: 50%;
+  font-size: 2.3vw;
+  font-family: "pressStart2p";
+  color: #2e9581;
+  font-weight: bold;
+  width: 40%;
+}
+
+.score-item {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 4vw;
+}
+
+#scoreList {
+  gap: 3.9vw;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 1024px) {
@@ -433,7 +478,7 @@ button img {
 }
 
 @media (hover: none) and (pointer: coarse) {
-  .bottom-bar {
+  .toutch-controls {
     display: flex;
   }
 }

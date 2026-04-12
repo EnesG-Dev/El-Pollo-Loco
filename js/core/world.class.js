@@ -92,6 +92,10 @@ class World {
         }
     }
 
+    /**
+    * check if game is over by checking if the character or the boss enemy has no energy left
+    * @returns {boolean} true if game is over, false otherwise
+    */
     isGameOver() {
         return this.character.energy === 0 || this.bossEnemy.energy === 0;
     }

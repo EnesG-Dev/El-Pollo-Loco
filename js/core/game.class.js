@@ -65,16 +65,13 @@ class Game {
         this.playerName = name;
     }
 
-
-
-
     turnToMenu() {
-        // reset world > menu
+        // sound
         this.setState('menu');
     }
 
     playAgain() {
-        // reset world > playing
+        // sound
         this.setState('playing');
     }
 

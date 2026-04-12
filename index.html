@@ -82,8 +82,48 @@
         <section class="game-area" style="position: relative">
           <canvas id="canvas" aria-label="Game-Canvas"></canvas>
           <section id="sceneLayout" aria-label="start menu"></section>
+          <div
+            class="dialog-overlay"
+            id="infoDialog"
+            onclick="if (event.target === this) this.classList.remove('open');"
+          >
+            <div class="dialog instructions">
+              <p>
+                Bewege deinen Charakter mit den Pfeiltasten, sammle Münzen und
+                vermeide die Feinde oder besiege sie indem du dein Schwert (C)
+                oder deine Energieattacke (V) einsetzt.
+              </p>
+              <ul>
+                <li>
+                  <img src="./assets/images/icons/left_white.png" alt="left" />
+                  links bewegen
+                </li>
+                <li>
+                  <img
+                    src="./assets/images/icons/right_white.png"
+                    alt="right"
+                  />
+                  rechts bewegen
+                </li>
+                <li>
+                  <img src="./assets/images/icons/c_white.png" alt="c" />
+                  Schwertangriff
+                </li>
+                <li>
+                  <img src="./assets/images/icons/v_white.png" alt="v" />
+                  Energieattacke
+                </li>
+                <li>
+                  <img
+                    src="./assets/images/icons/space_white.png"
+                    alt="space"
+                  />
+                  springen
+                </li>
+              </ul>
+            </div>
+          </div>
           <div id="rotateWarning">
-            <!--- Wird eventuel bei sceenenwechsel gelöscht --->
             <img src="./assets/images/icons/turnDevice.png" alt="turn device" />
             Bitte Gerät quer halten!
           </div>

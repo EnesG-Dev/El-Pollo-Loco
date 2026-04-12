@@ -9,12 +9,12 @@ class MenuScene {
     }
 
     init() {
-        const sceneLayout = document.getElementById('sceneLayout');
-        sceneLayout.innerHTML = this.menuTemp();
+        this.setSceneLayout();
+        this.setPlayerName();
         this.updateOverlay();
     }
 
-    update() {}
+    update() { }
 
     render(ctx) {
         ctx.drawImage(
@@ -29,6 +29,12 @@ class MenuScene {
         this.checkButtons();
     }
 
+    setSceneLayout() {
+        const sceneLayout = document.getElementById('sceneLayout');
+        sceneLayout.innerHTML = this.menuTemp();
+        sceneLayout.classList.add('layout-background');
+    }
+
     checkBackground() {
         if (document.fullscreenElement) {
             this.background = this.backgroundMobile;
@@ -37,11 +43,15 @@ class MenuScene {
         }
     }
 
+    setPlayerName() {
+        document.getElementById('playerName').value = this.game.playerName || '';
+    }
+
     checkButtons() {
         this.displayScreenStatus();
         this.displaySoundStatus();
     }
-    
+
     displayScreenStatus() {
         const fullscreenBtn = document.getElementById('fullscreenBtn');
         if (document.fullscreenElement) {

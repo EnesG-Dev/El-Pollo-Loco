@@ -87,6 +87,11 @@ function toggleFullscreen() {
     }
 }
 
+function toggleInfoScreen() {
+    const infoDialog = document.getElementById('infoDialog');
+    infoDialog.classList.add('open');
+}
+
 window.addEventListener("resize", resizeCanvas);
 
 document.addEventListener("fullscreenchange", () => {

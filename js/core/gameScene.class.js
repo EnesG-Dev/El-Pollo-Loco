@@ -33,6 +33,9 @@ class GameScene {
         }
     }
 
+    /**
+     * 
+     */
     triggerGameOverGrace() {
         this.gameOverGrace = true;
         this.gameOverEndTime = Date.now() + 2000;
@@ -44,10 +47,12 @@ class GameScene {
     setGameResult() {
         if (this.world.character.energy === 0) {
             this.game.gameResult = 'failed';
-        } else this.game.gameResult = 'win';
-
-        this.game.playerScore = this.world.score;
-        this.game.saveScore();
+            this.game.playerScore = 0;
+        } else {
+            this.game.gameResult = 'win';   
+            this.game.playerScore = this.world.score;
+            this.game.saveScore();
+        }
     }
 
     switchEndScene() {
@@ -55,9 +60,8 @@ class GameScene {
             this.world.clearWorld();
             COLLISION_MANAGER.objects = [];
 
-            // this.game.setState('gameOver');
-            // game leichter machen > boss langsammer
-        }, 5000);
+            this.game.setState('gameOver');
+        }, 4000);
     }
 
     render(ctx) {
@@ -69,7 +73,7 @@ class GameScene {
     setSceneLayout() {
         const sceneLayout = document.getElementById('sceneLayout');
         sceneLayout.innerHTML = this.controlTemp();
-        sceneLayout.style.background = 'none';
+        sceneLayout.classList.remove('layout-background');
     }
 
     updateOverlay() {
@@ -121,8 +125,7 @@ class GameScene {
         return /*html*/`
             <div id="controlLayout" class="mobile-controls">
                 <div class="top-bar">
-                    <button class="control-btn" aria-label="info" onpointerdown="toggleInfoScreen()"
-                        onclick="document.getElementById('infoDialog').classList.add('open')">
+                    <button class="control-btn" aria-label="info" onpointerdown="toggleInfoScreen()">
                         <img id="infoBtnImg" src="./assets/images/icons/info.png" alt="info icon"/>
                     </button>
                     <button class="control-btn" aria-label="fullscreen" onpointerdown="toggleFullscreen()">
@@ -133,7 +136,7 @@ class GameScene {
                     </button>
                 </div>
 
-                <div class="bottom-bar">
+                <div class="bottom-bar toutch-controls">
                     <div class="left-side-btns">
                         <button class="control-btn" data-action="LEFT" aria-label="move left">
                             <img src="./assets/images/icons/left_white.png" alt="move left icon"/>
@@ -155,43 +158,6 @@ class GameScene {
                         </button>
                     </div>
                 </div>
-
-                <div
-                class="dialog-overlay"
-                id="infoDialog"
-                onclick="if (event.target === this) this.classList.remove('open');"
-                >
-                    <div class="dialog instructions">
-                        <p>
-                        Bewege deinen Charakter mit den Pfeiltasten, sammle Münzen und
-                        vermeide die Feinde oder besiege sie indem du dein Schwert (C)
-                        oder deine Energieattacke (V) einsetzt.
-                        </p>
-                        <ul>
-                        <li>
-                            <img src="./assets/images/icons/left_white.png" alt="left" />
-                            links bewegen
-                        </li>
-                        <li>
-                            <img src="./assets/images/icons/right_white.png" alt="right" />
-                            rechts bewegen
-                        </li>
-                        <li>
-                            <img src="./assets/images/icons/c_white.png" alt="c" />
-                            Schwertangriff
-                        </li>
-                        <li>
-                            <img src="./assets/images/icons/v_white.png" alt="v" />
-                            Energieattacke
-                        </li>
-                        <li>
-                            <img src="./assets/images/icons/space_white.png" alt="space" />
-                            springen
-                        </li>
-                        </ul>
-                    </div>
-                </div>
-
             </div>
         `;
     }
