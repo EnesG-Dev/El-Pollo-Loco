@@ -87,6 +87,11 @@ function toggleFullscreen() {
     }
 }
 
+function toggleWideScreenSize() {
+    const scoreList = document.getElementById('scoreList');
+    scoreList.classList.toggle('wide-screen-size');
+}
+
 function toggleInfoScreen() {
     const infoDialog = document.getElementById('infoDialog');
     infoDialog.classList.add('open');

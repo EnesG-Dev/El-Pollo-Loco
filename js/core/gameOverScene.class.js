@@ -98,7 +98,7 @@ class GameOverScene {
                         onclick="document.getElementById('infoDialog').classList.add('open')">
                         <img id="infoBtnImg" src="./assets/images/icons/info.png" alt="info icon"/>
                     </button>
-                    <button class="control-btn" aria-label="fullscreen" onpointerdown="toggleFullscreen()">
+                    <button class="control-btn" aria-label="fullscreen" onpointerdown="toggleFullscreen(), toggleWideScreenSize()">
                         <img id="fullscreenBtnImg" src="./assets/images/icons/fullscreen.png" alt="fullscreen icon"/>
                     </button>
                     <button class="control-btn" aria-label="mute" onpointerdown="GAME.toggleSound()">
@@ -117,7 +117,7 @@ class GameOverScene {
                 </div>
 
                 <div class="score-board">
-                    <list id="scoreList"></list>
+                    <list id="scoreList" class="score-list wide-screen-size"></list>
                 </div>
             </div>
         `;

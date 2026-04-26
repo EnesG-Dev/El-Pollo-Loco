@@ -399,16 +399,16 @@ button img {
   width: 40%;
 }
 
+.score-list {
+  display: flex;
+  flex-direction: column;
+  padding-left: 4vw;
+  gap: 3.9vw;
+}
+
 .score-item {
   display: flex;
   justify-content: space-between;
-  padding-left: 4vw;
-}
-
-#scoreList {
-  gap: 3.9vw;
-  display: flex;
-  flex-direction: column;
 }
 
 @media (max-width: 1024px) {
@@ -450,6 +450,22 @@ button img {
     font-family: Arial;
     font-size: 1.5vw;
   }
+}
+
+@media (min-width: 720px) {
+  .wide-screen-size {
+    font-size: 16px;
+    padding-left: 28px;
+    gap: 28px;
+  }
+
+  /* .wide-screen-size #scoreList {
+    gap: 28px;
+  }
+
+  .wide-screen-size .score-item {
+    padding-left: 28px;
+  } */
 }
 
 #rotateWarning {
