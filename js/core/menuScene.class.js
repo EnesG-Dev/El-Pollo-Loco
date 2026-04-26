@@ -78,7 +78,7 @@ class MenuScene {
 
             <form id="startForm" onsubmit="GAME.newGame(); return false;">
                 
-                <input id="playerName" type="text" placeholder="Spieler" maxlength="15"/>
+                <input id="playerName" type="text" placeholder="Spieler" maxlength="10"/>
 
                 <button class="menu-btn" id="startBtn" type="submit" aria-label="Spiel starten">
                 Spiel starten

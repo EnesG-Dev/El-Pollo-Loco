@@ -77,8 +77,9 @@ class GameOverScene {
     }
 
     renderScoreList() {
+        const currentPlayerIndex = players.length - 1;
         const sortedScoreList = players.map((name, index) => {
-            return { name: name, score: scores[index] };
+            return { name: name, score: scores[index], isCurrentPlayer: index === currentPlayerIndex };
         });
         sortedScoreList.sort((a, b) => b.score - a.score);
         
@@ -86,7 +87,8 @@ class GameOverScene {
         for (let i = 0; i < Math.min(sortedScoreList.length, 5); i++) {
             const name = sortedScoreList[i].name || '---';
             const score = sortedScoreList[i].score || '---';
-            scoreList.innerHTML += this.scoreListTemp(name, score);
+            const isHighlighted = sortedScoreList[i].isCurrentPlayer;
+            scoreList.innerHTML += this.scoreListTemp(name, score, isHighlighted);
         }
     }
 
@@ -123,9 +125,9 @@ class GameOverScene {
         `;
     }
 
-    scoreListTemp(name = '', score = '') {
+    scoreListTemp(name = '', score = '',  isHighlighted = false) {
         return /*html*/`
-            <div class="score-item"><span>${name}</span> <span>${score}</span></div>
+            <div class="score-item ${isHighlighted ? 'highlight-player' : ''}"><span>${name}</span> <span>${score}</span></div>
         `;
     }
 }

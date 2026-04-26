@@ -394,7 +394,7 @@ button img {
   left: 50%;
   font-size: 2.3vw;
   font-family: "pressStart2p";
-  color: #2e9581;
+  color: #b8860b;
   font-weight: bold;
   width: 40%;
 }
@@ -409,6 +409,11 @@ button img {
 .score-item {
   display: flex;
   justify-content: space-between;
+}
+
+.highlight-player {
+  pointer-events: none;
+  color: #2e9581;
 }
 
 @media (max-width: 1024px) {
