@@ -315,6 +315,7 @@ class Character extends MovableObject {
         this.status = 'hurt';
         this.readyToHurt = false;
 
+        AUDIO_MANAGER.stopCastingSound();
         AUDIO_MANAGER.playEffectSound('character_hurt');
 
         this.playSpriteOnce(this.IMAGES_HURT, 100, () => {
