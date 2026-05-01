@@ -90,10 +90,11 @@ class Endboss extends MovableObject {
     firstAttack() {
         if (this.status !== 'attacking') {
             this.status = 'attacking';
-
-            this.playSpriteOnce(this.IMAGES_COMBO_ATK_SLASH1_LEFT, 100, () => this.nextAttack());
-            new BossAttackArea(this, 0);
-            this.addHitboxArea1();
+            setTimeout(() => {
+                this.playSpriteOnce(this.IMAGES_COMBO_ATK_SLASH1_LEFT, 100, () => this.nextAttack());
+                new BossAttackArea(this, 0);
+                this.addHitboxArea1();
+            }, 300);
         }
     }
 
