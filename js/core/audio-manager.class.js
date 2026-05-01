@@ -43,9 +43,11 @@ class AudioManager {
         return a;
     }
 
-    startSoundOnUserInteraction() {
+    startSoundOnUserInteraction(scene) {
         if (!this.soundStartet) {
-            this.playMusic('music_menu');
+            if (scene instanceof MenuScene) {
+                this.playMusic('music_menu');
+            }
             this.soundStartet = true;
         }
     }
@@ -60,6 +62,13 @@ class AudioManager {
         sound.volume = 0.1;
         this.activeMusic = sound;
         this.activeMusic.play();
+    }
+
+    stopMusic() {
+        if (this.activeMusic) {
+            this.activeMusic.pause();
+            this.activeMusic = null;
+        }
     }
     
     playSound(soundName) {

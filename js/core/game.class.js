@@ -41,7 +41,7 @@ class Game {
         } else {
             this.mute = false;
             this.currentScene.displaySoundStatus();
-            AUDIO_MANAGER.startSoundOnUserInteraction();
+            AUDIO_MANAGER.startSoundOnUserInteraction(this.currentScene);
             AUDIO_MANAGER.muteAll(false);
         }
     }
@@ -66,19 +66,12 @@ class Game {
     }
 
     turnToMenu() {
-        // sound
+        AUDIO_MANAGER.playEffectSound('effects_startGame');
         this.setState('menu');
     }
 
     playAgain() {
-        // sound
+        AUDIO_MANAGER.playEffectSound('effects_startGame');
         this.setState('playing');
     }
-
-    //########################################
-    // nicht in benutzung
-    get isRunning() {
-        return GAME.currentScene instanceof GameScene;
-    }
-    //########################################
 }

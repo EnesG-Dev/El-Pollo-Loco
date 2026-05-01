@@ -11,6 +11,7 @@ class GameScene {
         this.world = new World(this.game.canvas, this.game.keyboard, level);
         this.world.initObjects();
         this.setSceneLayout();
+        AUDIO_MANAGER.playMusic('music_game');
 
         this.setupControlButtons();
         this.updateOverlay();
@@ -27,6 +28,7 @@ class GameScene {
         }
 
         if (this.world.isGameOver()) {
+            AUDIO_MANAGER.stopMusic();
             this.triggerGameOverGrace();
         } else {
             this.world.update();
@@ -49,7 +51,8 @@ class GameScene {
             this.game.gameResult = 'failed';
             this.game.playerScore = 0;
         } else {
-            this.game.gameResult = 'win';   
+            this.game.gameResult = 'win';
+            AUDIO_MANAGER.playEffectSound('effects_successGame');
             this.game.playerScore = this.world.score;
             this.game.saveScore();
         }
